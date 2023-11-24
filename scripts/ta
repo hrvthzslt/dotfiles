@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# Tmux attach or create session
+
+session_name="$(basename "$(pwd)")"
+tmux new-session -s "$session_name" || tmux attach -t "$session_name"

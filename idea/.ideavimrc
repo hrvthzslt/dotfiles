@@ -1,0 +1,74 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Set nerdtree -------------------------
+set NERDTree
+
+""" Set scroll -------------------------
+set scrolloff=10
+
+""" Set commenting -------------------------
+set commentary
+
+""" Set ignorecase --------------------------
+set ignorecase
+set visualbell
+
+"""" Clipboard ------------------------------
+set clipboard+=unnamed
+
+nnoremap c "cc
+vnoremap c "cc
+nnoremap C "cC
+vnoremap C "cC
+
+nnoremap d "dd
+vnoremap d "dd
+nnoremap D "dD
+vnoremap D "dD
+
+nnoremap x "xx
+vnoremap x "xx
+nnoremap X "xX
+vnoremap X "xX
+
+nnoremap s "ss
+vnoremap s "ss
+nnoremap S "sS
+vnoremap S "sS
+
+""" Which key -------------------------------
+set which-key
+set notimeout
+
+""" Line numbers ----------------------------
+set relativenumber
+set number
+
+""" Search ----------------------------------
+set hls
+nmap <Esc> :nohlsearch<CR>
+
+""" Mappings --------------------------------
+map <leader>w :w<CR>
+
+map ő {
+map ú }
+map é $
+map Ő [m
+map Ú ]m
+
+map <leader>r <Action>(RenameElement)
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+map <leader>f <Action>(RecentFiles)
+map <leader>u <Action>(ChooseRunConfiguration)
+map <leader>k <Action>(Commit)
+map gr <Action>(GotoImplementation)
+
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)

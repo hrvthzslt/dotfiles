@@ -1,0 +1,30 @@
+# Common
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+alias ls='eza -a --color=always --group-directories-first'
+alias la='eza -la --color=always --group-directories-first'
+alias l.='eza -a | egrep "^\."'
+
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias cp="cp -i"
+alias df="df -h"
+
+alias clear="clear; color"
+alias c="clear"
+
+# Tmux
+alias tkill="tmux kill-server"
+
+# Lazy
+alias lgi="lazygit"
+alias ldo="lazydocker"
+
+# Editor
+alias v="nvim"

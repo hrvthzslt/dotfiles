@@ -1,0 +1,37 @@
+#!/usr/bin/sh
+# Git wrapper
+
+help() {
+    echo "Usage: g [c|ca|da|cf|u|si]"
+    echo "  -c     checkout local branch"
+    echo "  -ca    checkout branch"
+    echo "  -da    delete all local branch"
+    echo "  -cf    clear changes and checkout"
+    echo "  -u     update all branch"
+    echo "  -si    submodule init"
+    exit 1
+}
+
+case $1 in
+    c)
+        git branch | fzf | xargs git checkout
+        ;;
+    ca)
+        git branch -a | sed -e "s/origin\///g" | sed -e "s/remotes\///g" | uniq -u | fzf | xargs git checkout
+        ;;
+    da)
+        git branch | xargs git branch -D
+        ;;
+    cf)
+        git checkout -f ; git clean -df
+        ;;
+    u)
+        git fetch --all --prune ; git pull --all
+        ;;
+    si)
+        git submodule update --init --recursive
+        ;;
+    *)
+        help
+        ;;
+esac

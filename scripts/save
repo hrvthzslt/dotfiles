@@ -1,0 +1,14 @@
+#!/usr/bin/sh
+# Save and push changes to git
+
+git add .
+git stash push -m "save"
+git pull
+git stash apply stash^"{/save}"
+git add .
+if [ -n "$*" ]; then
+    git commit -m "$*"
+else
+    git commit -m "update $(git status -s)"
+fi
+git push

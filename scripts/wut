@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+# Search DuckDuckGo from the command line
+
+TERM=xterm BROWSER=links ddgr -n 5 "$@"

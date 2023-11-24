@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Run composer in container
+
+versions=(7.0 7.2 7.3 7.4 8.0 8.1 8.2)
+
+if [[ ${versions[*]} =~ (^|[[:space:]])"$1"($|[[:space:]]) ]]; then
+    ver="$1"
+    arguments=${*:2}
+else
+    ver=8.1
+    arguments=${*}
+fi
+
+docker run --rm -it --env COMPOSER_AUTH="$COMPOSER_AUTH" --volume "$PWD":/app prooph/composer:"$ver" "$arguments"

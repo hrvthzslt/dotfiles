@@ -1,0 +1,85 @@
+-- Space is my leader.
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- When text is wrapped, move by terminal rows, not lines, unless a count is provided.
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
+-- Reselect visual selection after indenting.
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
+-- Maintain the cursor position when yanking a visual selection.
+-- http://ddrscott.github.io/blog/2016/yank-without-jank/
+vim.keymap.set("v", "y", "myy`y")
+
+-- Paste replace visual selection without copying it.
+vim.keymap.set("v", "p", '"_dP')
+
+-- Easy insertion of a trailing ; or , from insert mode.
+-- vim.keymap.set('i', ';;', '<Esc>A;')
+-- vim.keymap.set('i', ',,', '<Esc>A,')
+
+-- Quickly clear search highlighting.
+vim.keymap.set("n", "<Leader>k", ":nohlsearch<CR>", { desc = "nohlsearch" })
+
+-- Open the current file in the default program (on Mac this should just be just `open`).
+vim.keymap.set("n", "<Leader>x", ":!xdg-open %<CR><CR>", { desc = "Xdg open" })
+
+-- Source file
+vim.keymap.set("n", "<Leader>S", ":so<CR>", { desc = "Source" })
+
+-- Move lines up and down.
+vim.keymap.set("i", "<A-d>", "<Esc>:move .+1<CR>==gi")
+vim.keymap.set("i", "<A-u>", "<Esc>:move .-2<CR>==gi")
+vim.keymap.set("n", "<A-d>", ":move .+1<CR>==")
+vim.keymap.set("n", "<A-u>", ":move .-2<CR>==")
+vim.keymap.set("v", "<A-d>", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-u>", ":move '<-2<CR>gv=gv")
+
+-- Write and Quit
+vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write" })
+vim.keymap.set("n", "<leader>W", ":wa<CR>", { desc = "Write all" })
+vim.keymap.set("n", "<leader>q", ":bd<CR>", { desc = "Quit buffer" })
+vim.keymap.set("n", "<leader>Q", ":qa<CR>", { desc = "Quit all" })
+vim.keymap.set("n", "<leader>B", ":%bd<CR>", { desc = "delete all Buffers" })
+
+-- Buffers
+vim.keymap.set("n", "<leader><leader>", ":bp<CR>", { desc = "previous buffer" })
+vim.keymap.set("n", "<leader>o", ":wincmd o<CR>", { desc = "focus on window" })
+
+-- Packer keymaps
+vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>", { desc = "Packer Sync" })
+vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", { desc = "Packer Compile" })
+
+-- Navigation shortcuts
+vim.keymap.set("n", "ú", "}")
+vim.keymap.set("n", "ő", "{")
+vim.keymap.set("n", "Ú", "]m")
+vim.keymap.set("n", "Ő", "[m")
+
+-- Registers
+-- Mapping for "c" and "C"
+vim.api.nvim_set_keymap('n', 'c', '"cc', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'c', '"cc', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'C', '"cC', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'C', '"cC', { noremap = true, silent = true })
+
+-- Mapping for "d" and "D"
+vim.api.nvim_set_keymap('n', 'd', '"dd', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'd', '"dd', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'D', '"dD', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'D', '"dD', { noremap = true, silent = true })
+
+-- Mapping for "x" and "X"
+vim.api.nvim_set_keymap('n', 'x', '"xx', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'x', '"xx', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'X', '"xX', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'X', '"xX', { noremap = true, silent = true })
+
+-- Mapping for "s" and "S"
+vim.api.nvim_set_keymap('n', 's', '"ss', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 's', '"ss', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'S', '"sS', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'S', '"sS', { noremap = true, silent = true })

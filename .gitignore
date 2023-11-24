@@ -1,0 +1,4 @@
+nvim/lua/.luarc.json
+nvim/spell/
+keyd_repo/
+.env

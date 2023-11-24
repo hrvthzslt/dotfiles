@@ -1,0 +1,51 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
+
+[directory]
+truncation_length = 5
+format = '[$path]($style)[$lock_symbol]($lock_style) '
+truncation_symbol = '/'
+style = 'bold blue'
+read_only = ' '
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](grey)"
+
+[git_branch]
+format = "[$branch]($style)"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](red bold) ($ahead_behind)]($style)"
+style = "grey"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+ahead = ' '
+behind = ' '
+diverged = ' '
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$virtualenv]($style)"
+style = "grey"
