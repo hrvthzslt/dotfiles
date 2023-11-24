@@ -82,6 +82,9 @@ use {
 -- Which key
 use({ "folke/which-key.nvim" })
 
+-- Auto session save and restore
+use 'rmagatti/auto-session'
+
 -- File explorer
 use({
     "nvim-tree/nvim-tree.lua",

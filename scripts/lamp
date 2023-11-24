@@ -1,0 +1,15 @@
+#!/bin/sh
+# Switch light and dark
+
+if [ "$(grep -i 'background' ~/.config/nvim/after/plugin/colorscheme.lua | cut -d= -f2)" = 'light' ]; then
+    state=light
+    switch=dark
+else
+    state=dark
+    switch=light
+fi
+
+sed -i -- "s/$state/$switch/g" ~/.config/nvim/after/plugin/colorscheme.lua
+sed -i -- "s/$state/$switch/g" ~/.config/kitty/kitty.conf
+
+exec kill -SIGUSR1 $(pgrep kitty)
