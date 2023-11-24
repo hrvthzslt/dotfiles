@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 # Tmux attach or create session
 
 session_name="$(basename "$(pwd)")"
