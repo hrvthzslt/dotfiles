@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # absolute path of working directory
-DOTFILES=$(cd "$(dirname "$0")" && pwd)
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # link zshrc and aliases
 rm -rf "$HOME"/.zshrc

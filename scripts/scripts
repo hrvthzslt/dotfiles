@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 # List all scripts in ~/.local/bin and their descriptions
 
 for script in ~/.local/bin/* ; do

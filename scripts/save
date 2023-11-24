@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 # Save and push changes to git
 
 git add .

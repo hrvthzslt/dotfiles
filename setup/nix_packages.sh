@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 nix-env -iA nixpkgs.fzf\
     nixpkgs.ripgrep\
