@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
-# set zsh as default shell
-if command -v zsh > /dev/null 2>&1; then
-    sudo chsh -s "$(command -v zsh)" "${USER}"
-else
-    echo "Please install zsh and start again!"
-    exit
+# install zsh, set as default shell, abort if not succeeded
+if [ ! "$(./setup/zsh.sh)" ]; then
+    exit 1;
 fi
 
 # Install nix
@@ -16,10 +13,13 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . "$HOME"/.nix-profile/etc/profile.d/nix.sh
 
 # install packages
-./setup/nix_packages.sh
+./setup/nix.sh
 
-# keyd
-./setup/install_keyd.sh
+# install keyd
+./setup/keyd.sh
 
-# symlink config
-./setup/link_config.sh
+# install kitty
+./setup/kitty.sh
+
+# symlink config and scripts
+./setup/link.sh
