@@ -1,5 +1,17 @@
 #!/bin/sh
 # Tmux attach or create session
 
-session_name="$(basename "$(pwd)")"
-tmux new-session -s "$session_name" || tmux attach
+tmux_session_name=$(tmux display-message -p '#S')
+
+if [ "$1" ]; then
+    session_name="$1"
+elif [ "$tmux_session_name" ]; then
+    session_name=$tmux_session_name
+else
+    session_name="$(basename "$(pwd)")"
+fi
+
+tmux attach 2> /dev/null  \
+    || tmux new-session -s "$session_name" 2> /dev/null \
+    || tmux new-session -s "$session_name" -d 2> /dev/null \
+    ; tmux switch-client -t "$session_name" 2> /dev/null 
