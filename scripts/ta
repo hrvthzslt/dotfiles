@@ -11,6 +11,10 @@ else
     session_name="$(basename "$(pwd)")"
 fi
 
+if [ "$session_name" = "$(whoami)" ]; then
+    session_name="home"
+fi
+
 tmux attach 2> /dev/null  \
     || tmux new-session -s "$session_name" 2> /dev/null \
     || tmux new-session -s "$session_name" -d 2> /dev/null \
