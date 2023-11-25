@@ -31,12 +31,12 @@ vim.keymap.set("n", "<Leader>x", ":!xdg-open %<CR><CR>", { desc = "Xdg open" })
 vim.keymap.set("n", "<Leader>S", ":so<CR>", { desc = "Source" })
 
 -- Move lines up and down.
-vim.keymap.set("i", "<A-d>", "<Esc>:move .+1<CR>==gi")
-vim.keymap.set("i", "<A-u>", "<Esc>:move .-2<CR>==gi")
-vim.keymap.set("n", "<A-d>", ":move .+1<CR>==")
-vim.keymap.set("n", "<A-u>", ":move .-2<CR>==")
-vim.keymap.set("v", "<A-d>", ":move '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-u>", ":move '<-2<CR>gv=gv")
+vim.keymap.set("i", "<A-j>", "<Esc>:move .+1<CR>==gi")
+vim.keymap.set("i", "<A-k>", "<Esc>:move .-2<CR>==gi")
+vim.keymap.set("n", "<A-j>", ":move .+1<CR>==")
+vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
+vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
 
 -- Write and Quit
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write" })
