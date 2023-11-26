@@ -3,11 +3,13 @@
 # absolute path of working directory
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-# link zshrc and aliases
+# link bashrc, zsh and aliases
 rm -rf "$HOME"/.zshrc
-ln -s "$DOTFILES"/zsh/.zshrc "$HOME"/.zshrc
+ln -s "$DOTFILES"/ishell/.zshrc "$HOME"/.zshrc
+rm -rf "$HOME"/.bashrc
+ln -s "$DOTFILES"/ishell/.bashrc "$HOME"/.bashrc
 rm -rf "$HOME"/.aliases
-ln -s "$DOTFILES"/zsh/.aliases "$HOME"/.aliases
+ln -s "$DOTFILES"/ishell/.aliases "$HOME"/.aliases
 
 # link startship
 rm -rf "$HOME"/.config/starship.toml

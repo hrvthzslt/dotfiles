@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-# install zsh, set as default shell, abort if not succeeded
-if [ ! "$(./setup/zsh.sh)" ]; then
-    exit 1;
-fi
-
 # Install nix
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
