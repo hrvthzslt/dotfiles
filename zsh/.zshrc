@@ -4,6 +4,10 @@ export EDITOR="nvim"
 export COMPOSER_AUTH='{"github-oauth": {"github.com": "ghp_xxx"}}'
 export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
 
+if [ -z "$TMUX" ]; then
+    ta;
+fi
+
 # key bindings
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
