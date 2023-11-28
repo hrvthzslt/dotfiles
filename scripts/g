@@ -2,13 +2,15 @@
 # Git wrapper
 
 help() {
-    echo "Usage: g [c|ca|da|cf|u|si]"
+    echo "Usage: g [c|ca|da|cf|u|si|s|p]"
     echo "  -c     checkout local branch"
     echo "  -ca    checkout branch"
     echo "  -da    delete all local branch"
     echo "  -cf    clear changes and checkout"
     echo "  -u     update all branch"
     echo "  -si    submodule init"
+    echo "  -s     stash all files"
+    echo "  -p     pop stash and reset"
     exit 1
 }
 
@@ -30,6 +32,12 @@ case $1 in
         ;;
     si)
         git submodule update --init --recursive
+        ;;
+    s)
+        git add . ; git stash
+        ;;
+    p) 
+        git stash pop ; git reset
         ;;
     *)
         help
