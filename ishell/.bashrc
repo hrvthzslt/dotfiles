@@ -1,12 +1,14 @@
+if [ -z "$TMUX" ]; then
+    ta;
+fi
+
+set -o vi
+
 # export env variables
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 export COMPOSER_AUTH='{"github-oauth": {"github.com": "ghp_xxx"}}'
 export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
-
-if [ -z "$TMUX" ]; then
-    ta;
-fi
 
 # start ssh-agent
 eval "$(ssh-agent -s)" > /dev/null
