@@ -25,7 +25,7 @@ link_config() {
     ln -s "$DOTFILES"/"$1" "$HOME"/.config/"$1"
 }
 
-for item in kitty tmux nvim cht.sh; do
+for item in kitty tmux nvim cht.sh mnm; do
     link_config "$item"
 done
 
