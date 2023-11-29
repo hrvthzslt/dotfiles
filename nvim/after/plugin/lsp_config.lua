@@ -1,6 +1,7 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
     ensure_installed = {
+        "bashls",
         "intelephense",
         "phpactor",
         "lua_ls",
@@ -20,6 +21,11 @@ local lua_ls = require('hrvthzslt.lsp.lua_ls')
 lspconfig.lua_ls.setup {
     capabilities = capabilities,
     settings = lua_ls.settings
+}
+
+-- Bash
+lspconfig.bashls.setup {
+    capabilities = capabilities
 }
 
 -- PHP
