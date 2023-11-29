@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # Tmux session manager
 
 # Credit to ThePrimeagen
@@ -21,4 +21,3 @@ fi
 
 # shellcheck disable=2015
 tmux new-session -c "$selected" -d -s "$dirname" && tmux switch-client -t "$dirname" || tmux new -c "$selected" -A -s "$dirname"
-

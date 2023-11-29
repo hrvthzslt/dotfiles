@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # Generate sha1 hash of a string
 
 echo -n "$1" | sha1sum | awk '{print $1}'

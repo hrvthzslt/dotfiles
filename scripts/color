@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # Get a colorscript from a pool
 
 # pool=("zwaves" "tiefighter1row" "thebat2" "tanks" "space-invaders" "rally-x" "pacman" "guns" "dna" "darthvader" "blocks2" "square" "panes" "monster" "jangofett" "ghosts" "elfman" "crunch" "alpha")
