@@ -15,6 +15,10 @@ ln -s "$DOTFILES"/ishell/.aliases "$HOME"/.aliases
 rm -rf "$HOME"/.config/starship.toml
 ln -s "$DOTFILES"/starship/starship.toml "$HOME"/.config/starship.toml
 
+# link mycli
+rm -rf "$HOME"/.config/.myclirc
+ln -s "$DOTFILES"/mycli/.myclirc "$HOME"/.config/.myclirc
+
 # link keyd
 sudo rm -rf /etc/keyd/default.conf
 sudo ln -s "$DOTFILES"/keyd/default.conf /etc/keyd/default.conf

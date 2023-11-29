@@ -1,4 +1,0 @@
-#!/bin/sh
-# mycli wrapper
-
-mycli --auto-vertical-output "$@"
