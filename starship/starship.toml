@@ -11,7 +11,7 @@ $python\
 $character"""
 
 [directory]
-truncation_length = 5
+truncation_length = 1
 format = '[$path]($style)[$lock_symbol]($lock_style) '
 truncation_symbol = '/'
 style = 'bold blue'
