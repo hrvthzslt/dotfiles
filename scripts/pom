@@ -1,5 +1,5 @@
 #!/bin/sh
-# Pomodoto timer
+# Pomodoro timer
 
 ensure_pomend_file() {
     pomend_file_path="$HOME/.local/state/pomend"
