@@ -12,9 +12,9 @@ ensure_pomend_file() {
 time_is_up() {
     if [ "$end" -lt "$(date +%s)" ]; then
         if [ $(($(date +%s) % 2)) -eq 0 ]; then
-            echo "󰀦 "
+            echo "󰀦 00:00"
         else
-            echo " "
+            echo " 00:00"
         fi
         exit 0
     fi
