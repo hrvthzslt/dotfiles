@@ -5,6 +5,7 @@ nix-env -iA nixpkgs.fzf\
     nixpkgs.eza\
     nixpkgs.fd\
     nixpkgs.sd\
+    nixpkgs.bat\
     nixpkgs.entr\
     nixpkgs.act\
     nixpkgs.hurl\

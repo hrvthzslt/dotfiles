@@ -19,6 +19,8 @@ alias df="df -h"
 alias clear="clear; color"
 alias c="clear"
 
+alias cat="bat"
+
 # Tmux
 alias tkill="tmux kill-server"
 
