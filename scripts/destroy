@@ -1,0 +1,17 @@
+#!/bin/sh
+# Remove .local/share/$1 .local/state/$1 and .cache/$1 directories for input.
+
+if [ -z "$1" ]; then
+    echo "Usage: destroy <program>"
+    exit 1
+fi
+
+echo "Are you sure you want to delete $1's local data? [y/n]"
+read -r confirm
+if [ "$confirm" != "y" ]; then
+    exit 1
+fi
+
+rm -rf ~/.local/share/"$1" ~/.local/state/"$1" ~/.cache/"$1"
+
+exit 0
