@@ -31,6 +31,7 @@ nix-env -iA nixpkgs.fzf\
     nixpkgs.gopls\
     nixpkgs.shellcheck\
     nixpkgs.shfmt\
-    nixpkgs.nodePackages.bash-language-server
+    nixpkgs.nodePackages.bash-language-server\
+    nixpkgs.lua-language-server\
 
 nix-store --gc
