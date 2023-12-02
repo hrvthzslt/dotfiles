@@ -1,6 +1,6 @@
 #!/bin/sh
 # Install packages from nixpkgs
 
-for i in "$@"; do
-    nix-env -iA nixpkgs."$i"
+for package in "$@"; do
+    nix-env -iA nixpkgs."$package"
 done
