@@ -33,6 +33,7 @@ nix-env -iA nixpkgs.fzf\
     nixpkgs.shfmt\
     nixpkgs.nodePackages.bash-language-server\
     nixpkgs.lua-language-server\
-    nixpkgs.python311Packages.jedi-language-server
+    nixpkgs.python311Packages.jedi-language-server\
+    nixpkgs.nodePackages.volar
 
 nix-store --gc

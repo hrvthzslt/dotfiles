@@ -1,4 +1,9 @@
 return {
+    init_options = {
+        typescript = {
+            tsdk = vim.fs.normalize('~/.nix-profile/lib/node_modules/typescript/lib')
+        }
+    },
     on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false

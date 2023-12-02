@@ -4,7 +4,6 @@ require('mason-lspconfig').setup({
         "intelephense",
         "phpactor",
         "dockerls",
-        "volar",
         "marksman",
     }
 
@@ -55,6 +54,7 @@ lspconfig.dockerls.setup {
 local volar = require('hrvthzslt.lsp.volar')
 lspconfig.volar.setup({
     capabilities = capabilities,
+    init_options = volar.init_options,
     on_attach = volar.on_attach,
     filetypes = volar.filetypes,
 })
