@@ -35,6 +35,8 @@ nix-env -iA nixpkgs.fzf\
     nixpkgs.lua-language-server\
     nixpkgs.python311Packages.jedi-language-server\
     nixpkgs.nodePackages.volar\
+    nixpkgs.eslint_d\
+    nixpkgs.prettierd\
     nixpkgs.dockerfile-language-server-nodejs
 
 nix-store --gc

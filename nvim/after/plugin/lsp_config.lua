@@ -72,11 +72,9 @@ lspconfig.marksman.setup {
 require("mason-null-ls").setup({
     automatic_installation = true,
     ensure_installed = {
-        "prettierd",
         "sql_formatter",
         "autopep8",
         "php-cs-fixer",
-        "eslint_d",
         "phpstan"
     }
 })
