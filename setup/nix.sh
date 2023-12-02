@@ -38,6 +38,7 @@ nix-env -iA nixpkgs.fzf\
     nixpkgs.nodePackages.volar\
     nixpkgs.eslint_d\
     nixpkgs.prettierd\
-    nixpkgs.dockerfile-language-server-nodejs
+    nixpkgs.dockerfile-language-server-nodejs\
+    nixpkgs.nodePackages.sql-formatter
 
 nix-store --gc
