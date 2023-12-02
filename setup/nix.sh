@@ -34,6 +34,7 @@ nix-env -iA nixpkgs.fzf\
     nixpkgs.nodePackages.bash-language-server\
     nixpkgs.lua-language-server\
     nixpkgs.python311Packages.jedi-language-server\
+    nixpkgs.python311Packages.autopep8\
     nixpkgs.nodePackages.volar\
     nixpkgs.eslint_d\
     nixpkgs.prettierd\
