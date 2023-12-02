@@ -94,6 +94,7 @@ use({
 -- Harpoon for marking and navigating files the best way possible
 use({
     "ThePrimeagen/harpoon",
+    branch = "master",
     requires = { { "nvim-lua/plenary.nvim" } },
 })
 
