@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export NIXPKGS_ALLOW_UNFREE=1
+
 nix-env -iA nixpkgs.fzf\
     nixpkgs.ripgrep\
     nixpkgs.eza\
@@ -27,6 +29,10 @@ nix-env -iA nixpkgs.fzf\
     nixpkgs.mysql\
     nixpkgs.nodejs\
     nixpkgs.php82\
+    nixpkgs.php82Packages.php-cs-fixer\
+    nixpkgs.php82Packages.phpstan\
+    nixpkgs.phpactor\
+    nixpkgs.nodePackages.intelephense\
     nixpkgs.marksman\
     nixpkgs.go\
     nixpkgs.gopls\

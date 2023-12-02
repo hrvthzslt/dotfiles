@@ -1,12 +1,3 @@
-require('mason').setup()
-require('mason-lspconfig').setup({
-    ensure_installed = {
-        "intelephense",
-        "phpactor"
-    }
-
-})
-
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -66,15 +57,6 @@ lspconfig.gopls.setup {
 lspconfig.marksman.setup {
     capabilities = capabilities,
 }
-
--- Ensure linters and fomatters installed
-require("mason-null-ls").setup({
-    automatic_installation = true,
-    ensure_installed = {
-        "php-cs-fixer",
-        "phpstan"
-    }
-})
 
 -- Null ls for formatting and linting
 local null_ls = require("null-ls")
@@ -137,6 +119,5 @@ vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, { desc = 'Go to Impl
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 
 vim.keymap.set('n', '<leader>lI', '<cmd>:LspInfo<CR>', { desc = 'Lsp Info' })
-vim.keymap.set('n', '<leader>lM', '<cmd>:Mason<CR>', { desc = 'Lsp Mason' })
 vim.keymap.set('n', '<leader>lN', '<cmd>:NullLsInfo<CR>', { desc = 'Lsp NullLs' })
 vim.keymap.set('n', '<leader>lR', '<cmd>:LspRestart<CR>', { desc = 'Lsp Restart' })

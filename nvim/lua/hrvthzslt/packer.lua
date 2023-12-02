@@ -132,11 +132,8 @@ use { 'tpope/vim-fugitive' }
 
 -- LSP
 use {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
     'jose-elias-alvarez/null-ls.nvim',
-    'jay-babu/mason-null-ls.nvim'
 }
 use {
     'j-hui/fidget.nvim',
@@ -151,12 +148,10 @@ use "L3MON4D3/LuaSnip"
 use 'saadparwaiz1/cmp_luasnip'
 use 'rafamadriz/friendly-snippets'
 
--- Php Refactoring
--- PHP Refactoring Tools
+-- PHP Refactoring
 use({
     'phpactor/phpactor',
     ft = 'php',
-    run = 'composer install --no-dev --optimize-autoloader',
 })
 
 -- Database
