@@ -27,6 +27,7 @@ nix-env -iA nixpkgs.fzf\
     nixpkgs.mysql\
     nixpkgs.nodejs\
     nixpkgs.php82\
+    nixpkgs.marksman\
     nixpkgs.go\
     nixpkgs.gopls\
     nixpkgs.shellcheck\
