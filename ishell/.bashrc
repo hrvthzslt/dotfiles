@@ -1,7 +1,3 @@
-if [ -z "$TMUX" ]; then
-    ta;
-fi
-
 set -o vi
 
 # export env variables
@@ -16,16 +12,20 @@ eval "$(ssh-agent -s)" > /dev/null
 
 # read aliases
 if [ -f ~/.aliases ]; then
+    # shellcheck disable=1090
     . ~/.aliases
 fi
 
 # read optional aliases
 if [ -f ~/.local_aliases ]; then
+    # shellcheck disable=1090
     . ~/.local_aliases
 fi
 
 fzf_share=$(fzf-share)
+# shellcheck disable=1091
 . "$fzf_share/key-bindings.bash"
+# shellcheck disable=1091
 . "$fzf_share/completion.bash"
 
 # starhip
