@@ -3,7 +3,6 @@ require('mason-lspconfig').setup({
     ensure_installed = {
         "intelephense",
         "phpactor",
-        "jedi_language_server",
         "dockerls",
         "volar",
         "marksman",
