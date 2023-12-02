@@ -2,56 +2,65 @@
 
 export NIXPKGS_ALLOW_UNFREE=1
 
-nia() {
+packages=""
+
+collect() {
   for package in "$@"; do
-    nix-env -iA nixpkgs."$package"
+      if [ -z "$packages" ]; then
+        packages="nixpkgs.$package"
+    else
+        packages="$packages nixpkgs.$package"
+      fi
   done
 }
 
 # Utilities
-nia fzf ripgrep eza fd sd entr act gtop imagemagick translate-shell
+collect fzf ripgrep eza fd sd entr act gtop imagemagick translate-shell
 
 # Dev tools
-nia act hurl lazydocker lazygit
+collect act hurl lazydocker lazygit
 
 # Workflow
-nia tmuxinator neovim starship
+collect tmuxinator neovim
 
 # Makeup
-nia starship dwt1-shell-color-scripts
+collect starship dwt1-shell-color-scripts
 
 # Interweb
-nia ddgr w3m links2
+collect ddgr w3m links2
 
 # Database
-nia mysql mycli redis iredis nodePackages.sql-formatter
+collect mysql mycli redis iredis nodePackages.sql-formatter
 
 # C
-nia gccgo
+collect gccgo
 
 # Shell
-nia shellcheck shfmt nodePackages.bash-language-server
+collect shellcheck shfmt nodePackages.bash-language-server
 
 # Go
-nia go gopls
+collect go gopls
 
 # PHP
-nia php82 php82Packages.php-cs-fixer php82Packages.phpstan phpactor nodePackages.intelephense
+collect php82 php82Packages.php-cs-fixer php82Packages.phpstan phpactor nodePackages.intelephense
 
 # Javascript
-nia nodejs nodePackages.volar eslint_d prettierd
+collect nodejs nodePackages.volar eslint_d prettierd
 
 # Python
-nia python311Packages.jedi-language-server python311Packages.autopep8
+collect python311Packages.jedi-language-server python311Packages.autopep8
 
 # Markdown
-nia marksman
+collect marksman
 
 # Lua
-nia lua-language-server
+collect lua-language-server
 
 # Docker
-nia dockerfile-language-server-nodejs
+collect dockerfile-language-server-nodejs
+
+# Install packages
+echo nix-env -iA "$packages" | sh
 
 # Clean up garbage
 nix-store --gc
