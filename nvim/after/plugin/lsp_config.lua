@@ -1,7 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
     ensure_installed = {
-        "bashls",
         "intelephense",
         "phpactor",
         "lua_ls",
@@ -80,7 +79,6 @@ require("mason-null-ls").setup({
         "sql_formatter",
         "autopep8",
         "php-cs-fixer",
-        "shellcheck",
         "eslint_d",
         "phpstan"
     }
@@ -107,6 +105,9 @@ null_ls.setup({
             extra_args = { "--using-cache=no", "--config=.php-cs-fixer.php" }
         }),
         null_ls.builtins.code_actions.shellcheck,
+        null_ls.builtins.formatting.shfmt.with({
+            extra_args = { "-i", "2", "-ci" }
+        })
         -- null_ls.builtins.diagnostics.phpstan.with({
         --     extra_args = { "--memory-limit=1G" }
         -- })

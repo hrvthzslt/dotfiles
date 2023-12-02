@@ -28,6 +28,9 @@ nix-env -iA nixpkgs.fzf\
     nixpkgs.nodejs\
     nixpkgs.php82\
     nixpkgs.go\
-    nixpkgs.gopls
+    nixpkgs.gopls\
+    nixpkgs.shellcheck\
+    nixpkgs.shfmt\
+    nixpkgs.nodePackages.bash-language-server
 
 nix-store --gc
