@@ -23,6 +23,9 @@ collect act hurl lazydocker lazygit
 # Workflow
 collect tmuxinator neovim
 
+# Github
+collect gh github-copilot-cli
+
 # Makeup
 collect starship dwt1-shell-color-scripts
 
