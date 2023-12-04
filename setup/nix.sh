@@ -24,7 +24,8 @@ collect act hurl lazydocker lazygit
 collect tmuxinator neovim
 
 # Github
-collect gh github-copilot-cli
+collect gh
+gh extension install github/gh-copilot --force
 
 # Makeup
 collect starship dwt1-shell-color-scripts
