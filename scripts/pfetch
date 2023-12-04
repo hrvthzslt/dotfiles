@@ -1,0 +1,11 @@
+#!/bin/sh
+# Update all personal repositories
+
+for directory in ls -d ~/workspace/personal/*/; do
+    cd "$directory" || continue
+    git add .
+    git stash
+    git fetch --all --prune 
+    git pull --all
+    git stash pop
+done
