@@ -25,7 +25,6 @@ collect tmuxinator neovim
 
 # Github
 collect gh
-gh extension install github/gh-copilot --force
 
 # Makeup
 collect starship dwt1-shell-color-scripts
@@ -68,3 +67,6 @@ echo nix-env -iA "$packages" | sh
 
 # Clean up garbage
 nix-store --gc
+
+# Post install
+gh extension install github/gh-copilot --force
