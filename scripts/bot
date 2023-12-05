@@ -1,9 +1,13 @@
 #!/bin/sh
 # Search for a command in the cheat.sh database
 
-if ! command -v gh >/dev/null; then
-  echo "gh is not installed"
-  exit 1
-fi
+main() {
+  if ! command -v gh >/dev/null; then
+    echo "gh is not installed"
+    exit 1
+  fi
 
-gh copilot explain "$@"
+  gh copilot explain "$@"
+}
+
+main "$@"

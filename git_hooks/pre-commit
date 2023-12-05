@@ -1,4 +1,6 @@
 #!/bin/sh
 
+shfmt -d scripts/*
+shfmt -d setup/*
 shellcheck -x scripts/*
 shellcheck -x setup/*.sh
