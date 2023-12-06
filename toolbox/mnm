@@ -6,20 +6,18 @@ config_path="$HOME/.config/mnm/mnm.conf"
 # Read config
 #
 read_config() {
-  # shellcheck source=../mnm/mnm.conf
-  . "$config_path"
+  if [ -f "$config_path" ]; then
+    # shellcheck source=../mnm/mnm.conf
+    . "$config_path"
+  else
+    echo "Config file not found"
+    exit 1
+  fi
+
+  for directory in $directories; do
+    [ -d "$path/$directory" ] || mkdir -p "$path/$directory" 2>/dev/null
+  done
 }
-
-if [ -f "$config_path" ]; then
-  read_config
-else
-  echo "Config file not found"
-  exit 1
-fi
-
-for directory in $directories; do
-  [ -d "$path/$directory" ] || mkdir -p "$path/$directory" 2>/dev/null
-done
 
 # Hep text
 #
@@ -75,7 +73,27 @@ search_directory() {
   search_in_path "$path/$directory"
 }
 
+index() {
+  read_me_path="$path/README.md"
+  echo "# Notes" >"$read_me_path"
+  printf "\n" >>"$read_me_path"
+
+  for directory in $directories; do
+    if [ "$directory" = "daily" ]; then
+      continue
+    fi
+
+    for note in "$path/$directory"/*; do
+      link_title=$(grep -m 1 -o -e "# .*" "$note"/README.md | cut -d" " -f2-)
+      id=$(echo "$note" | rev | cut -d"/" -f1 | rev)
+      row="- $id - [$link_title]($directory/$id/README.md)"
+      echo "$row" >>"$read_me_path"
+    done
+  done
+}
+
 main() {
+  read_config
   case $1 in
     -h)
       help
@@ -88,6 +106,9 @@ main() {
       ;;
     -d)
       search_directory
+      ;;
+    -i)
+      index
       ;;
     *)
       create_note
