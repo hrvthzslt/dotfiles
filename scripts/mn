@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# 
+
+for file in "$1"/*.md; do
+    echo "$file"
+done
