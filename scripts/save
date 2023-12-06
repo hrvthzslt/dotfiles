@@ -1,14 +1,18 @@
 #!/bin/sh
 # Save and push changes to git
 
-git add .
-git stash push -m "save"
-git pull
-git stash apply stash^"{/save}"
-git add .
-if [ -n "$*" ]; then
+main() {
+  git add .
+  git stash push -m "save"
+  git pull
+  git stash apply stash^"{/save}"
+  git add .
+  if [ -n "$*" ]; then
     git commit -m "$*"
-else
+  else
     git commit -m "$(git status -s)"
-fi
-git push
+  fi
+  git push
+}
+
+main "$@"

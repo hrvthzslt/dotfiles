@@ -75,22 +75,26 @@ search_directory() {
   search_in_path "$path/$directory"
 }
 
-case $1 in
-  -h)
-    help
-    ;;
-  -c)
-    create_note
-    ;;
-  -s)
-    search_note
-    ;;
-  -d)
-    search_directory
-    ;;
-  *)
-    create_note
-    ;;
-esac
+main() {
+  case $1 in
+    -h)
+      help
+      ;;
+    -c)
+      create_note
+      ;;
+    -s)
+      search_note
+      ;;
+    -d)
+      search_directory
+      ;;
+    *)
+      create_note
+      ;;
+  esac
 
-exit 0
+  exit 0
+}
+
+main "$1"
