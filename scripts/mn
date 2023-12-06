@@ -1,6 +1,12 @@
 #!/usr/bin/env sh
-# 
+# Migrate notes
 
-for file in "$1"/*.md; do
-    echo "$file"
+for file_path in "$1"/*.md; do
+    note_directory_name=$(date +%Y%m%d%H%M%S)
+    mkdir -p "$1"/"$note_directory_name"
+    new_file_path="$1"/"$note_directory_name"/README.md
+    mv "$file_path" "$new_file_path"
+    echo "$file_path"
+    echo "$new_file_path"
+    sleep 1
 done
