@@ -2,7 +2,7 @@
 # List all scripts in ~/.local/bin and their descriptions
 
 main() {
-  for script in ~/.local/bin/*; do
+  for script in ~/.local/bin/scripts/*; do
     name=$(basename "$script")
     description=$(head -n 2 "$script" | tail -1)
     echo "$name $description"

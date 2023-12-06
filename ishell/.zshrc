@@ -1,5 +1,6 @@
 # export env variables
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin/scripts:$PATH"
 export EDITOR="nvim"
 export COMPOSER_AUTH='{"github-oauth": {"github.com": "ghp_xxx"}}'
 export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
