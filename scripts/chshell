@@ -1,13 +1,17 @@
 #!/bin/sh
 # Change default login shell
 
-shell=$(printf 'bash\nzsh' | fzf)
+main() {
+  shell=$(printf 'bash\nzsh' | fzf)
 
-echo "Current shell is $SHELL"
+  echo "Current shell is $SHELL"
 
-if [ -n "$shell" ]; then
+  if [ -n "$shell" ]; then
     chsh -s "$(which "$shell")" || exit 1
     echo "Default shell changed to $shell"
-fi
+  fi
 
-echo "Logout and login again to see the changes"
+  echo "Logout and login again to see the changes"
+}
+
+main
