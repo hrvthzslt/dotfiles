@@ -1,14 +1,18 @@
 #!/usr/bin/bash
 # Run php in container
 
-versions=(7.0 7.2 7.3 7.4 8.0 8.1 8.2)
+main() {
+  versions=(7.0 7.2 7.3 7.4 8.0 8.1 8.2)
 
-if [[ ${versions[*]} =~ (^|[[:space:]])"$1"($|[[:space:]]) ]]; then
+  if [[ ${versions[*]} =~ (^|[[:space:]])"$1"($|[[:space:]]) ]]; then
     ver="$1"
     arguments=${*:2}
-else
+  else
     ver=8.1
     arguments=${*}
-fi
+  fi
 
-docker run -it --rm --name my-running-php-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp php:"$ver"-cli php "$arguments"
+  docker run -it --rm --name my-running-php-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp php:"$ver"-cli php "$arguments"
+}
+
+main "$@"
