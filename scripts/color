@@ -2,6 +2,9 @@
 # Get a colorscript from a pool
 
 # pool=("zwaves" "tiefighter1row" "thebat2" "tanks" "space-invaders" "rally-x" "pacman" "guns" "dna" "darthvader" "blocks2" "square" "panes" "monster" "jangofett" "ghosts" "elfman" "crunch" "alpha")
-pool=("panes" "crunch" "alpha")
+main() {
+  pool=("panes" "crunch" "alpha")
+  colorscript -e "${pool[$RANDOM % ${#pool[@]}]}"
+}
 
-colorscript -e "${pool[ $RANDOM % ${#pool[@]} ]}"
+main

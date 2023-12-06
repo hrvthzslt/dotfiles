@@ -2,28 +2,42 @@
 # Docker compose wrapper
 
 help() {
-    echo "Usage: dc [u|h] (or any docker compose command)"
-    echo "  -u     up -d"
-    echo "  -h     help"
-    exit 1
+  echo "Usage: dc [u|h] (or any docker compose command)"
+  echo "  -u     up -d"
+  echo "  -h     help"
+  exit 1
 }
 
-if type "docker-compose" > /dev/null 2>&1; then
-    command="docker-compose"
-fi
+get_command() {
+  if type "docker-compose" >/dev/null 2>&1; then
+    echo "docker-compose"
+  fi
 
-if type "docker compose" > /dev/null 2>&1; then
-    command="docker compose"
-fi
+  if type "docker compose" >/dev/null 2>&1; then
+    echo "docker compose"
+  fi
+}
 
-case $1 in
+up() {
+  $(get_command) up -d
+}
+
+pass_through() {
+  $(get_command) "$@"
+}
+
+main() {
+  case $1 in
     u)
-        exec $command up -d
-        ;;
+      up
+      ;;
     h)
-        help
-        ;;
+      help
+      ;;
     *)
-        exec $command "$@"
-        ;;
-esac
+      pass_through "$@"
+      ;;
+  esac
+}
+
+main "$@"
