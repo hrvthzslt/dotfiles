@@ -1,8 +1,8 @@
 #!/bin/sh
-# List all scripts in ~/.local/bin and their descriptions
+# List all scripts in ~/.local/bin/toolbox and their descriptions
 
 main() {
-  for script in ~/.local/bin/scripts/*; do
+  for script in ~/.local/bin/toolbox/*; do
     name=$(basename "$script")
     description=$(head -n 2 "$script" | tail -1)
     echo "$name $description"

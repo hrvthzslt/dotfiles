@@ -34,12 +34,12 @@ for item in kitty tmux nvim cht.sh mnm; do
 done
 
 # link scripts
-scripts_path="$HOME"/.local/bin/scripts/
+scripts_path="$HOME"/.local/bin/toolbox/
 mkdir -p "$scripts_path"
 
 link_script() {
     rm -rf "$scripts_path""$1"
-    ln -s "$DOTFILES"/scripts/"$1" "$scripts_path""$1"
+    ln -s "$DOTFILES"/toolbox/"$1" "$scripts_path""$1"
 }
 
 for script in scripts/*; do
