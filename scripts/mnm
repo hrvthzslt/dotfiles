@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-
 # mnm - minimalist Note manager
 
 config_path="$HOME/.config/mnm/mnm.conf"
