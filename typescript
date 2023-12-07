@@ -1,0 +1,41 @@
+Script started on 2023-12-07 10:02:37+01:00 [TERM="xterm-kitty" TTY="/dev/pts/1" COLUMNS="160" LINES="42"]
+ 
+ [31m███[1m[91m▄[0m  [32m███[1m[92m▄[0m  [33m███[1m[93m▄[0m  [34m███[1m[94m▄[0m  [35m███[1m[95m▄[0m  [36m███[1m[96m▄[0m  [37m███[1m[97m▄[0m  
+ [31m███[1m[91m█[0m  [32m███[1m[92m█[0m  [33m███[1m[93m█[0m  [34m███[1m[94m█[0m  [35m███[1m[95m█[0m  [36m███[1m[96m█[0m  [37m███[1m[97m█[0m  
+ [31m███[1m[91m█[0m  [32m███[1m[92m█[0m  [33m███[1m[93m█[0m  [34m███[1m[94m█[0m  [35m███[1m[95m█[0m  [36m███[1m[96m█[0m  [37m███[1m[97m█[0m  
+ [1m[91m ▀▀▀   [92m▀▀▀   [93m▀▀▀   [94m▀▀▀   [95m▀▀▀   [96m▀▀▀   [97m▀▀▀  [0m
+[?2004h
+[1;34m/dotfiles[0m [1;35mmain[0m[1;31m*[0m[1;31m​[0m 
+[32m❯[0m scripts
+[?2004lhead: cannot open '/home/hrvthzslt/.local/bin/toolbox/*' for reading: No such file or directory
+* 
+bot # Search for a command in the cheat.sh database
+chshell # Change default login shell
+cht # Search for a command in the cheat.sh database
+color # Get a colorscript from a pool
+dc # Docker compose wrapper
+destroy # Remove .local/share/$1 .local/state/$1 and .cache/$1 directories for input.
+dhp # Run php in container
+domp # Run composer in container
+g # Git wrapper
+lamp # Switch light and dark
+mn # Migrate notes
+mnm # mnm - minimalist Note manager
+nia # Install packages from nixpkgs
+path # Human readable value of path environment variable
+pfetch # Update all personal repositories
+pom # Pomodoro timer
+save # Save and push changes to git
+scripts # List all scripts in ~/.local/bin/toolbox and their descriptions
+se # Search files for editing in scope
+seg # Search files for editing globally
+sha1 # Generate sha1 hash of a string
+t # Tmux session manager
+ta # Tmux attach or create session
+wut # Search DuckDuckGo from the command line
+[?2004h
+[1;34m/dotfiles[0m [1;35mmain[0m[1;31m*[0m[1;31m​[0m 
+[32m❯[0m [?2004l
+exit
+
+Script done on 2023-12-07 10:02:42+01:00 [COMMAND_EXIT_CODE="0"]
