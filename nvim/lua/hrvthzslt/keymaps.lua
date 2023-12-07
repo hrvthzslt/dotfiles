@@ -39,19 +39,19 @@ vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
 
 -- Write and Quit
-vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write" })
-vim.keymap.set("n", "<leader>W", ":wa<CR>", { desc = "Write all" })
-vim.keymap.set("n", "<leader>q", ":bd<CR>", { desc = "Quit buffer" })
-vim.keymap.set("n", "<leader>Q", ":qa<CR>", { desc = "Quit all" })
-vim.keymap.set("n", "<leader>B", ":%bd<CR>", { desc = "delete all Buffers" })
+-- vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write" })
+-- vim.keymap.set("n", "<leader>W", ":wa<CR>", { desc = "Write all" })
+-- vim.keymap.set("n", "<leader>q", ":bd<CR>", { desc = "Quit buffer" })
+-- vim.keymap.set("n", "<leader>Q", ":qa<CR>", { desc = "Quit all" })
+-- vim.keymap.set("n", "<leader>B", ":%bd<CR>", { desc = "delete all Buffers" })
 
 -- Buffers
 vim.keymap.set("n", "<leader><leader>", ":bp<CR>", { desc = "previous buffer" })
 vim.keymap.set("n", "<leader>o", ":wincmd o<CR>", { desc = "focus on window" })
 
 -- Packer keymaps
-vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>", { desc = "Packer Sync" })
-vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", { desc = "Packer Compile" })
+-- vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>", { desc = "Packer Sync" })
+-- vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", { desc = "Packer Compile" })
 
 -- Navigation shortcuts
 vim.keymap.set("n", "ú", "}")
