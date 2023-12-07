@@ -42,6 +42,6 @@ link_script() {
     ln -s "$DOTFILES"/toolbox/"$1" "$scripts_path""$1"
 }
 
-for script in scripts/*; do
+for script in toolbox/*; do
     link_script "$(echo "$script" | cut -d'/' -f2)"
 done
