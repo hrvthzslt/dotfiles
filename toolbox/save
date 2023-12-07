@@ -6,6 +6,7 @@ main() {
   git stash push -m "save"
   git pull
   git stash apply stash^"{/save}"
+  git stash pop
   git add .
   if [ -n "$*" ]; then
     git commit -m "$*"
