@@ -35,7 +35,7 @@ search_folders() {
 search_sessions() {
   tmux list-sessions -F '#{?session_attached,,#{session_name}}' |
     sed '/^$/d' |
-    fzf --header jump-to-session |
+    fzf |
     xargs tmux switch-client -t
 }
 
