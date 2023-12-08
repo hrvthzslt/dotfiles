@@ -25,7 +25,7 @@ search_folders() {
   selected=$(find ~/workspace -maxdepth 3 -mindepth 1 -type d | fzf)
 
   if [ $? -eq 130 ]; then
-    exit 0
+    exit 130
   fi
 
   directory=$(basename "$selected")
@@ -33,10 +33,15 @@ search_folders() {
 }
 
 search_sessions() {
-  tmux list-sessions -F '#{?session_attached,,#{session_name}}' |
+  session=$(tmux list-sessions -F '#{?session_attached,,#{session_name}}' |
     sed '/^$/d' |
-    fzf |
-    xargs tmux switch-client -t
+    fzf)
+
+  if [ $? -eq 130 ]; then
+    exit 130
+  fi
+
+  tmux switch-client -t "$session"
 }
 
 attach_session() {
