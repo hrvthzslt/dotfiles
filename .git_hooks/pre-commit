@@ -1,4 +1,4 @@
 #!/bin/sh
 
-shellcheck -x scripts/*
+shellcheck -x toolbox/*
 shellcheck -x setup/*.sh
