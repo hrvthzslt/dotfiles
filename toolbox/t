@@ -41,7 +41,7 @@ search_sessions() {
 
 attach_session() {
   if [ -z "$TMUX" ]; then
-    tmux attach 2> /dev/null
+    tmux attach 2>/dev/null || open_or_create_session "$(basename "$(pwd)")"
   fi
 }
 
@@ -54,7 +54,7 @@ main() {
       search_sessions
       ;;
     a)
-      attach_session "$1"
+      attach_session
       ;;
     *)
       open_or_create_session "$1"
