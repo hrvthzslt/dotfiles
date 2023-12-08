@@ -39,13 +39,22 @@ search_sessions() {
     xargs tmux switch-client -t
 }
 
+attach_session() {
+  if [ -z "$TMUX" ]; then
+    tmux attach 2> /dev/null
+  fi
+}
+
 main() {
   case "$1" in
     "")
       search_folders
       ;;
-    -s)
+    s)
       search_sessions
+      ;;
+    a)
+      attach_session "$1"
       ;;
     *)
       open_or_create_session "$1"
