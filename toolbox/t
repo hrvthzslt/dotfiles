@@ -1,23 +1,58 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 # Tmux session manager
 
-# Credit to ThePrimeagen
+open_or_create_session() {
+  session_name="$1"
+  directory="$2"
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
-else
-    items=$(find ~/workspace -maxdepth 3 -mindepth 1 -type d)
-    selected=$(echo "$items" | fzf)
-fi
+  if [ -z "$directory" ]; then
+    directory="$(pwd)"
+  fi
 
-dirname=$(basename "$selected" | sed 's/\./_/g')
+  if [ -z "$TMUX" ] && tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux attach -t "$session_name"
+  elif [ -z "$TMUX" ]; then
+    tmux new-session -s "$session_name" -c "$directory"
+  elif tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux switch-client -t "$session_name"
+  else
+    tmux new-session -s "$session_name" -c "$directory" -d
+    tmux switch-client -t "$session_name"
+  fi
+}
 
-tmuxinator "$dirname" || tmux switch-client -t ="$dirname"
+search_folders() {
+  selected=$(find ~/workspace -maxdepth 3 -mindepth 1 -type d | fzf)
 
-# shellcheck disable=2181
-if [[ $? -eq 0 ]]; then
+  if [ $? -eq 130 ]; then
     exit 0
-fi
+  fi
 
-# shellcheck disable=2015
-tmux new-session -c "$selected" -d -s "$dirname" && tmux switch-client -t "$dirname" || tmux new -c "$selected" -A -s "$dirname"
+  directory=$(basename "$selected")
+  open_or_create_session "$directory" "$selected"
+}
+
+search_sessions() {
+  tmux list-sessions -F '#{?session_attached,,#{session_name}}' |
+    sed '/^$/d' |
+    fzf --header jump-to-session |
+    xargs tmux switch-client -t
+}
+
+main() {
+  case "$1" in
+    "")
+      search_folders
+      ;;
+    -s)
+      search_sessions
+      ;;
+    *)
+      open_or_create_session "$1"
+      ;;
+  esac
+
+  exit 0
+}
+
+main "$@"
