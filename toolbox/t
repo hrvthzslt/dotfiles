@@ -55,10 +55,10 @@ main() {
     "")
       search_folders
       ;;
-    s)
+    --search|-s|s)
       search_sessions
       ;;
-    a)
+    --attach|-a|a)
       attach_session
       ;;
     *)

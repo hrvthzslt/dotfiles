@@ -95,19 +95,19 @@ index() {
 main() {
   read_config
   case $1 in
-    -h)
+    --help|-h|h)
       help
       ;;
-    -c)
+    --create|-c|c)
       create_note
       ;;
-    -s)
+    --search|-s|s)
       search_note
       ;;
-    -d)
+    --dir_search|-d|d)
       search_directory
       ;;
-    -i)
+    --index|-i|i)
       index
       ;;
     *)

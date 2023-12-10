@@ -28,10 +28,10 @@ pass_through() {
 
 main() {
   case $1 in
-    u)
+    --up|-u|u)
       up
       ;;
-    h)
+    --help|-h|h)
       help
       ;;
     *)

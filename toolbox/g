@@ -52,14 +52,14 @@ p() {
 
 main() {
   case $1 in
-    c) c ;;
-    ca) ca ;;
-    da) da ;;
-    cf) cf ;;
-    u) u ;;
-    si) si ;;
-    s) s ;;
-    p) p ;;
+    -c|c) c ;;
+    -ca|ca) ca ;;
+    -da|da) da ;;
+    -cf|cf) cf ;;
+    -u|u) u ;;
+    -si|si) si ;;
+    -s|s) s ;;
+    -p|p) p ;;
     *) help ;;
   esac
 }
