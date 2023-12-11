@@ -29,7 +29,7 @@ link_config() {
     ln -s "$DOTFILES"/"$1" "$HOME"/.config/"$1"
 }
 
-for item in kitty tmux nvim cht.sh mnm; do
+for item in kitty tmux nvim cht.sh mnm phpactor; do
     link_config "$item"
 done
 
