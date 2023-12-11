@@ -39,7 +39,8 @@ vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
 
 -- Write and Quit
-vim.keymap.set("n", "ZU", ":wa<CR>")
+vim.keymap.set("n", "ZU", ":w<CR>")
+vim.keymap.set("n", "ZI", ":wa<CR>")
 vim.keymap.set("n", "ZH", ":bd<CR>")
 vim.keymap.set("n", "ZB", ":%bd<CR>")
 
