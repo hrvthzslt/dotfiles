@@ -65,9 +65,9 @@ use({
     run = ":TSUpdate",
 })
 use({
-  "nvim-treesitter/nvim-treesitter-textobjects",
-  after = "nvim-treesitter",
-  requires = "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
 })
 
 -- Colorscheme
@@ -106,7 +106,7 @@ use({
 })
 
 -- Navigation
-use {'ggandor/flit.nvim', requires = {'ggandor/leap.nvim'}}
+use { 'ggandor/flit.nvim', requires = { 'ggandor/leap.nvim' } }
 
 -- Traverse past changes
 use({ "mbbill/undotree" })
@@ -151,6 +151,7 @@ use 'rafamadriz/friendly-snippets'
 -- PHP Refactoring
 use({
     'phpactor/phpactor',
+    run = 'composer install --no-dev --optimize-autoloader',
     ft = 'php',
 })
 
