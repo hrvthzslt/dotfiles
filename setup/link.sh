@@ -13,20 +13,20 @@ ln -s "$DOTFILES"/ishell/.aliases "$HOME"/.aliases
 
 # link startship
 rm -rf "$HOME"/.config/starship.toml
-ln -s "$DOTFILES"/starship/starship.toml "$HOME"/.config/starship.toml
+ln -s "$DOTFILES"/config/starship/starship.toml "$HOME"/.config/starship.toml
 
 # link mycli
 rm -rf "$HOME"/.config/.myclirc
-ln -s "$DOTFILES"/mycli/.myclirc "$HOME"/.config/.myclirc
+ln -s "$DOTFILES"/config/mycli/.myclirc "$HOME"/.config/.myclirc
 
 # link keyd
 sudo rm -rf /etc/keyd/default.conf
-sudo ln -s "$DOTFILES"/keyd/default.conf /etc/keyd/default.conf
+sudo ln -s "$DOTFILES"/config/keyd/default.conf /etc/keyd/default.conf
 
 # link in .config folders
 link_config() {
     rm -rf "$HOME"/.config/"$1"
-    ln -s "$DOTFILES"/"$1" "$HOME"/.config/"$1"
+    ln -s "$DOTFILES"/config/"$1" "$HOME"/.config/"$1"
 }
 
 for item in kitty tmux nvim cht.sh mnm phpactor; do
