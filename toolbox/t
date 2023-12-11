@@ -12,11 +12,11 @@ open_or_create_session() {
   if [ -z "$TMUX" ] && tmux has-session -t "$session_name" 2>/dev/null; then
     tmux attach -t "$session_name"
   elif [ -z "$TMUX" ]; then
-    tmux new-session -s "$session_name" -c "$directory"
+    tmuxinator "$session_name" || tmux new-session -s "$session_name" -c "$directory"
   elif tmux has-session -t "$session_name" 2>/dev/null; then
     tmux switch-client -t "$session_name"
   else
-    tmux new-session -s "$session_name" -c "$directory" -d
+    tmuxinator "$session_name" || tmux new-session -s "$session_name" -c "$directory" -d
     tmux switch-client -t "$session_name"
   fi
 }
