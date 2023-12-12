@@ -16,8 +16,8 @@ rm -rf "$HOME"/.config/starship.toml
 ln -s "$DOTFILES"/config/starship/starship.toml "$HOME"/.config/starship.toml
 
 # link mycli
-rm -rf "$HOME"/.config/.myclirc
-ln -s "$DOTFILES"/config/mycli/.myclirc "$HOME"/.config/.myclirc
+rm -rf "$HOME"/.myclirc
+ln -s "$DOTFILES"/config/mycli/.myclirc "$HOME"/.myclirc
 
 # link keyd
 sudo rm -rf /etc/keyd/default.conf
