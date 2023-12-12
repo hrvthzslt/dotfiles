@@ -39,10 +39,11 @@ vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
 
 -- Write and Quit
-vim.keymap.set("n", "ZU", ":w<CR>")
-vim.keymap.set("n", "ZI", ":wa<CR>")
-vim.keymap.set("n", "ZH", ":bd<CR>")
-vim.keymap.set("n", "ZB", ":%bd<CR>")
+vim.keymap.set("n", "<Leader>ww", ":w<CR>", { desc = "write" })
+vim.keymap.set("n", "<Leader>wa", ":wa<CR>")
+vim.keymap.set("n", "<Leader>qq", ":bd<CR>")
+vim.keymap.set("n", "<Leader>qb", ":%bd<CR>")
+vim.keymap.set("n", "<Leader>qa", ":qa<CR>")
 
 -- Buffers
 vim.keymap.set("n", "<leader><leader>", ":bp<CR>", { desc = "previous buffer" })
