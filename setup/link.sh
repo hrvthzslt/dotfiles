@@ -3,9 +3,9 @@
 # absolute path of working directory
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-cd config || exit
+cd home || exit
 for config in *; do
-    stow --target="$HOME" "$config"
+    stow --adopt --target="$HOME" "$config"
 done
 cd "$DOTFILES" || exit
 
