@@ -21,7 +21,7 @@ collect fzf ripgrep eza fd sd entr act gtop imagemagick translate-shell
 collect act hurl lazydocker lazygit
 
 # Workflow
-collect tmuxinator neovim
+collect tmuxinator neovim stow
 
 # Github
 collect gh
