@@ -16,6 +16,17 @@ local clients_lsp = function()
     return '󰢾 ' .. table.concat(c, '')
 end
 
+local logo = function()
+    local mode = vim.api.nvim_get_mode()["mode"]
+    if mode == "i" then
+        return "󰏫 "
+    elseif mode == "v" or mode == "V" then
+        return "󰈈 "
+    else
+        return " "
+    end
+end
+
 require("lualine").setup({
     options = {
         component_separators = { left = "", right = "" },
@@ -23,7 +34,7 @@ require("lualine").setup({
         globalstatus = true,
     },
     sections = {
-        lualine_a = { "mode" },
+        lualine_a = { logo },
         lualine_b = {
             "branch",
             "diff",
