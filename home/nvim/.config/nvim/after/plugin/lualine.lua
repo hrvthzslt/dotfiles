@@ -19,11 +19,11 @@ end
 local logo = function()
     local mode = vim.api.nvim_get_mode()["mode"]
     if mode == "i" then
-        return "󰏫 "
+        return " 󰏫 "
     elseif mode == "v" or mode == "V" then
-        return "󰈈 "
+        return " 󰈈 "
     else
-        return " "
+        return "  "
     end
 end
 
@@ -36,7 +36,7 @@ require("lualine").setup({
     sections = {
         lualine_a = { logo },
         lualine_b = {
-            "branch",
+            -- "branch",
             "diff",
             -- Signal attached lsp
             -- '"󰢾 " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
