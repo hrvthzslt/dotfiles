@@ -48,7 +48,7 @@ collect go gopls
 collect php82 php82Packages.php-cs-fixer php82Packages.phpstan phpactor nodePackages.intelephense
 
 # Javascript
-collect nodejs nodePackages.volar eslint_d prettierd
+collect nodejs typescript nodePackages.volar eslint_d prettierd
 
 # Python
 collect python311Packages.jedi-language-server python311Packages.autopep8
