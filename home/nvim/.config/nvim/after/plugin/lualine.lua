@@ -27,6 +27,23 @@ local logo = function()
     end
 end
 
+local truncated_branch = function()
+    local branch = vim.fn.FugitiveHead()
+
+    if branch == "" then
+        return ""
+    end
+
+    local limit = 10
+    local postfix = ''
+
+    if string.len(branch) > limit then
+        postfix = '…'
+    end
+
+    return string.sub(branch, 1, limit) .. postfix
+end
+
 require("lualine").setup({
     options = {
         component_separators = { left = "", right = "" },
@@ -36,7 +53,7 @@ require("lualine").setup({
     sections = {
         lualine_a = { logo },
         lualine_b = {
-            -- "branch",
+            truncated_branch,
             "diff",
             -- Signal attached lsp
             -- '"󰢾 " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
