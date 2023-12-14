@@ -23,6 +23,9 @@ collect act hurl lazydocker lazygit
 # Workflow
 collect tmuxinator neovim stow
 
+# Helpers
+collect cht-sh tldr
+
 # Github
 collect gh
 
@@ -51,7 +54,7 @@ collect php82 php82Packages.php-cs-fixer php82Packages.phpstan phpactor nodePack
 collect nodejs typescript nodePackages.volar eslint_d prettierd
 
 # Python
-collect python311Packages.jedi-language-server python311Packages.autopep8
+collect python311Packages.jedi-language-server python311Packages.autopep8 pipx
 
 # Markdown
 collect marksman
