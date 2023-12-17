@@ -1,0 +1,62 @@
+#!/bin/sh
+# Emulate an iso with qemu
+
+create_disk() {
+  image_name=$(echo "$1" | sed 's/.iso/.img/g')
+  if [ -f "$image_name" ]; then
+    echo "Image already exists"
+  else
+    echo "Creating image $image_name"
+    qemu-img create -f qcow2 "$image_name" "$2"
+  fi
+}
+
+launch_qemu() {
+  SPICE_NOGRAB=1 qemu-system-x86_64 -enable-kvm -cdrom "$1" \
+    -boot menu=on -drive file="$2" \
+    -m "$3" \
+    -cpu host -smp "$4" \
+    -vga virtio -display sdl,gl=on
+}
+
+main() {
+  size=10G
+  mem=2G
+  cpu=2
+
+  while getopts "i:m:s:c" opt; do
+    case $opt in
+      i)
+        iso=$OPTARG
+        ;;
+      m)
+        mem=$OPTARG
+        ;;
+      s)
+        size=$OPTARG
+        ;;
+      c)
+        cpu=$OPTARG
+        ;;
+      \?)
+        echo "Invalid option: -$OPTARG" >&2
+        exit 1
+        ;;
+      :)
+        echo "Option -$OPTARG requires an argument." >&2
+        exit 1
+        ;;
+    esac
+  done
+
+  if [ -z "$iso" ]; then
+    echo "No iso specified"
+    exit 1
+  fi
+
+  create_disk "$iso" "$size"
+
+  launch_qemu "$iso" "$image_name" "$mem" "$cpu"
+}
+
+main "$@"
