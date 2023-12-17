@@ -21,8 +21,8 @@ launch_qemu() {
 
 main() {
   size=10G
-  mem=2G
-  cpu=2
+  mem=8G
+  cpu=4
 
   while getopts "i:m:s:c" opt; do
     case $opt in
@@ -56,7 +56,17 @@ main() {
 
   create_disk "$iso" "$size"
 
-  launch_qemu "$iso" "$image_name" "$mem" "$cpu"
+  echo "Starting $iso with $mem mermory, with $cpu cores and on a $size disk. Continue (y/n)?"
+  read -r choice
+  case "$choice" in
+    y | Y)
+      launch_qemu "$iso" "$image_name" "$mem" "$cpu"
+      ;;
+    *)
+      exit 0
+      ;;
+  esac
+
 }
 
 main "$@"
