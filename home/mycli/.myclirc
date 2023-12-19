@@ -15,7 +15,3 @@ syntax_style = friendly
 # Emacs mode: Ctrl-A is home, Ctrl-E is end. All emacs keybindings are available in the REPL.
 # When Vi mode is enabled you can use modal editing features offered by Vi in the REPL.
 key_bindings = vi
-
-# Cause result sets to be displayed vertically if they are too wide for the current window,
-# and using normal tabular format otherwise. (This applies to statements terminated by ; or \G.)
-auto_vertical_output = True
