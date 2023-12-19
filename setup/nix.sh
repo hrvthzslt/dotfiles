@@ -1,75 +1,78 @@
-#!/bin/sh
+#!/bin/bash
 
 export NIXPKGS_ALLOW_UNFREE=1
 
-packages=""
-
-collect() {
+install_packages() {
   for package in "$@"; do
-      if [ -z "$packages" ]; then
-        packages="nixpkgs.$package"
-    else
-        packages="$packages nixpkgs.$package"
-      fi
+    nix-env -iA nixpkgs."$package"
   done
 }
 
-# Utilities
-collect fzf ripgrep eza fd sd entr act gtop imagemagick translate-shell
+install_nix() {
+  sh <(curl -L https://nixos.org/nix/install) --no-daemon
+  # shellcheck disable=1091
+  . "$HOME"/.nix-profile/etc/profile.d/nix.sh
+}
 
-# Dev tools
-collect act hurl lazydocker lazygit
+main() {
+  install_nix
 
-# Workflow
-collect tmuxinator neovim stow
+  # Utilities
+  install_packages fzf ripgrep eza fd sd entr act gtop imagemagick translate-shell
 
-# Helpers
-collect cht-sh tldr
+  # Dev tools
+  install_packages act hurl lazydocker lazygit
 
-# Github
-collect gh
+  # Workflow
+  install_packages tmuxinator neovim stow
 
-# Makeup
-collect starship dwt1-shell-color-scripts
+  # Helpers
+  install_packages cht-sh tldr
 
-# Interweb
-collect ddgr w3m links2
+  # Github
+  install_packages gh
 
-# Database
-collect mysql mycli redis iredis nodePackages.sql-formatter
+  # Makeup
+  install_packages starship dwt1-shell-color-scripts
 
-# C
-collect gccgo
+  # Interweb
+  install_packages ddgr w3m links2
 
-# Shell
-collect shellcheck shfmt nodePackages.bash-language-server
+  # Database
+  install_packages mysql mycli redis iredis nodePackages.sql-formatter
 
-# Go
-collect go gopls
+  # C
+  install_packages gccgo
 
-# PHP
-collect php82 php82Packages.php-cs-fixer php82Packages.phpstan phpactor nodePackages.intelephense
+  # Shell
+  install_packages shellcheck shfmt nodePackages.bash-language-server
 
-# Javascript
-collect nodejs typescript nodePackages.volar eslint_d prettierd
+  # Go
+  install_packages go gopls
 
-# Python
-collect python311Packages.jedi-language-server python311Packages.autopep8 pipx
+  # PHP
+  install_packages php82 php82Packages.php-cs-fixer php82Packages.phpstan phpactor nodePackages.intelephense
 
-# Markdown
-collect marksman
+  # Javascript
+  install_packages nodejs typescript nodePackages.volar eslint_d prettierd
 
-# Lua
-collect lua-language-server
+  # Python
+  install_packages python311Packages.jedi-language-server python311Packages.autopep8 pipx
 
-# Docker
-collect dockerfile-language-server-nodejs
+  # Markdown
+  install_packages marksman
 
-# Install packages
-echo nix-env -iA "$packages" | sh
+  # Lua
+  install_packages lua-language-server
 
-# Clean up garbage
-nix-store --gc
+  # Docker
+  install_packages dockerfile-language-server-nodejs
 
-# Post install
-gh extension install github/gh-copilot --force
+  # Clean up garbage
+  nix-store --gc
+
+  # Post install
+  gh extension install github/gh-copilot --force
+}
+
+main

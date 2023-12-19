@@ -8,8 +8,26 @@ My $HOME my rules.
 
 ## install
 
-Set up programs, link configs and scripts.
+### Setup Nix Env and Install packages
 
 ```shell
-./install.sh
+./setup/nix.sh
+```
+
+### Link dotfiles and personal scripts
+
+```shell
+./setup/link.sh
+```
+
+### Setup keyboard layout (Only for Linux)
+
+```shell
+./setup/keyd.sh
+```
+
+### Install Kitty terminal
+
+```shell
+./setup/kitty.sh
 ```
