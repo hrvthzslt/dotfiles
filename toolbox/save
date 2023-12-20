@@ -11,7 +11,7 @@ main() {
   if [ -n "$*" ]; then
     git commit -m "$*"
   else
-    git commit -m "$(git status -s)"
+    git commit -m "$(git diff --name-only --staged | tr '\n' ' ')"
   fi
   git push
 }
