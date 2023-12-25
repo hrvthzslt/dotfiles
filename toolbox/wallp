@@ -1,0 +1,26 @@
+#!/bin/sh
+# Switch wallpaper
+
+gnome() {
+  gsettings set org.gnome.desktop.background picture-uri "$(realpath "$1")"
+}
+
+main() {
+  if [ -z "$1" ]; then
+    echo "Usage: wallp <path>"
+    exit 1
+  fi
+
+  case "$DESKTOP_SESSION" in
+    pop | gnome)
+      gnome "$1"
+      exit 0
+      ;;
+    *)
+      echo "Unsupported desktop environment: $DESKTOP_SESSION"
+      exit 1
+      ;;
+  esac
+}
+
+main "$1"
