@@ -1,0 +1,72 @@
+font:
+  normal:
+    family: Hack Nerd Font
+    style: Regular
+  size: 12
+
+window:
+  padding:
+    x: 10
+    y: 5
+  dynamic_padding: true
+  opacity: 0.9
+
+key_bindings:
+  - { key: Comma, mods: Control, action: ResetFontSize }
+  - { key: Period, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
+
+schemes:
+  zenbones_light: &light
+    primary:
+      foreground: "#2C363C"
+      background: "#F0EDEC"
+    cursor:
+      cursor: "#2C363C"
+      text: "#F0EDEC"
+    normal:
+      black: "#F0EDEC"
+      red: "#A8334C"
+      green: "#4F6C31"
+      yellow: "#944927"
+      blue: "#286486"
+      magenta: "#88507D"
+      cyan: "#3B8992"
+      white: "#2C363C"
+    bright:
+      black: "#CFC1BA"
+      red: "#94253E"
+      green: "#3F5A22"
+      yellow: "#803D1C"
+      blue: "#1D5573"
+      magenta: "#7B3B70"
+      cyan: "#2B747C"
+      white: "#4F5E68"
+
+  zenbones_dark: &dark
+    primary:
+      foreground: "#B4BDC3"
+      background: "#1C1917"
+    cursor:
+      cursor: "#C4CACF"
+      text: "#1C1917"
+    normal:
+      black: "#1C1917"
+      red: "#DE6E7C"
+      green: "#819B69"
+      yellow: "#B77E64"
+      blue: "#6099C0"
+      magenta: "#B279A7"
+      cyan: "#66A5AD"
+      white: "#B4BDC3"
+    bright:
+      black: "#403833"
+      red: "#E8838F"
+      green: "#8BAE68"
+      yellow: "#D68C67"
+      blue: "#61ABDA"
+      magenta: "#CF86C1"
+      cyan: "#65B8C1"
+      white: "#888F94"
+
+colors: *light

@@ -12,6 +12,8 @@ main() {
 
   sed -i -- "s/$state/$switch/g" ~/.config/nvim/after/plugin/colorscheme.lua
   sed -i -- "s/$state/$switch/g" ~/.config/kitty/kitty.conf
+  sed -i -- "s/*$state/*$switch/g" ~/.config/alacritty/alacritty.yml
+  sed -i -- "s/$state/$switch/g" ~/.wezterm.lua
 
   exec kill -SIGUSR1 $(pgrep kitty)
 }
