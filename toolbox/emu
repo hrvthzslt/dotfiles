@@ -16,7 +16,8 @@ launch_qemu() {
     -boot menu=on -drive file="$2" \
     -m "$3" \
     -cpu host -smp "$4" \
-    -vga virtio -display sdl,gl=on
+    -vga virtio -display sdl,gl=on \
+    -net user,hostfwd=tcp::10022-:22 -net nic
 }
 
 main() {
