@@ -24,7 +24,11 @@ config.window_background_opacity = 0.9
 config.font = wezterm.font 'Hack Nerd Font'
 config.font_size = 12
 
+-- Psssst!
 config.audible_bell = 'Disabled'
+
+-- Cursor
+config.default_cursor_style = 'SteadyBlock'
 
 -- and finally, return the configuration to wezterm
 return config
