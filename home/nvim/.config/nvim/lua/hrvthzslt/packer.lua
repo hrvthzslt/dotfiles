@@ -38,9 +38,6 @@ use({ "tpope/vim-eunuch" })
 -- Allow plugins to enable repeating of commands.
 use({ "tpope/vim-repeat" })
 
--- Navigate seamlessly between Vim windows and Tmux panes.
-use({ "christoomey/vim-tmux-navigator" })
-
 -- Jump to the last location when opening a file.
 use({ "farmergreg/vim-lastplace" })
 
@@ -78,9 +75,6 @@ use {
     -- In Vim, compat mode is turned on as Lush only works in Neovim.
     requires = "rktjmp/lush.nvim"
 }
-
--- Which key
-use({ "folke/which-key.nvim" })
 
 -- Auto session save and restore
 use 'rmagatti/auto-session'
