@@ -1,26 +1,52 @@
+case $- in
+  *i*) ;; # interactive
+  *) return ;;
+esac
+
 set -o vi
 
 # export env variables
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/bin/toolbox:$PATH"
 export EDITOR="nvim"
 export COMPOSER_AUTH='{"github-oauth": {"github.com": "ghp_xxx"}}'
 export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
+export HISTCONTROL=ignoreboth
+export HISTSIZE=5000
 export HISTFILESIZE=10000
 
+# export path
+pathremove() {
+  PATH=${PATH//:"$1:"/:}
+  PATH=${PATH/#"$1:"/}
+  PATH=${PATH/%":$1"/}
+}
+export pathremove
+
+pathprepend() {
+  for arg in "$@"; do
+    test -d "$arg" || continue
+    pathremove "$arg"
+    export PATH="$arg${PATH:+":${PATH}"}"
+  done
+}
+export pathprepend
+
+pathprepend \
+  "$HOME/.local/bin" \
+  "$HOME/.local/bin/toolbox:$PATH"
+
 # start ssh-agent
-eval "$(ssh-agent -s)" > /dev/null
+eval "$(ssh-agent -s)" >/dev/null
 
 # read aliases
 if [ -f ~/.aliases ]; then
-    # shellcheck disable=1090
-    . ~/.aliases
+  # shellcheck disable=1090
+  . ~/.aliases
 fi
 
 # read optional aliases
 if [ -f ~/.local_aliases ]; then
-    # shellcheck disable=1090
-    . ~/.local_aliases
+  # shellcheck disable=1090
+  . ~/.local_aliases
 fi
 
 fzf_share=$(fzf-share)
