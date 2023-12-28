@@ -53,9 +53,6 @@ use({ "windwp/nvim-autopairs" })
 -- Split arrays and methods onto multiple lines, or join them back up.
 use({ "AndrewRadev/splitjoin.vim" })
 
--- Automatically fix indentation when pasting code.
-use({ "sickill/vim-pasta" })
-
 -- Treesitter
 use({
     "nvim-treesitter/nvim-treesitter",
