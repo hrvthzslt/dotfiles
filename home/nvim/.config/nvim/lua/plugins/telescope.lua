@@ -43,6 +43,7 @@ local function config()
     vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "Search Buffers" })
     vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Search Help tags" })
     vim.keymap.set("n", "<leader>sl", builtin.resume, { desc = "Last Search" })
+    vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Git Status" })
 end
 
 
