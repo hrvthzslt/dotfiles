@@ -3,12 +3,10 @@ local function config()
 
     telescope.setup {
         defaults = {
-            layout_strategy = 'horizontal', -- Set the layout strategy (horizontal, vertical, or flex)
-            sorting_strategy = 'descending', -- or 'descending' for reverse order
             layout_config = {
-                width = 0.999,                -- Adjust the width of the layout (as a percentage of the screen width)
-                height = 0.999,               -- Adjust the height of the layout (as a percentage of the screen height)
-                prompt_position = 'bottom',    -- Set the prompt position (top, bottom, or both)
+                width = 0.999,              -- Adjust the width of the layout (as a percentage of the screen width)
+                height = 0.999,             -- Adjust the height of the layout (as a percentage of the screen height)
+                prompt_position = 'bottom', -- Set the prompt position (top, bottom, or both)
             },
         },
         pickers = {
@@ -31,10 +29,22 @@ local function config()
             lsp_workspace_symbols = { show_line = false },
             quickfix = { show_line = false },
             tags = { show_line = false },
+        },
+        extensions = {
+            ["ui-select"] = {
+                require("telescope.themes").get_dropdown {
+                    layout_config = {
+                        width = 0.4,                    -- Adjust the width of the layout (as a percentage of the screen width)
+                        height = 0.4,                   -- Adjust the height of the layout (as a percentage of the screen height)
+                        prompt_position = 'bottom',     -- Set the prompt position (top, bottom, or both)
+                    },
+                },
+            }
         }
     }
 
     telescope.load_extension('fzf')
+    telescope.load_extension("ui-select")
 
     local builtin = require("telescope.builtin")
 
@@ -48,12 +58,15 @@ end
 
 
 return {
-    "nvim-telescope/telescope.nvim",
-    -- tag = "0.1.2",
-    tag = "0.1.5",
-    dependencies = {
-        { "nvim-lua/plenary.nvim" },
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+    {
+        "nvim-telescope/telescope.nvim",
+        -- tag = "0.1.2",
+        tag = "0.1.5",
+        dependencies = {
+            { "nvim-lua/plenary.nvim" },
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+        },
+        config = config
     },
-    config = config
+    { 'nvim-telescope/telescope-ui-select.nvim' }
 }
