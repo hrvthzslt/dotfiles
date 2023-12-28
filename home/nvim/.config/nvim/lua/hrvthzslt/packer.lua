@@ -136,7 +136,7 @@ use { 'tpope/vim-fugitive' }
 -- LSP
 use {
     'neovim/nvim-lspconfig',
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
 }
 use {
     'j-hui/fidget.nvim',
