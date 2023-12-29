@@ -15,6 +15,15 @@ local function config()
                 no_ignore = true,
                 file_ignore_patterns = { ".git/" }
             },
+            live_grep = {
+                file_ignore_patterns = { '.git/' },
+                additional_args = function(_)
+                    return {
+                        "--hidden",
+                        "--smart-case"
+                    }
+                end
+            },
             current_buffer_tags = { show_line = false },
             jumplist = { show_line = false },
             loclist = { show_line = false },
@@ -34,9 +43,9 @@ local function config()
             ["ui-select"] = {
                 require("telescope.themes").get_dropdown {
                     layout_config = {
-                        width = 0.4,                    -- Adjust the width of the layout (as a percentage of the screen width)
-                        height = 0.4,                   -- Adjust the height of the layout (as a percentage of the screen height)
-                        prompt_position = 'bottom',     -- Set the prompt position (top, bottom, or both)
+                        width = 0.4,                -- Adjust the width of the layout (as a percentage of the screen width)
+                        height = 0.4,               -- Adjust the height of the layout (as a percentage of the screen height)
+                        prompt_position = 'bottom', -- Set the prompt position (top, bottom, or both)
                     },
                 },
             }
