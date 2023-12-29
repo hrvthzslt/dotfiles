@@ -23,14 +23,6 @@ config.color_scheme = 'zenbones_light'
 config.window_background_opacity = 0.9
 config.window_decorations = 'NONE'
 
--- Window padding
-config.window_padding = {
-  left = 5,
-  right = 5,
-  top = 0,
-  bottom = 0,
-}
-
 -- Font
 config.font = wezterm.font 'Hack Nerd Font'
 config.font_size = 12
