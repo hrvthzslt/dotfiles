@@ -1,8 +1,7 @@
 local function config()
     -- Null ls for formatting and linting
     local null_ls = require("null-ls")
-    -- TODO
-    local capabilities = {}
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     null_ls.setup({
         capabilities = capabilities,

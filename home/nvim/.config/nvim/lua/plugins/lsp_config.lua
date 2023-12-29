@@ -1,8 +1,6 @@
 local function config()
     local lspconfig = require('lspconfig')
-    -- TODO
-    -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local capabilities = {}
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     -- Lua
     local lua_ls = require('hrvthzslt.lsp.lua_ls')
