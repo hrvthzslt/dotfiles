@@ -36,7 +36,7 @@ main() {
   install_packages mysql mycli redis iredis
 
   # Dev languages
-  install_packages gccgo go php82 nodejs pipx
+  install_packages gccgo go php82 php82Packages.composer nodejs pipx
 
   # Clean up garbage
   nix-store --gc
