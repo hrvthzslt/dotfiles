@@ -7,7 +7,7 @@ config_path="$HOME/.config/mnm/mnm.conf"
 #
 read_config() {
   if [ -f "$config_path" ]; then
-    # shellcheck source=../mnm/mnm.conf
+    # shellcheck source=../home/mnm/.config/mnm/mnm.conf
     . "$config_path"
   else
     echo "Config file not found"
