@@ -24,49 +24,19 @@ main() {
   install_packages act hurl lazydocker lazygit
 
   # Workflow
-  install_packages tmuxinator neovim stow
-
-  # Helpers
-  install_packages cht-sh tldr
-
-  # Github
-  install_packages gh
+  install_packages tmuxinator neovim stow gh
 
   # Makeup
   install_packages starship dwt1-shell-color-scripts
 
-  # Interweb
-  install_packages ddgr w3m links2
+  # Help tools
+  install_packages ddgr w3m links2 cht-sh tldr
 
   # Database
-  install_packages mysql mycli redis iredis nodePackages.sql-formatter
+  install_packages mysql mycli redis iredis
 
-  # C
-  install_packages gccgo
-
-  # Shell
-  install_packages shellcheck shfmt nodePackages.bash-language-server
-
-  # Go
-  install_packages go gopls
-
-  # PHP
-  install_packages php82 php82Packages.php-cs-fixer php82Packages.phpstan phpactor nodePackages.intelephense
-
-  # Javascript
-  install_packages nodejs typescript nodePackages.volar eslint_d prettierd
-
-  # Python
-  install_packages python311Packages.jedi-language-server python311Packages.autopep8 pipx
-
-  # Markdown
-  install_packages marksman
-
-  # Lua
-  install_packages lua-language-server
-
-  # Docker
-  install_packages dockerfile-language-server-nodejs
+  # Dev languages
+  install_packages gccgo go php82 nodejs pipx
 
   # Clean up garbage
   nix-store --gc

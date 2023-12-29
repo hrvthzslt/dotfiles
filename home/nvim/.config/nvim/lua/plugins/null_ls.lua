@@ -1,5 +1,4 @@
 local function config()
-    -- Null ls for formatting and linting
     local null_ls = require("null-ls")
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -9,9 +8,9 @@ local function config()
         sources = {
             null_ls.builtins.formatting.prettierd,
             null_ls.builtins.diagnostics.eslint_d.with({
-              condition = function(utils)
-                return utils.root_has_file({ '.eslintrc.js' })
-              end,
+                condition = function(utils)
+                    return utils.root_has_file({ '.eslintrc.js' })
+                end,
             }),
             null_ls.builtins.formatting.sql_formatter.with({
                 filetypes = { 'sql', 'mysql' },
@@ -30,10 +29,17 @@ local function config()
         },
     })
 
+    require('mason').setup()
+    require('mason-null-ls').setup({ automatic_installation = true })
+
     vim.keymap.set('n', '<leader>lN', '<cmd>:NullLsInfo<CR>', { desc = 'Lsp NullLs' })
 end
 
 return {
     'nvimtools/none-ls.nvim',
+    dependencies = {
+        'williamboman/mason.nvim',
+        'jayp0521/mason-null-ls.nvim',
+    },
     config = config
 }

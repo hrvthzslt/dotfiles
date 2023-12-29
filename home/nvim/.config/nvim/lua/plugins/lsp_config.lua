@@ -1,4 +1,7 @@
 local function config()
+    require("mason").setup()
+    require('mason-lspconfig').setup({ automatic_installation = true })
+
     local lspconfig = require('lspconfig')
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -90,11 +93,16 @@ local function config()
 
     vim.keymap.set('n', '<leader>lI', '<cmd>:LspInfo<CR>', { desc = 'Lsp Info' })
     vim.keymap.set('n', '<leader>lR', '<cmd>:LspRestart<CR>', { desc = 'Lsp Restart' })
+    vim.keymap.set('n', '<leader>lM', '<cmd>:Mason<CR>', { desc = 'Lsp Mason' })
 end
 
 return {
     {
         'neovim/nvim-lspconfig',
+        dependencies = {
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+        },
         config = config
     },
     'j-hui/fidget.nvim'

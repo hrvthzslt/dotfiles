@@ -31,8 +31,9 @@ pathprepend() {
 export pathprepend
 
 pathprepend \
-  "$HOME/.local/bin" \
-  "$HOME/.local/bin/toolbox:$PATH"
+  "$HOME/.local/share/nvim/mason/bin" \
+  "$HOME/.local/bin/toolbox" \
+  "$HOME/.local/bin"
 
 # start ssh-agent
 eval "$(ssh-agent -s)" >/dev/null
