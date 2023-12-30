@@ -40,14 +40,29 @@ local function php(dap)
         command = "php-debug-adapter",
     }
 
+    -- dap.adapters.php = {
+    --     type = "executable",
+    --     command = "node",
+    --     args = { os.getenv("HOME") .. "/workspace/sandbox/vscode-php-debug/out/phpDebug.js" }
+    -- }
+
     dap.configurations.php = {
+        {
+            name = "BNG: Listen for Xdebug",
+            type = "php",
+            request = "launch",
+            port = 9000,
+            log = true,
+            pathMappings = {
+                ["/srv/billingo/live"] = "${workspaceFolder}"
+            }
+        },
         {
             name = "Listen for Xdebug",
             type = "php",
             request = "launch",
-            port = 9000,
-            log = true
-        }
+            port = 9003,
+        },
     }
 end
 
