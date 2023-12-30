@@ -12,7 +12,7 @@ main() {
   fi
 
   case "$DESKTOP_SESSION" in
-    pop | gnome)
+    pop | gnome | ubuntu | ubuntu-xorg)
       gnome "$1"
       exit 0
       ;;
