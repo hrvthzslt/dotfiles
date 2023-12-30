@@ -35,26 +35,34 @@ local function go(dap)
 end
 
 local function php(dap)
+    local function get_docker_workspace()
+        local docker_compose_file = io.open('docker-compose.yml', 'r')
+        if docker_compose_file == nil then
+            return "Unknown"
+        end
+
+        local composer_content = docker_compose_file:read('*a')
+        docker_compose_file:close()
+
+        return composer_content:match('working_dir: *([^\n]+)')
+    end
+
+    local docker_workspace = get_docker_workspace()
+
     dap.adapters.php = {
         type = "executable",
         command = "php-debug-adapter",
     }
 
-    -- dap.adapters.php = {
-    --     type = "executable",
-    --     command = "node",
-    --     args = { os.getenv("HOME") .. "/workspace/sandbox/vscode-php-debug/out/phpDebug.js" }
-    -- }
-
     dap.configurations.php = {
         {
-            name = "BNG: Listen for Xdebug",
+            name = docker_workspace .. ": Listen for Xdebug (Docker)",
             type = "php",
             request = "launch",
             port = 9000,
-            log = true,
+            -- log = true,
             pathMappings = {
-                ["/srv/billingo/live"] = "${workspaceFolder}"
+                [docker_workspace] = "${workspaceFolder}"
             }
         },
         {
@@ -89,8 +97,6 @@ local function config()
 
     require("nvim-dap-virtual-text").setup()
 
-    vim.keymap.set('n', '<leader>bb', function() dap.toggle_breakpoint() end, { desc = 'deBug toggle Breakpoint' })
-
     vim.keymap.set('n', '<leader>bt', function() dapui.toggle({ reset = true }) end, { desc = 'deBug Toggle ui' })
     vim.keymap.set('n', '<leader>bb', function() dap.toggle_breakpoint() end, { desc = 'deBug toggle Breakpoint' })
     vim.keymap.set('n', '<leader>bc', function() dap.continue() end, { desc = 'deBug Continue' })
@@ -98,12 +104,18 @@ local function config()
     vim.keymap.set('n', '<leader>bo', function() dap.step_over() end, { desc = 'deBug step Over' })
     vim.keymap.set('n', '<leader>bO', function() dap.step_out() end, { desc = 'deBug step Out' })
     vim.keymap.set('n', '<leader>bT', function() dap.terminate() end, { desc = 'deBug terminate' })
+
+    require("mason").setup()
+    require("mason-nvim-dap").setup({ automatic_installation = true })
 end
 
 return {
     {
         "rcarriga/nvim-dap-ui",
-        dependencies = "mfussenegger/nvim-dap",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "jay-babu/mason-nvim-dap.nvim"
+        },
         config = config,
     },
     "theHamsta/nvim-dap-virtual-text"
