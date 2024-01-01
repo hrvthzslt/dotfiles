@@ -4,7 +4,7 @@ return {
 			tsdk = vim.fs.normalize("~/.nix-profile/lib/node_modules/typescript/lib"),
 		},
 	},
-	on_attach = function(client, bufnr)
+	on_attach = function(client, _)
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
 	end,

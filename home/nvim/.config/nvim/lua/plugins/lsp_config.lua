@@ -10,6 +10,7 @@ local function config()
 	lspconfig.lua_ls.setup({
 		capabilities = capabilities,
 		settings = lua_ls.settings,
+		on_attach = lua_ls.on_attach,
 	})
 
 	-- Bash
@@ -63,7 +64,7 @@ local function config()
 	})
 
 	-- Loader
-	require("fidget").setup()
+	require("fidget").setup({})
 
 	-- Signs
 	vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })

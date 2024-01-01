@@ -31,7 +31,10 @@ local function config()
 	})
 
 	require("mason").setup()
-	require("mason-null-ls").setup({ automatic_installation = true })
+    require("mason-null-ls").setup({
+        automatic_installation = true,
+        ensure_installed = {},
+    })
 
 	vim.keymap.set("n", "<leader>lN", "<cmd>:NullLsInfo<CR>", { desc = "Lsp NullLs" })
 end
