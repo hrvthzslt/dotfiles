@@ -21,7 +21,7 @@ main() {
   install_packages fzf ripgrep eza fd sd entr act gtop imagemagick translate-shell
 
   # Dev tools
-  install_packages act hurl lazydocker lazygit
+  install_packages act hurl lazydocker lazygit tmux gnumake
 
   # Workflow
   install_packages tmuxinator neovim stow gh
