@@ -11,8 +11,8 @@ end
 
 return {
     -- "mcchrish/zenbones.nvim",
-    "sainnhe/gruvbox-material",
-    dependencies = "rktjmp/lush.nvim",
+    "hrvthzslt/gruvbox-material",
+    -- dependencies = "rktjmp/lush.nvim",
     priority = 1000,
     config = config
 }
