@@ -61,25 +61,25 @@ vim.keymap.set("n", "Ő", "[m")
 
 -- Registers
 -- Mapping for "c" and "C"
-vim.api.nvim_set_keymap('n', 'c', '"cc', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'c', '"cc', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'C', '"cC', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'C', '"cC', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "c", '"cc', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "c", '"cc', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "C", '"cC', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "C", '"cC', { noremap = true, silent = true })
 
 -- Mapping for "d" and "D"
-vim.api.nvim_set_keymap('n', 'd', '"dd', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'd', '"dd', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'D', '"dD', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'D', '"dD', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "d", '"dd', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "d", '"dd', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "D", '"dD', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "D", '"dD', { noremap = true, silent = true })
 
 -- Mapping for "x" and "X"
-vim.api.nvim_set_keymap('n', 'x', '"xx', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'x', '"xx', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'X', '"xX', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'X', '"xX', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "x", '"xx', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "x", '"xx', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "X", '"xX', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "X", '"xX', { noremap = true, silent = true })
 
 -- Mapping for "s" and "S"
-vim.api.nvim_set_keymap('n', 's', '"ss', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 's', '"ss', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'S', '"sS', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', 'S', '"sS', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "s", '"ss', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "s", '"ss', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "S", '"sS', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "S", '"sS', { noremap = true, silent = true })

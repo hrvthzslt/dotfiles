@@ -1,10 +1,10 @@
 local function config()
-    require("auto-session").setup {
-      log_level = "error",
-    }
+	require("auto-session").setup({
+		log_level = "error",
+	})
 end
 
 return {
-    'rmagatti/auto-session',
-    config = config
+	"rmagatti/auto-session",
+	config = config,
 }
