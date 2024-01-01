@@ -78,7 +78,11 @@ local function config()
     local dap = require('dap')
     local dapui = require('dapui')
 
-    dapui.setup()
+    dapui.setup({
+        controls = {
+            enabled = false,
+        },
+    })
 
     dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
