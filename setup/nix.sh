@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ! command -v curl &>/dev/null; then
+if ! command -v curl >/dev/null; then
   echo "curl could not be found"
   exit 1
 fi
@@ -52,4 +52,4 @@ main() {
 
 main
 
-exit 0;
+exit 0
