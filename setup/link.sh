@@ -4,6 +4,8 @@
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 cd home || exit
+rm .bashrc 2> /dev/null
+rm .zshrc 2> /dev/null
 for config in *; do
     stow --adopt --target="$HOME" "$config"
 done
@@ -16,5 +18,4 @@ sudo ln -s "$DOTFILES"/keyd/default.conf /etc/keyd/default.conf
 # link scripts
 scripts_path="$HOME"/.local/bin/toolbox/
 mkdir -p "$scripts_path"
-
 stow --target="$scripts_path" toolbox
