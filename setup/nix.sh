@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! command -v curl &>/dev/null; then
+  echo "curl could not be found"
+  exit 1
+fi
+
 export NIXPKGS_ALLOW_UNFREE=1
 
 install_packages() {
@@ -46,3 +51,5 @@ main() {
 }
 
 main
+
+exit 0;
