@@ -4,11 +4,11 @@
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # remove config files
-cd home || exit
-for file in $(find . | sed "s/[^/]*\/[^/]*\///" | grep -v "^home"); do
-    path="$HOME"/"$file"
-    rm -rf "$path"
+for file in $(find home | sed "s/[^/]*\/[^/]*\///" | grep -v "^home" | grep -v "\.config$"); do
+  path="$HOME"/"$file"
+  rm -rf "$path"
 done
+cd home || exit
 # link config files
 for config in *; do
   stow --adopt --target="$HOME" "$config"
