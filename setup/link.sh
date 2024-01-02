@@ -6,7 +6,8 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # remove config files
 cd home || exit
 for file in $(find . | sed "s/[^/]*\/[^/]*\///" | grep -v "^home"); do
-    rm "$HOME"/"$file"
+    path="$HOME"/"$file"
+    rm -rf "$path"
 done
 # link config files
 for config in *; do
