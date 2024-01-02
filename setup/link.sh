@@ -3,11 +3,14 @@
 # absolute path of working directory
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+# remove config files
 cd home || exit
-rm .bashrc 2> /dev/null
-rm .zshrc 2> /dev/null
+for file in $(find . | sed "s/[^/]*\/[^/]*\///" | grep -v "^home"); do
+    rm "$HOME"/"$file"
+done
+# link config files
 for config in *; do
-    stow --adopt --target="$HOME" "$config"
+  stow --adopt --target="$HOME" "$config"
 done
 cd "$DOTFILES" || exit
 
@@ -17,5 +20,6 @@ sudo ln -s "$DOTFILES"/keyd/default.conf /etc/keyd/default.conf
 
 # link scripts
 scripts_path="$HOME"/.local/bin/toolbox/
+rm -rf "$scripts_path"
 mkdir -p "$scripts_path"
 stow --target="$scripts_path" toolbox
