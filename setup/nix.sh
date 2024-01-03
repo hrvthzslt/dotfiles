@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! command -v curl >/dev/null; then
+  echo "curl could not be found"
+  exit 1
+fi
+
 export NIXPKGS_ALLOW_UNFREE=1
 
 install_packages() {
@@ -21,7 +26,7 @@ main() {
   install_packages fzf ripgrep eza fd sd entr act gtop imagemagick translate-shell
 
   # Dev tools
-  install_packages act hurl lazydocker lazygit
+  install_packages act hurl lazydocker lazygit tmux gnumake
 
   # Workflow
   install_packages tmuxinator neovim stow gh
@@ -46,3 +51,5 @@ main() {
 }
 
 main
+
+exit 0
