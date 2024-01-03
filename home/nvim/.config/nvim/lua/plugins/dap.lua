@@ -44,7 +44,12 @@ local function php(dap)
 		local composer_content = docker_compose_file:read("*a")
 		docker_compose_file:close()
 
-		return composer_content:match("working_dir: *([^\n]+)")
+		local workdir = composer_content:match("working_dir: *([^\n]+)")
+        if workdir == nil then
+            return "Unknown"
+        end
+
+        return workdir
 	end
 
 	local docker_workspace = get_docker_workspace()
