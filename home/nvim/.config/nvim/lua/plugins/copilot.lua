@@ -4,6 +4,7 @@ local function config()
 	vim.b.copilot_enabled = true
 	vim.g.copilot_filetypes = {
 		markdown = true,
+        yaml = true,
 	}
 
 	vim.keymap.set("i", "<C-j>", "copilot#Next()", { expr = true, silent = true })
