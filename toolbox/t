@@ -22,7 +22,7 @@ open_or_create_session() {
 }
 
 search_folders() {
-  selected=$(find ~/workspace -maxdepth 3 -mindepth 1 -type d | fzf)
+  selected=$(find "$HOME" -maxdepth 4 -mindepth 1 -not -path "*/\.*" -type d | fzf)
 
   if [ $? -eq 130 ]; then
     exit 130
