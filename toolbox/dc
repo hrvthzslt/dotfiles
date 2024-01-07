@@ -9,13 +9,17 @@ help() {
 }
 
 get_command() {
-  if type "docker-compose" >/dev/null 2>&1; then
-    echo "docker-compose"
+  if docker compose >/dev/null 2>&1; then
+    echo "docker compose"
+    return
   fi
 
-  if type "docker compose" >/dev/null 2>&1; then
-    echo "docker compose"
+  if docker-compose >/dev/null 2>&1; then
+    echo "docker-compose"
+    return
   fi
+
+  exit 1
 }
 
 up() {
@@ -28,10 +32,10 @@ pass_through() {
 
 main() {
   case $1 in
-    --up|-u|u)
+    --up | -u | u)
       up
       ;;
-    --help|-h|h)
+    --help | -h | h)
       help
       ;;
     *)
