@@ -25,7 +25,7 @@ config.window_decorations = "NONE"
 
 -- Font
 config.font = wezterm.font("Hack Nerd Font")
-config.font_size = 12
+config.font_size = 13
 
 config.adjust_window_size_when_changing_font_size = false
 config.keys = {
