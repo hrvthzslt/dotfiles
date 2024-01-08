@@ -11,6 +11,11 @@ main() {
     exit 1
   fi
 
+  if command -v nitrogen >/dev/null 2>&1; then
+    nitrogen --set-zoom-fill --save "$1"
+    exit 0
+  fi
+
   case "$DESKTOP_SESSION" in
     pop | gnome | ubuntu | ubuntu-xorg)
       gnome "$1"
