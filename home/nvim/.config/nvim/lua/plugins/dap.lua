@@ -113,6 +113,7 @@ local function config()
 	vim.keymap.set("n", "<F3>", function() dap.step_into() end, { desc = "deBug step Into" })
 	vim.keymap.set("n", "<F2>", function() dap.step_over() end, { desc = "deBug step Over" })
 	vim.keymap.set("n", "<F4>", function() dap.step_out() end, { desc = "deBug step Out" })
+    vim.keymap.set("n", "<F5>", function() dapui.toggle({ reset = true }) end, { desc = "deBug step Out" })
 	vim.keymap.set("n", "<leader>bT", function() dap.terminate() end, { desc = "deBug terminate" })
 
 	require("mason").setup()
