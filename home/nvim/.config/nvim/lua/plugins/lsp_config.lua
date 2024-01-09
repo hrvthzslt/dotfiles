@@ -44,6 +44,11 @@ local function config()
 		capabilities = capabilities,
 	})
 
+    -- Nginx
+    lspconfig.nginx_language_server.setup({
+        capabilities = capabilities,
+    })
+
 	-- Vue, JavaScript, TypeScript
 	local volar = require("hrvthzslt.lsp.volar")
 	lspconfig.volar.setup({
