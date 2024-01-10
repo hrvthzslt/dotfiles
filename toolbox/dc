@@ -23,7 +23,7 @@ get_command() {
 }
 
 up() {
-  $(get_command) up -d
+  $(get_command) up -d --remove-orphans
 }
 
 pass_through() {
