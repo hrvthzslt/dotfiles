@@ -1,4 +1,4 @@
 #!/bin/sh
 # Search DuckDuckGo from the command line
 
-BROWSER=links ddgr -n 5 "$@"
+BROWSER=w3m ddgr -n 5 "$@"
