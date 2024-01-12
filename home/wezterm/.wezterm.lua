@@ -44,6 +44,11 @@ config.keys = {
 		mods = "CTRL",
 		action = wezterm.action.ResetFontSize,
 	},
+	{
+		key = "Enter",
+		mods = "ALT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
 }
 
 -- Psssst!
