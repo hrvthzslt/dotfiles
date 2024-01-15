@@ -28,7 +28,7 @@ main() {
   install_nix
 
   # Utilities
-  install_packages fzf ripgrep eza fd sd entr act gtop imagemagick translate-shell
+  install_packages fzf ripgrep fd sd entr act gtop imagemagick translate-shell
 
   # Dev tools
   install_packages act hurl lazydocker lazygit tmux gnumake

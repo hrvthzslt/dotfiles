@@ -5,9 +5,9 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-alias ls='eza -a --color=always --group-directories-first'
-alias la='eza -la --color=always --group-directories-first'
-alias l.='eza -a | egrep "^\."'
+alias ls='ls -a --color=always --group-directories-first'
+alias la='ls -la --color=always --group-directories-first'
+alias l.='ls -a | egrep "^\."'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
