@@ -25,6 +25,8 @@ return {
 	{ "tpope/vim-eunuch" },
 	-- Allow plugins to enable repeating of commands.
 	{ "tpope/vim-repeat" },
+	-- Surround text objects with brackets, quotes, etc.
+	{ "tpope/vim-surround" },
 	-- Jump to the last location when opening a file.
 	{ "farmergreg/vim-lastplace" },
 	-- Enable * searching with visually selected text.

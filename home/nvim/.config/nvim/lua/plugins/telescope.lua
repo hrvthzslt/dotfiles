@@ -20,6 +20,7 @@ local function config()
 				additional_args = function(_)
 					return {
 						"--hidden",
+                        "--ignore",
 						"--smart-case",
 					}
 				end,
