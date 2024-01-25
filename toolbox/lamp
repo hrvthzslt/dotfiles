@@ -3,9 +3,6 @@
 # shellcheck disable=2317
 
 main() {
-  echo "Fix me dude!"
-  exit 1
-
   if [ "$(grep -i 'background' ~/.config/nvim/after/plugin/colorscheme.lua | cut -d= -f2)" = 'light' ]; then
     state=light
     switch=dark
@@ -17,7 +14,6 @@ main() {
   sed -i -- "s/$state/$switch/g" ~/.config/nvim/after/plugin/colorscheme.lua
   sed -i -- "s/$state/$switch/g" ~/.config/kitty/kitty.conf
   sed -i -- "s/*$state/*$switch/g" ~/.config/alacritty/alacritty.yml
-  sed -i -- "s/$state/$switch/g" ~/.wezterm.lua
 
   exec kill -SIGUSR1 $(pgrep kitty)
 }
