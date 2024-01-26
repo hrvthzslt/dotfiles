@@ -7,7 +7,7 @@ main() {
     exit 1
   fi
 
-  gh copilot explain "$@"
+  gh copilot suggest "$@"
 }
 
 main "$@"
