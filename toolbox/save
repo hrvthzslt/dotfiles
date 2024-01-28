@@ -5,8 +5,6 @@ main() {
   git add .
   git stash push -m "save"
   git pull
-  # git stash apply stash^"{/save}"
-  # git stash drop save
   git stash pop
   git add .
   if [ -n "$*" ]; then
