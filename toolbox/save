@@ -16,4 +16,5 @@ main() {
   git push
 }
 
+
 main "$@"
