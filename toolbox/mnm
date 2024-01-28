@@ -60,6 +60,9 @@ create_note() {
 #
 search_in_path() {
   found_file_path=$(rg '' "$1" | fzf --delimiter=/ --with-nth -1 | cut -d":" -f1)
+  if [ $? -eq 130 ]; then
+    exit 130
+  fi
   [ -z "$found_file_path" ] && exit 1
   $EDITOR "$found_file_path"
 }
@@ -70,6 +73,9 @@ search_note() {
 
 search_directory() {
   directory=$(echo "$directories" | tr " " "\n" | fzf)
+  if [ $? -eq 130 ]; then
+    exit 130
+  fi
   search_in_path "$path/$directory"
 }
 
@@ -97,19 +103,19 @@ index() {
 main() {
   read_config
   case $1 in
-    --help|-h|h)
+    --help | -h | h)
       help
       ;;
-    --create|-c|c)
+    --create | -c | c)
       create_note
       ;;
-    --search|-s|s)
+    --search | -s | s)
       search_note
       ;;
-    --dir_search|-d|d)
+    --dir_search | -d | d)
       search_directory
       ;;
-    --index|-i|i)
+    --index | -i | i)
       index
       ;;
     *)

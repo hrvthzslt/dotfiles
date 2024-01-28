@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 # Tmux session manager
 
 open_or_create_session() {
@@ -55,10 +55,10 @@ main() {
     "")
       search_folders
       ;;
-    --search|-s|s)
+    --search | -s | s)
       search_sessions
       ;;
-    --attach|-a|a)
+    --attach | -a | a)
       attach_session
       ;;
     *)
@@ -69,4 +69,4 @@ main() {
   exit 0
 }
 
-main "$@"
+main "$1"

@@ -4,6 +4,10 @@
 main() {
   shell=$(printf 'bash\nzsh' | fzf)
 
+  if [ $? -eq 130 ]; then
+    exit 130
+  fi
+
   echo "Current shell is $SHELL"
 
   if [ -n "$shell" ]; then
