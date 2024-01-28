@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 # mnm - minimalist Note manager
 
 config_path="$HOME/.config/mnm/mnm.conf"
@@ -84,9 +84,11 @@ index() {
     fi
 
     for note in "$path/$directory"/*; do
-      link_title=$(grep -m 1 -o -e "# .*" "$note"/README.md | cut -d" " -f2-)
+      link_title=$(grep -m 1 -o -e "# .*" "$note"/*.md | cut -d" " -f2-)
+      new_file_name=$(echo "$link_title" | tr "[:upper:]" "[:lower:]" | tr -dc '[:alnum:]').md
+      mv "$note"/*.md "$note"/"$new_file_name" 2>/dev/null
       id=$(echo "$note" | rev | cut -d"/" -f1 | rev)
-      row="- $id - [$link_title]($directory/$id/README.md)"
+      row="- $id - [$link_title]($directory/$id/$new_file_name)"
       echo "$row" >>"$read_me_path"
     done
   done
