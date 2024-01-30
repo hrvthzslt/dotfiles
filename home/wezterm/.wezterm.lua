@@ -18,7 +18,8 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 
 -- For example, changing the color scheme:
-config.color_scheme = "Gruvbox light, hard (base16)"
+-- config.color_scheme = "Gruvbox light, hard (base16)"
+config.color_scheme = "zenbones_light"
 config.window_background_opacity = 0.9
 config.window_decorations = "NONE"
 

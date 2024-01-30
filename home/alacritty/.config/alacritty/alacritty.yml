@@ -9,7 +9,7 @@ window:
     x: 10
     y: 5
   dynamic_padding: true
-  opacity: 0.95
+  opacity: 0.9
   decorations: None
 
 key_bindings:
@@ -18,13 +18,35 @@ key_bindings:
   - { key: Minus, mods: Control, action: DecreaseFontSize }
 
 schemes:
-  zenbones_light: &zenbones_l
+  zenbones_light: &light
     primary:
-      foreground: "#2C363C"
-      background: "#F0EDEC"
+      foreground: '#2C363C'
+      background: '#F0EDEC'
     cursor:
-      cursor: "#2C363C"
-      text: "#F0EDEC"
+      cursor: '#2C363C'
+      text: '#F0EDEC'
+    normal:
+      black:   '#F0EDEC'
+      red:     '#A8334C'
+      green:   '#4F6C31'
+      yellow:  '#944927'
+      blue:    '#286486'
+      magenta: '#88507D'
+      cyan:    '#3B8992'
+      white:   '#2C363C'
+    bright:
+      black:   '#CFC1BA'
+      red:     '#94253E'
+      green:   '#3F5A22'
+      yellow:  '#803D1C'
+      blue:    '#1D5573'
+      magenta: '#7B3B70'
+      cyan:    '#2B747C'
+      white:   '#4F5E68'
+  zenbox_light: &lightaaa
+    primary:
+      background: "0xf9f5d7"
+      foreground: "0x654735"
     normal:
       black: "#F0EDEC"
       red: "#A8334C"
@@ -43,35 +65,10 @@ schemes:
       magenta: "#7B3B70"
       cyan: "#2B747C"
       white: "#4F5E68"
-  gruvbox_material_hard_light: &light
+  zenbox_dark: &dark
     primary:
-      background: "0xf9f5d7"
-      foreground: "0x654735"
-    normal:
-      black: "0x654735"
-      red: "0xc14a4a"
-      green: "0x6c782e"
-      yellow: "0xb47109"
-      blue: "0x45707a"
-      magenta: "0x945e80"
-      cyan: "0x4c7a5d"
-      white: "0xf2e5bc"
-    bright:
-      black: "0x654735"
-      red: "0xc14a4a"
-      green: "0x6c782e"
-      yellow: "0xb47109"
-      blue: "0x45707a"
-      magenta: "0x945e80"
-      cyan: "0x4c7a5d"
-      white: "0xf2e5bc"
-  zenbones_dark: &zenbones_d
-    primary:
-      foreground: "#B4BDC3"
-      background: "#1C1917"
-    cursor:
-      cursor: "#C4CACF"
-      text: "#1C1917"
+      background: "0x1d2021"
+      foreground: "0xd4be98"
     normal:
       black: "#1C1917"
       red: "#DE6E7C"
@@ -90,27 +87,5 @@ schemes:
       magenta: "#CF86C1"
       cyan: "#65B8C1"
       white: "#888F94"
-  gruvbox_material_hard_dark: &dark
-    primary:
-      background: "0x1d2021"
-      foreground: "0xd4be98"
-    normal:
-      black: "0x32302f"
-      red: "0xea6962"
-      green: "0xa9b665"
-      yellow: "0xd8a657"
-      blue: "0x7daea3"
-      magenta: "0xd3869b"
-      cyan: "0x89b482"
-      white: "0xd4be98"
-    bright:
-      black: "0x32302f"
-      red: "0xea6962"
-      green: "0xa9b665"
-      yellow: "0xd8a657"
-      blue: "0x7daea3"
-      magenta: "0xd3869b"
-      cyan: "0x89b482"
-      white: "0xd4be98"
 
 colors: *light

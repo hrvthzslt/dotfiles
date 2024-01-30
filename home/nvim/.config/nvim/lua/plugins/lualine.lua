@@ -50,7 +50,7 @@ local function config()
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 			globalstatus = true,
-			theme = "gruvbox-material",
+			-- theme = "gruvbox-material",
 		},
 		sections = {
 			lualine_a = { logo },
