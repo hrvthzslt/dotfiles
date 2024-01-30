@@ -60,6 +60,7 @@ local function config()
 
 	vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "Search Files" })
 	vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Search Grep" })
+	vim.keymap.set("n", "<leader>ss", "<cmd>:Telescope live_grep search_dirs=src<CR>", { desc = "Search grep in Src" })
 	vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "Search Buffers" })
 	vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Search Help tags" })
 	vim.keymap.set("n", "<leader>sl", builtin.resume, { desc = "Last Search" })
