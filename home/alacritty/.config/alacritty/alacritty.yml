@@ -6,8 +6,8 @@ font:
 
 window:
   padding:
-    x: 10
-    y: 5
+    x: 7
+    y: 7
   dynamic_padding: true
   opacity: 0.9
   decorations: None
