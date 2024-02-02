@@ -8,6 +8,11 @@ fi
 export NIXPKGS_ALLOW_UNFREE=1
 
 install_nix() {
+  if [ "$(which nix)" ]; then
+    echo "Nix is already installed"
+    return 0
+  fi
+
   sh <(curl -L https://nixos.org/nix/install) --no-daemon
   # shellcheck disable=1091
   . "$HOME"/.nix-profile/etc/profile.d/nix.sh
