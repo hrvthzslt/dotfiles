@@ -1,4 +1,0 @@
-#!/bin/sh
-# Search files for editing in scope
-
-fzf --preview="less {}" | xargs -r "$EDITOR"

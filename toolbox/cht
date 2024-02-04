@@ -1,4 +1,0 @@
-#!/bin/sh
-# Search for a command in the cheat.sh database
-
-cht.sh --shell -n

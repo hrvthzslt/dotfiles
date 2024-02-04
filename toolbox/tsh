@@ -1,8 +1,0 @@
-#!/bin/sh
-# Ssh wrapper with xterm-256color terminfo
-
-main() {
-    TERM='xterm-256color' ssh "$@"
-}
-
-main "$@"
