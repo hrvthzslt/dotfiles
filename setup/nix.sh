@@ -32,12 +32,6 @@ post_install() {
 main() {
   install_nix
 
-  # Utilities
-  install_packages act gtop
-
-  # Dev tools
-  install_packages tmux
-
   # Workflow
   install_packages neovim gh
 

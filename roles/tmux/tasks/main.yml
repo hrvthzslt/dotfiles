@@ -1,0 +1,20 @@
+---
+- name: install
+  ansible.builtin.shell: nix-env -iA nixpkgs.tmux
+
+- name : remove config
+  ansible.builtin.file:
+    path: ~/.config/tmux/tmux.conf
+    state: absent
+
+- name: symlink config
+  ansible.builtin.file:
+    path: ~/.config/tmux
+    state: directory
+
+- name: symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/tmux"
+    dest: ~/.config/tmux
+    state: link
+    force: yes

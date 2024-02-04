@@ -2,6 +2,7 @@
 - name: Set up local environment
   hosts: localhost
   roles:
-    # - nix
-    - starship
+    - nix
     - utilities
+    - starship
+    - tmux
