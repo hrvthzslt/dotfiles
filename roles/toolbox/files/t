@@ -1,0 +1,72 @@
+#!/bin/sh
+# Tmux session manager
+
+open_or_create_session() {
+  session_name="$1"
+  directory="$2"
+
+  if [ -z "$directory" ]; then
+    directory="$(pwd)"
+  fi
+
+  if [ -z "$TMUX" ] && tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux attach -t "$session_name"
+  elif [ -z "$TMUX" ]; then
+    tmuxinator "$session_name" || tmux new-session -s "$session_name" -c "$directory"
+  elif tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux switch-client -t "$session_name"
+  else
+    tmuxinator "$session_name" || tmux new-session -s "$session_name" -c "$directory" -d
+    tmux switch-client -t "$session_name"
+  fi
+}
+
+search_folders() {
+  selected=$(find "$HOME/workspace" -maxdepth 3 -mindepth 1 -type d | fzf)
+
+  if [ $? -eq 130 ]; then
+    exit 130
+  fi
+
+  directory=$(basename "$selected")
+  open_or_create_session "$directory" "$selected"
+}
+
+search_sessions() {
+  session=$(tmux list-sessions -F '#{?session_attached,,#{session_name}}' |
+    sed '/^$/d' |
+    fzf)
+
+  if [ $? -eq 130 ]; then
+    exit 130
+  fi
+
+  tmux switch-client -t "$session"
+}
+
+attach_session() {
+  if [ -z "$TMUX" ]; then
+    tmux attach 2>/dev/null || open_or_create_session "$(basename "$(pwd)")"
+  fi
+}
+
+main() {
+  case "$1" in
+    "")
+      search_folders
+      ;;
+    --search | -s | s)
+      search_sessions
+      ;;
+    --attach | -a | a)
+      attach_session
+      ;;
+    *)
+      open_or_create_session "$1"
+      ;;
+  esac
+
+  exit 0
+}
+
+main "$1"

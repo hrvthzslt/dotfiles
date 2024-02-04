@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+# Human readable value of path environment variable
+
+echo -e "${PATH//:/$'\n'}"

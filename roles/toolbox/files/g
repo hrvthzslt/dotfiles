@@ -1,0 +1,67 @@
+#!/bin/sh
+# Git wrapper
+
+help() {
+  echo "Usage: g [c|ca|da|cf|u|si|s|p]"
+  echo "  -c     checkout local branch"
+  echo "  -ca    checkout branch"
+  echo "  -da    delete all local branch"
+  echo "  -cf    clear changes and checkout"
+  echo "  -u     update all branch"
+  echo "  -si    submodule init"
+  echo "  -s     stash all files"
+  echo "  -p     pop stash and reset"
+  exit 1
+}
+
+c() {
+  git branch | fzf | xargs git checkout
+}
+
+ca() {
+  git branch -a | sed -e "s/origin\///g" | sed -e "s/remotes\///g" | uniq -u | fzf | xargs git checkout
+}
+
+da() {
+  git branch | xargs git branch -D 2>/dev/null
+}
+
+cf() {
+  git checkout -f
+  git clean -df
+}
+
+u() {
+  git fetch --all --prune
+  git pull --all
+}
+
+si() {
+  git submodule update --init --recursive
+}
+
+s() {
+  git add .
+  git stash
+}
+
+p() {
+  git stash pop
+  git reset
+}
+
+main() {
+  case $1 in
+    -c|c) c ;;
+    -ca|ca) ca ;;
+    -da|da) da ;;
+    -cf|cf) cf ;;
+    -u|u) u ;;
+    -si|si) si ;;
+    -s|s) s ;;
+    -p|p) p ;;
+    *) help ;;
+  esac
+}
+
+main "$1"

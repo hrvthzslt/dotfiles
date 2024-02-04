@@ -1,0 +1,19 @@
+#!/bin/sh
+# Save and push changes to git
+
+main() {
+  git add .
+  git stash push -m "save"
+  git pull
+  git stash pop
+  git add .
+  if [ -n "$*" ]; then
+    git commit -m "$*"
+  else
+    git commit -m "$(git diff --name-only --staged | tr '\n' ' ')"
+  fi
+  git push
+}
+
+
+main "$@"

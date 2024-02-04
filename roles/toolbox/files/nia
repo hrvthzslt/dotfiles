@@ -1,0 +1,10 @@
+#!/bin/sh
+# Install packages from nixpkgs
+
+main() {
+  for package in "$@"; do
+    nix-env -iA nixpkgs."$package"
+  done
+}
+
+main "$@"

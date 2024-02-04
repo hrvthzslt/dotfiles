@@ -1,0 +1,85 @@
+#!/bin/sh
+# Emulate an iso with qemu
+
+create_disk() {
+  image_name=$(echo "$iso" | sed 's/.iso/.img/g')
+  if [ -f "$image_name" ]; then
+    echo "Image already exists"
+  else
+    echo "Creating an image with size: $size? Continue (y/n)?"
+    read -r choice
+    case "$choice" in
+      y | Y)
+        echo "Creating image $image_name"
+        qemu-img create -f qcow2 "$image_name" "$size"
+        ;;
+      *)
+        exit 0
+        ;;
+    esac
+  fi
+}
+
+launch_qemu() {
+  SPICE_NOGRAB=1 qemu-system-x86_64 -enable-kvm -cdrom "$iso" \
+    -boot menu=on -drive file="$image_name" \
+    -m "$mem" \
+    -cpu host -smp "$cpu" \
+    -vga virtio -display sdl,gl=on \
+    -net user,hostfwd=tcp::10022-:22 -net nic
+}
+
+emulate() {
+  echo "Starting $iso with $mem mermory, with $cpu cores. Continue (y/n)?"
+  read -r choice
+  case "$choice" in
+    y | Y)
+      launch_qemu
+      ;;
+    *)
+      exit 0
+      ;;
+  esac
+}
+
+main() {
+  size=10G
+  mem=8G
+  cpu=4
+
+  while getopts "i:m:s:c" opt; do
+    case $opt in
+      i)
+        iso=$OPTARG
+        ;;
+      m)
+        mem=$OPTARG
+        ;;
+      s)
+        size=$OPTARG
+        ;;
+      c)
+        cpu=$OPTARG
+        ;;
+      \?)
+        echo "Invalid option: -$OPTARG" >&2
+        exit 1
+        ;;
+      :)
+        echo "Option -$OPTARG requires an argument." >&2
+        exit 1
+        ;;
+    esac
+  done
+
+  if [ -z "$iso" ]; then
+    echo "No iso specified"
+    exit 1
+  fi
+
+  create_disk
+
+  emulate
+}
+
+main "$@"

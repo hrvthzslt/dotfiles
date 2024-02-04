@@ -1,0 +1,12 @@
+#!/bin/sh
+# Update all personal repositories
+
+main() {
+  for directory in ~/workspace/personal/*/; do
+    echo "$directory"
+    cd "$directory" || continue
+    git pull --all --prune
+  done
+}
+
+main

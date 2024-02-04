@@ -1,0 +1,67 @@
+#!/bin/sh
+# Pomodoro timer
+
+ensure_pomend_file() {
+  pomend_file_path="$HOME/.local/state/pomend"
+
+  if [ ! -f "$pomend_file_path" ]; then
+    touch "$pomend_file_path"
+  fi
+}
+
+time_is_up() {
+  if [ "$end" -lt "$(date +%s)" ]; then
+    if [ $(($(date +%s) % 2)) -eq 0 ]; then
+      echo "󰀦 00:00"
+    else
+      echo " 00:00"
+    fi
+    exit 0
+  fi
+}
+
+get_timer() {
+  end=$(head -1 "$pomend_file_path")
+  if [ -z "$end" ]; then
+    exit 0
+  fi
+  time_is_up
+  time="$((end - $(date +%s)))"
+  echo " $(date -u -d "@$time" +%M:%S)"
+}
+
+set_timer() {
+  if [ -z "$1" ]; then
+    echo "Provide time in minutes!"
+    exit 1
+  fi
+  if [ "$1" -gt 60 ]; then
+    echo "Time must be less than 60 minutes!"
+    exit 1
+  fi
+  minutes="$(($1 * 60))"
+  end="$(($(date +%s) + minutes))"
+  echo "$end" >"$pomend_file_path"
+}
+
+clear_timer() {
+  echo "" >"$pomend_file_path"
+}
+
+main() {
+  ensure_pomend_file
+
+  case $1 in
+    --set | -s | s)
+      set_timer "$2"
+      ;;
+    --clear | -c | c)
+      clear_timer
+      ;;
+    *)
+      get_timer
+      ;;
+  esac
+}
+
+main "$@"

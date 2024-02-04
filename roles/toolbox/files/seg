@@ -1,0 +1,4 @@
+#!/bin/sh
+# Search files for editing globally
+
+du -a ~/ /bin /usr/bin /usr/local/bin | awk '{print $2}' | fzf --preview="less {}" | xargs -r "$EDITOR"

@@ -2,11 +2,6 @@
 - name: install
   ansible.builtin.shell: nix-env -iA nixpkgs.starship
 
-- name : remove config
-  ansible.builtin.file:
-    path: ~/.config/starship.toml
-    state: absent
-
 - name: symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/starship.toml"
