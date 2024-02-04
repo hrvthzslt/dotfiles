@@ -31,3 +31,9 @@ My $HOME my rules.
 ```shell
 ./setup/kitty.sh
 ```
+
+### Run ansible playbook
+
+```shell
+ansible-playbook -i hosts main.yml
+```

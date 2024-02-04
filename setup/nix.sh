@@ -33,19 +33,16 @@ main() {
   install_nix
 
   # Utilities
-  install_packages fzf ripgrep entr act gtop imagemagick translate-shell
+  install_packages act gtop
 
   # Dev tools
-  install_packages act hurl lazydocker lazygit tmux gnumake
+  install_packages tmux
 
   # Workflow
-  install_packages tmuxinator neovim stow gh
-
-  # Makeup
-  install_packages starship dwt1-shell-color-scripts
+  install_packages neovim gh
 
   # Help tools
-  install_packages ddgr w3m links2 cht-sh tldr
+  install_packages cht-sh
 
   # Database
   install_packages mysql mycli redis iredis

@@ -1,0 +1,20 @@
+---
+- name: install
+  ansible.builtin.shell: nix-env -iA nixpkgs."{{ item}}"
+  loop:
+    - fzf
+    - ripgrep
+    - entr
+    - imagemagick
+    - translate-shell
+    - act
+    - gtop
+    - hurl
+    - lazydocker
+    - lazygit
+    - gnumake
+    - tmuxinator
+    - ddgr
+    - w3m
+    - tldr
+    - jq
