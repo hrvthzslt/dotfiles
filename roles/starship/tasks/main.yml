@@ -1,0 +1,10 @@
+---
+
+- name: install
+  ansible.builtin.shell: nix-env -iA nixpkgs.starship
+
+- name: symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/starship.toml"
+    dest: ~/.config/starship.toml
+    state: link
