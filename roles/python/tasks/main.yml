@@ -1,0 +1,7 @@
+---
+- name: install
+  ansible.builtin.shell: nix-env -iA nixpkgs.pipx
+  tags:
+    - python
+    - install
+    - cli

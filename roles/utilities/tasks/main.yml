@@ -2,6 +2,7 @@
 - name: install
   ansible.builtin.shell: nix-env -iA nixpkgs."{{ item }}"
   loop:
+    - gccgo
     - fzf
     - ripgrep
     - entr

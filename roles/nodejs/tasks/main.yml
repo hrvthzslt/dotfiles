@@ -1,0 +1,10 @@
+---
+- name: install
+  ansible.builtin.shell: nix-env -iA nixpkgs."{{ item }}"
+  loop:
+    - nodejs
+    - typescript
+  tags:
+    - nodejs
+    - install
+    - cli
