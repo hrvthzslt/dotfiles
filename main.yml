@@ -6,6 +6,7 @@
     - utilities
     - tmux
     - mysql
+    - redis
     - starship
     - github
     - neovim

@@ -15,9 +15,6 @@ install_packages() {
 
 main() {
 
-  # Database
-  install_packages mysql mycli redis iredis
-
   # Dev languages
   install_packages gccgo go php82 php82Packages.composer typescript nodejs pipx
 
