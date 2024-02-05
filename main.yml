@@ -8,4 +8,5 @@
     # - tmux
     # - toolbox
     # - github
-    - neovim
+    # - neovim
+    - cht.sh

@@ -14,9 +14,6 @@ install_packages() {
 }
 
 main() {
-  # Workflow
-  install_packages neovim
-
   # Help tools
   install_packages cht-sh
 
