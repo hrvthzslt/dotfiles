@@ -4,10 +4,10 @@
   roles:
     # - nix
     # - utilities
-    # - starship
-    # - tmux
+    - starship
+    - tmux
     # - toolbox
-    # - github
-    # - neovim
-    # - cht.sh
-    - mysql
+    - github
+    - neovim
+    - cht.sh
+    # - mysql
