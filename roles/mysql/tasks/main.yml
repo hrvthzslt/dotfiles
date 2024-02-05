@@ -1,0 +1,12 @@
+---
+- name: install
+  ansible.builtin.shell: nix-env -iA nixpkgs."{{ item }}"
+  loop:
+    - mysql
+    - mycli
+
+- name: symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/mycli/.myclirc"
+    dest: ~/.config/.myclirc
+    state: link

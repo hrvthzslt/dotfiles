@@ -14,8 +14,6 @@ install_packages() {
 }
 
 main() {
-  # Help tools
-  install_packages cht-sh
 
   # Database
   install_packages mysql mycli redis iredis

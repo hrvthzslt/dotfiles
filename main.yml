@@ -9,4 +9,5 @@
     # - toolbox
     # - github
     # - neovim
-    - cht.sh
+    # - cht.sh
+    - mysql
