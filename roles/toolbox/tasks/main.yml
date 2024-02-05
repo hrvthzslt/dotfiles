@@ -3,6 +3,10 @@
   ansible.builtin.file:
     path: ~/.local/bin/toolbox
     state: directory
+  tags:
+    - toolbox
+    - link
+    - cli
 
 - name: symlink config
   ansible.builtin.file:
@@ -10,3 +14,7 @@
     dest: ~/.local/bin/toolbox
     state: link
     force: yes
+  tags:
+    - toolbox
+    - link
+    - cli

@@ -2,12 +2,12 @@
 - name: Set up local environment
   hosts: localhost
   roles:
-    # - nix
-    # - utilities
-    - starship
+    - nix
+    - utilities
     - tmux
-    # - toolbox
+    - mysql
+    - starship
     - github
     - neovim
     - cht.sh
-    # - mysql
+    - toolbox

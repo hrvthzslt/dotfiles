@@ -18,3 +18,7 @@
     - w3m
     - tldr
     - jq
+  tags:
+    - utilities
+    - install
+    - cli

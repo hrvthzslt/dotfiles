@@ -4,9 +4,17 @@
   loop:
     - mysql
     - mycli
+  tags:
+    - mysql
+    - install
+    - cli
 
 - name: symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/mycli/.myclirc"
     dest: ~/.config/.myclirc
     state: link
+  tags:
+    - github
+    - link
+    - cli

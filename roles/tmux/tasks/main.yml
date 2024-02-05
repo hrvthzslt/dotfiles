@@ -1,11 +1,19 @@
 ---
 - name: install
   ansible.builtin.shell: nix-env -iA nixpkgs.tmux
+  tags:
+    - tmux
+    - install
+    - cli
 
 - name: symlink config
   ansible.builtin.file:
     path: ~/.config/tmux
     state: directory
+  tags:
+    - tmux
+    - link
+    - cli
 
 - name: symlink config
   ansible.builtin.file:
@@ -13,3 +21,7 @@
     dest: ~/.config/tmux
     state: link
     force: yes
+  tags:
+    - tmux
+    - link
+    - cli
