@@ -5,6 +5,7 @@
     - prologue
     - nix
     - utilities
+    - shell
     - tmux
     - mysql
     - redis

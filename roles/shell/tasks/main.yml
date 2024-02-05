@@ -1,0 +1,33 @@
+---
+- name: symlink bashrc
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/bash/.bashrc"
+    dest: ~/.bashrc
+    state: link
+    force: yes
+  tags:
+    - shell
+    - link
+    - cli
+
+- name: symlink zshrc
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/zsh/.zshrc"
+    dest: ~/.zshrc
+    state: link
+    force: yes
+  tags:
+    - shell
+    - link
+    - cli
+
+- name: symlink aliases
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/shell/.aliases"
+    dest: ~/.aliases
+    state: link
+    force: yes
+  tags:
+    - shell
+    - link
+    - cli
