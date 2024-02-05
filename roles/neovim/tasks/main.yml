@@ -1,15 +1,15 @@
 ---
 - name: install
-  ansible.builtin.shell: nix-env -iA nixpkgs.tmux
+  ansible.builtin.shell: nix-env -iA nixpkgs.neovim
 
-- name: symlink config
+- name: create directory
   ansible.builtin.file:
-    path: ~/.config/tmux
+    path: ~/.config/nvim
     state: directory
 
 - name: symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/config"
-    dest: ~/.config/tmux
+    dest: ~/.config/nvim
     state: link
     force: yes

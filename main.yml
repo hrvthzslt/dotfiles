@@ -7,4 +7,5 @@
     # - starship
     # - tmux
     # - toolbox
-    - github
+    # - github
+    - neovim
