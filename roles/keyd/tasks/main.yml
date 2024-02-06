@@ -1,0 +1,66 @@
+---
+- name: check if installed
+  ansible.builtin.command: keyd --version
+  register: keyd_version
+  ignore_errors: yes
+  changed_when: false
+  tags:
+    - keyd
+    - install
+    - linux
+
+- name: clone repo
+  ansible.builtin.git:
+    repo: "https://github.com/rvaiya/keyd"
+    dest: /tmp/keyd
+    version: v2.4.3
+  when: keyd_version.rc != 0
+  tags:
+    - keyd
+    - install
+    - linux
+
+- name: build
+  ansible.builtin.shell: make install
+  args:
+    chdir: /tmp/keyd
+  become: yes
+  when: keyd_version.rc != 0
+  tags:
+    - keyd
+    - install
+    - linux
+
+- name: remove repo
+  ansible.builtin.file:
+    path: /tmp/keyd
+    state: absent
+  when: keyd_version.rc != 0
+  tags:
+    - keyd
+    - install
+    - linux
+
+- name: enable service
+  ansible.builtin.systemd:
+    name: keyd
+    enabled: yes
+    state: started
+  become: yes
+  tags:
+    - keyd
+    - service
+    - linux
+
+- name: symlink config
+  become: yes
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/keyd/default.conf"
+    dest: /etc/keyd/default.conf
+    state: link
+    follow: no
+    force: yes
+  tags:
+    - keyd
+    - link
+    - linux
