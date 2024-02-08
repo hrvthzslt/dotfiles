@@ -1,0 +1,51 @@
+---
+- name: alacritty | install
+  ansible.builtin.apt:
+    name: alacritty
+  when: ansible_facts['os_family'] == 'Debian'
+  tags:
+    - alacritty
+    - install
+    - desktop
+
+- name: alacritty | create directory
+  ansible.builtin.file:
+    path: ~/.config/alacritty
+    state: directory
+  tags:
+    - alacritty
+    - link
+    - desktop
+
+- name: alacritty | symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/alacritty"
+    dest: ~/.config/alacritty
+    state: link
+    force: yes
+  tags:
+    - alacritty
+    - link
+    - desktop
+
+- name: wezterm | symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/wezterm/.wezterm.lua"
+    dest: ~/.wezterm.lua
+    state: link
+    force: yes
+  tags:
+    - wezterm
+    - link
+    - desktop
+
+- name: kitty | symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/kitty"
+    dest: ~/.config/kitty
+    state: link
+    force: yes
+  tags:
+    - kitty
+    - link
+    - desktop
