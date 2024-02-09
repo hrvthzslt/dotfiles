@@ -1,20 +1,20 @@
 ---
-- name: export NIXPKGS_ALLOW_UNFREE
-  ansible.builtin.shell: export NIXPKGS_ALLOW_UNFREE=1
-  tags:
-    - github
-    - install
-    - cli
+# - name: export NIXPKGS_ALLOW_UNFREE
+#   ansible.builtin.shell: export NIXPKGS_ALLOW_UNFREE=1
+#   tags:
+#     - github
+#     - install
+#     - cli
 
 - name: install
-  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.starship
+  ansible.builtin.shell: NIXPKGS_ALLOW_UNFREE=1 ~/.nix-profile/bin/nix-env -iA nixpkgs.gh
   tags:
     - github
     - install
     - cli
 
 - name: install plugins
-  ansible.builtin.shell: gh extension install "{{ item }}" --force
+  ansible.builtin.shell: ~/.nix-profile/bin/gh extension install "{{ item }}" --force
   loop:
     - github/gh-copilot
     - dlvhdr/gh-dash
