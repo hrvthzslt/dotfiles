@@ -1,13 +1,6 @@
 ---
-- name: source nix profile
-  ansible.builtin.script: ~/.nix-profile/etc/profile.d/nix.sh
-  tags:
-    - utilities
-    - install
-    - cli
-
 - name: install
-  ansible.builtin.shell: nix-env -iA nixpkgs."{{ item }}"
+  ansible.builtin.shell:  "{{ ansible_env.HOME }}".nix-profile/bin/nix-env -iA nixpkgs."{{ item }}"
   loop:
     - gccgo
     - fzf
