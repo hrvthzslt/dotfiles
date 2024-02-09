@@ -1,6 +1,6 @@
 ---
 - name: install
-  ansible.builtin.shell: nix-env -iA nixpkgs."{{ item }}"
+  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs."{{ item }}"
   loop:
     - redis
     # - iredis

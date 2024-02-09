@@ -7,7 +7,7 @@
     - cli
 
 - name: install
-  ansible.builtin.shell: nix-env -iA nixpkgs.starship
+  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.starship
   tags:
     - github
     - install

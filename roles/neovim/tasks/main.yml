@@ -1,6 +1,6 @@
 ---
 - name: install
-  ansible.builtin.shell: nix-env -iA nixpkgs.neovim
+  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.neovim
   tags:
     - neovim
     - install
