@@ -1,6 +1,6 @@
 ---
 - name: install
-  ansible.builtin.shell:  "{{ ansible_env.HOME }}".nix-profile/bin/nix-env -iA nixpkgs."{{ item }}"
+  ansible.builtin.shell:  {{ ansible_env.HOME }}/.nix-profile/bin/nix-env -iA nixpkgs."{{ item }}"
   loop:
     - gccgo
     - fzf
