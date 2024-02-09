@@ -1,6 +1,6 @@
 ---
 - name: clean nix garbage
-  ansible.builtin.shell: /nix/var/nix/profiles/default/bin/nix-store --gc
+  ansible.builtin.shell: ~/.nix-profile/bin/nix-store --gc
   tags:
     - epilogue
     - install
