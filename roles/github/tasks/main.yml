@@ -1,6 +1,6 @@
 ---
 - name: install
-  ansible.builtin.shell: "export NIXPKGS_ALLOW_UNFREE=1; ~/.nix-profile/bin/nix-env -iA nixpkgs.gh"
+  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.gh
   tags:
     - github
     - install
