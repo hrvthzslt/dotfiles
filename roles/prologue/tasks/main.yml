@@ -1,7 +1,10 @@
 ---
-- name: install curl
+- name: install
   ansible.builtin.apt:
-    name: curl
+    name: "{{ item }}"
+  loop: 
+    - curl
+    - make
   become: yes
   when: ansible_facts['os_family'] == 'Debian'
   tags:
