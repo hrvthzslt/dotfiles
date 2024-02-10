@@ -8,6 +8,7 @@
 
 - name: install gh plugins
   ansible.builtin.shell: ~/.nix-profile/bin/gh extension install "{{ item }}" --force
+  ignore_errors: yes
   loop:
     - github/gh-copilot
     - dlvhdr/gh-dash
