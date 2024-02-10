@@ -1,12 +1,12 @@
 ---
 - name: install
-  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.tmux
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.tmux"
   tags:
     - tmux
     - install
     - cli
 
-- name: symlink config
+- name: create config directory
   ansible.builtin.file:
     path: ~/.config/tmux
     state: directory

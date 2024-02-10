@@ -1,6 +1,6 @@
 ---
 - name: install
-  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs."{{ item }}"
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.{{ item }}"
   loop:
     - php82
     - php82Packages.composer
@@ -9,7 +9,7 @@
     - install
     - cli
 
-- name: symlink config
+- name: phpactor | create config directory
   ansible.builtin.file:
     path: ~/.config/phpactor
     state: directory
@@ -18,7 +18,7 @@
     - link
     - cli
 
-- name: symlink config
+- name: phpactor | symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/phpactor"
     dest: ~/.config/phpactor

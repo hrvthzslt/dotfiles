@@ -9,7 +9,7 @@
     - install
     - desktop
 
-- name: alacritty | create directory
+- name: alacritty | create config directory
   ansible.builtin.file:
     path: ~/.config/alacritty
     state: directory

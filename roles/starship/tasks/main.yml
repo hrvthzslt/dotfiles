@@ -1,6 +1,6 @@
 ---
 - name: install
-  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.starship
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.starship"
   tags:
     - starship
     - install

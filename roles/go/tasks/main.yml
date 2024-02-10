@@ -1,6 +1,6 @@
 ---
 - name: install
-  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.go
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.go"
   tags:
     - go
     - install

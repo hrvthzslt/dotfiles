@@ -1,6 +1,6 @@
 ---
 - name: install
-  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.cht-sh
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.cht-sh"
   tags:
     - cht.sh
     - install

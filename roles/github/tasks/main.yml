@@ -1,12 +1,12 @@
 ---
-- name: install
-  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.gh
+- name: install gh
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.gh"
   tags:
     - github
     - install
     - cli
 
-- name: install plugins
+- name: install gh plugins
   ansible.builtin.shell: ~/.nix-profile/bin/gh extension install "{{ item }}" --force
   loop:
     - github/gh-copilot

@@ -1,12 +1,12 @@
 ---
 - name: install
-  ansible.builtin.shell: ~/.nix-profile/bin/nix-env -iA nixpkgs.neovim
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.neovim"
   tags:
     - neovim
     - install
     - cli
 
-- name: create directory
+- name: create config directory
   ansible.builtin.file:
     path: ~/.config/nvim
     state: directory
