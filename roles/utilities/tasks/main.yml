@@ -19,6 +19,7 @@
     - w3m
     - tldr
     - jq
+    - ranger
     - dwt1-shell-color-scripts
   tags:
     - utilities
