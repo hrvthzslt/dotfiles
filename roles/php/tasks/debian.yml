@@ -1,0 +1,10 @@
+---
+- name: install
+  ansible.builtin.apt:
+    name: "{{ item }}"
+  loop:
+    - php-cli
+    - php-fpm
+    - php-common
+    - composer
+  become: yes
