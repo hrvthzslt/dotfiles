@@ -1,0 +1,27 @@
+---
+- name: install
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.cht-sh"
+  tags:
+    - cht.sh
+    - install
+    - cli
+
+- name: symlink config
+  ansible.builtin.file:
+    path: ~/.config/cht.sh
+    state: directory
+  tags:
+    - cht.sh
+    - link
+    - cli
+
+- name: symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/cht.sh/"
+    dest: ~/.config/cht.sh
+    state: link
+    force: yes
+  tags:
+    - cht.sh
+    - link
+    - cli

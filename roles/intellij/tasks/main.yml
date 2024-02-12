@@ -1,0 +1,11 @@
+---
+- name: symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/idea/.ideavimrc"
+    dest: ~/.ideavimrc
+    state: link
+    force: yes
+  tags:
+    - intellij
+    - link
+    - desktop

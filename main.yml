@@ -1,0 +1,25 @@
+---
+- name: Set up local environment
+  hosts: localhost
+  roles:
+    - prologue
+    - nix
+    - utilities
+    - shell
+    - tmux
+    - mysql
+    - redis
+    - php
+    - nodejs
+    - python
+    - go
+    - starship
+    - github
+    - neovim
+    - cht.sh
+    - toolbox
+    - keyd
+    - terminal
+    - fonts
+    - intellij
+    - epilogue

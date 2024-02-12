@@ -1,0 +1,27 @@
+---
+- name: install
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.neovim"
+  tags:
+    - neovim
+    - install
+    - cli
+
+- name: create config directory
+  ansible.builtin.file:
+    path: ~/.config/nvim
+    state: directory
+  tags:
+    - neovim
+    - link
+    - cli
+
+- name: symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/nvim"
+    dest: ~/.config/nvim
+    state: link
+    force: yes
+  tags:
+    - neovim
+    - link
+    - cli

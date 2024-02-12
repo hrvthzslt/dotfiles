@@ -1,0 +1,7 @@
+---
+- name: install
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.go"
+  tags:
+    - go
+    - install
+    - cli

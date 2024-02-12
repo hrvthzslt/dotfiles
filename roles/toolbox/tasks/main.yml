@@ -1,0 +1,31 @@
+---
+- name: create directory
+  ansible.builtin.file:
+    path: ~/.local/bin/toolbox
+    state: directory
+  tags:
+    - toolbox
+    - link
+    - cli
+
+- name: symlink scripts
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/toolbox"
+    dest: ~/.local/bin/toolbox
+    state: link
+    force: yes
+  tags:
+    - toolbox
+    - link
+    - cli
+
+- name: symlink mnm config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/mnm"
+    dest: ~/.config/mnm
+    state: link
+    force: yes
+  tags:
+    - toolbox
+    - link
+    - cli

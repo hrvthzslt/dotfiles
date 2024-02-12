@@ -1,0 +1,25 @@
+---
+- name: install
+  ansible.builtin.apt:
+    name: "{{ item }}"
+  loop: 
+    - curl
+    - make
+  become: yes
+  when: ansible_facts['os_family'] == 'Debian'
+  tags:
+    - prologue
+    - install
+    - cli
+
+- name: make folders
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - ~/.config
+    - ~/.local/bin
+  tags:
+    - prologue
+    - install
+    - cli

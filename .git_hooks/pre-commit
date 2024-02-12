@@ -1,4 +1,3 @@
 #!/bin/sh
 
-shellcheck -x toolbox/*
-shellcheck -x setup/*.sh
+shellcheck -x roles/toolbox/files/toolbox/*

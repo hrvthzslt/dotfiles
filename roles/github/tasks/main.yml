@@ -1,0 +1,18 @@
+---
+- name: install gh
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.gh"
+  tags:
+    - github
+    - install
+    - cli
+
+- name: install gh plugins
+  ansible.builtin.shell: ~/.nix-profile/bin/gh extension install "{{ item }}" --force
+  ignore_errors: yes
+  loop:
+    - github/gh-copilot
+    - dlvhdr/gh-dash
+  tags:
+    - github
+    - install
+    - cli
