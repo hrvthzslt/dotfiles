@@ -1,0 +1,10 @@
+---
+- name: install
+  ansible.builtin.apt:
+    name: "{{ item }}"
+  loop:
+    - python3
+  become: yes
+  tags:
+    - install
+    - cli
