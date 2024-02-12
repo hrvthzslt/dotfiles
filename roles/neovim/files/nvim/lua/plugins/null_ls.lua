@@ -24,12 +24,12 @@ local function config()
 			null_ls.builtins.formatting.shfmt.with({
 				extra_args = { "-i", "2", "-ci" },
 			}),
-			null_ls.builtins.diagnostics.phpstan.with({
-				condition = function(utils)
-					return utils.root_has_file({ "phpstan.neon" })
-				end,
-				extra_args = { "--memory-limit=1G" },
-			}),
+			-- null_ls.builtins.diagnostics.phpstan.with({
+			-- 	condition = function(utils)
+			-- 		return utils.root_has_file({ "phpstan.neon" })
+			-- 	end,
+			-- 	extra_args = { "--memory-limit=1G" },
+			-- }),
 		},
 	})
 
