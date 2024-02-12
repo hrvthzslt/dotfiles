@@ -32,8 +32,8 @@ cf() {
 }
 
 u() {
-  git fetch --all --prune
-  git pull --all
+  git fetch --prune
+  git pull
 }
 
 si() {
@@ -52,14 +52,14 @@ p() {
 
 main() {
   case $1 in
-    -c|c) c ;;
-    -ca|ca) ca ;;
-    -da|da) da ;;
-    -cf|cf) cf ;;
-    -u|u) u ;;
-    -si|si) si ;;
-    -s|s) s ;;
-    -p|p) p ;;
+    -c | c) c ;;
+    -ca | ca) ca ;;
+    -da | da) da ;;
+    -cf | cf) cf ;;
+    -u | u) u ;;
+    -si | si) si ;;
+    -s | s) s ;;
+    -p | p) p ;;
     *) help ;;
   esac
 }
