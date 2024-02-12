@@ -1,0 +1,10 @@
+---
+- name: install
+  ansible.builtin.shell: "{{ nix_env_path }} -iA nixpkgs.{{ item }}"
+  loop:
+    - redis
+    # - iredis
+  tags:
+    - redis
+    - install
+    - cli
