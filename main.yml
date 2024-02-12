@@ -9,8 +9,8 @@
     - tmux
     - mysql
     - redis
-    - php
     - nodejs
+    - php
     - python
     - go
     - starship
