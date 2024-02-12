@@ -1,13 +1,10 @@
 ---
-- name: alacritty | install
-  ansible.builtin.apt:
-    name: alacritty
-  become: yes
+- name: run debian tasks
+  ansible.builtin.import_tasks:
+    file: debian.yml
   when: ansible_facts['os_family'] == 'Debian'
   tags:
     - alacritty
-    - install
-    - desktop
 
 - name: alacritty | create config directory
   ansible.builtin.file:
