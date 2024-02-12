@@ -4,8 +4,8 @@
   roles:
     # - prologue
     # - nix
-    - utilities
     - shell
+    - utilities
     - tmux
     - nodejs
     - python
@@ -22,4 +22,4 @@
     - terminal
     - fonts
     - intellij
-    - epilogue
+    # - epilogue
