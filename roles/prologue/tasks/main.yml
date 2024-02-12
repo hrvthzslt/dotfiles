@@ -5,6 +5,8 @@
   when: ansible_facts['os_family'] == 'Debian'
   tags:
     - prologue
+    - install
+    - cli
 
 - name: make folders
   ansible.builtin.file:
