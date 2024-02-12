@@ -4,6 +4,7 @@
     name: "{{ item }}"
   loop:
     - python3
+    - pipx
   become: yes
   tags:
     - install

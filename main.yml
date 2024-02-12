@@ -7,12 +7,12 @@
     - utilities
     - shell
     - tmux
+    - nodejs
+    - python
+    - php
+    - go
     - mysql
     - redis
-    - nodejs
-    - php
-    - python
-    - go
     - starship
     - github
     - neovim
