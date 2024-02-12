@@ -2,8 +2,8 @@
 - name: Set up local environment
   hosts: localhost
   roles:
-    - prologue
-    - nix
+    # - prologue
+    # - nix
     - utilities
     - shell
     - tmux

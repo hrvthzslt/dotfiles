@@ -59,6 +59,3 @@ fzf_share=$(fzf-share)
 
 # starhip
 eval "$(starship init bash)"
-
-# splash screen
-color
