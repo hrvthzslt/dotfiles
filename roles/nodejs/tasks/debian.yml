@@ -1,6 +1,13 @@
 ---
-- name: add nodesource repository
-  ansible.builtin.shell: curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash
+- name: somerepo | no apt key
+  ansible.builtin.get_url:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    dest: /usr/share/keyrings/nodesource.gpg
+
+- name: somerepo | apt source
+  ansible.builtin.apt_repository:
+    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_21.x nodistro main"
+    state: present
   become: yes
 
 - name: install
