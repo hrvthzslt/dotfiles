@@ -1,8 +1,7 @@
 ---
 - name: add nodesource repository
-  ansible.builtin.apt_repository:
-    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main
-    state: present
+  ansible.builtin.shell: curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash
+  become: yes
 
 - name: install
   ansible.builtin.apt:
