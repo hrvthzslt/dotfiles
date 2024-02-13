@@ -85,14 +85,13 @@ index() {
   printf "\n" >>"$read_me_path"
 
   for directory in $directories; do
-    if [ "$directory" = "daily" ]; then
-      continue
-    fi
-
     for note in "$path/$directory"/*; do
       link_title=$(grep -m 1 -o -e "# .*" "$note"/*.md | cut -d" " -f2-)
       new_file_name=$(echo "$link_title" | tr "[:upper:]" "[:lower:]" | tr -dc '[:alnum:]').md
       mv "$note"/*.md "$note"/"$new_file_name" 2>/dev/null
+      if [ "$directory" = "daily" ]; then
+        continue
+      fi
       id=$(echo "$note" | rev | cut -d"/" -f1 | rev)
       row="- $id - [$link_title]($directory/$id/$new_file_name)"
       echo "$row" >>"$read_me_path"

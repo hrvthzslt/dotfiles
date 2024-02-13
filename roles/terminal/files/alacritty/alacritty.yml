@@ -15,6 +15,8 @@ window:
 key_bindings:
   - { key: Comma, mods: Control, action: ResetFontSize }
   - { key: Period, mods: Control, action: IncreaseFontSize }
+  - { key: Period, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
 
 schemes:
