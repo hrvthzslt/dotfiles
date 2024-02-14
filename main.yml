@@ -2,7 +2,7 @@
 - name: Set up local environment
   hosts: localhost
   roles:
-    # - prologue
+    - prologue
     # - nix
     - shell
     - utilities

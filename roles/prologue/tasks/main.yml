@@ -13,8 +13,12 @@
     path: "{{ item }}"
     state: directory
   loop:
-    - ~/.config
-    - ~/.local/bin
+    - "{{ config_dir }}"
+    - "{{ local_bin_dir }}"
+    - "{{ personal_workspace_dir }}"
+    - "{{ sandbox_workspace_dir }}"
+    - "{{ work_workspace_dir }}"
+    - "{{ third_party_workspace_dir }}"
   tags:
     - prologue
     - install
