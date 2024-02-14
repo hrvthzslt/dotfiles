@@ -1,10 +1,11 @@
 ---
-- name: somerepo | no apt key
+- name: nodesource repo | add gpg key
   ansible.builtin.get_url:
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
     dest: /usr/share/keyrings/nodesource.gpg
+  become: yes
 
-- name: somerepo | apt source
+- name: nodesource repo | add source
   ansible.builtin.apt_repository:
     repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_21.x nodistro main"
     state: present
