@@ -23,3 +23,12 @@
     - prologue
     - install
     - cli
+
+- name: make tmp folder
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}"
+    state: directory
+  tags:
+    - prologue
+    - install
+    - cli

@@ -2,14 +2,14 @@
 - name: download install script
   ansible.builtin.get_url:
     url: https://nixos.org/nix/install
-    dest: /tmp/install-nix.sh
+    dest: "{{ tmp_dir }}/install-nix.sh"
   tags:
     - nix
     - install
     - global
 
 - name: install
-  ansible.builtin.script: /tmp/install-nix.sh --no-daemon
+  ansible.builtin.script: "{{ tmp_dir }}/install-nix.sh --no-daemon"
   tags:
     - nix
     - install
@@ -24,7 +24,7 @@
 
 - name: remove install script
   ansible.builtin.file:
-    path: /tmp/install-nix.sh
+    path: "{{ tmp_dir }}/install-nix.sh"
     state: absent
   tags:
     - nix

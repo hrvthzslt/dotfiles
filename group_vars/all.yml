@@ -2,6 +2,7 @@ ansible_python_interpreter: /usr/bin/python3
 
 nix_env_path: "{{ ansible_env.HOME }}/.nix-profile/bin/nix-env"
 
+tmp_dir: "/tmp/install"
 config_dir: "{{ ansible_env.HOME }}/.config"
 local_bin_dir: "{{ ansible_env.HOME }}/.local/bin"
 toolbox_bin_dir: "{{ ansible_env.HOME }}/.local/bin/toolbox"
