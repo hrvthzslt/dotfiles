@@ -1,12 +1,14 @@
 ---
-- name: install
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.cht-sh"
+- name: run debian tasks
+  ansible.builtin.import_tasks:
+    file: debian.yml
+  when: ansible_facts['os_family'] == 'Debian'
   tags:
     - cht.sh
     - install
     - cli
 
-- name: symlink config
+- name: create config directory
   ansible.builtin.file:
     path: ~/.config/cht.sh
     state: directory
