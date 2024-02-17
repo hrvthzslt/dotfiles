@@ -1,13 +1,15 @@
 ---
-- name: install gh
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.gh"
+- name: run debian tasks
+  ansible.builtin.import_tasks:
+    file: debian.yml
+  when: ansible_facts['os_family'] == 'Debian'
   tags:
     - github
     - install
     - cli
 
 - name: install gh plugins
-  ansible.builtin.shell: ~/.nix-profile/bin/gh extension install "{{ item }}" --force
+  ansible.builtin.shell: gh extension install "{{ item }}" --force
   ignore_errors: yes
   loop:
     - github/gh-copilot

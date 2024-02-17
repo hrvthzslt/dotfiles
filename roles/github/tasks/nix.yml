@@ -1,0 +1,7 @@
+---
+- name: install gh
+  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.gh"
+  tags:
+    - github
+    - install
+    - cli
