@@ -1,0 +1,10 @@
+---
+- name: install gtop
+  community.general.npm:
+    name: gtop
+    global: true
+  become: true
+  tags:
+    - gtop
+    - install
+    - cli

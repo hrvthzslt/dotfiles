@@ -15,6 +15,7 @@
     - redis
     - starship
     - github
+    - gtop
     - neovim
     - cht.sh
     - toolbox

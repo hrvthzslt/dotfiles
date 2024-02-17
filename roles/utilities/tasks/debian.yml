@@ -11,7 +11,6 @@
     - imagemagick
     - translate-shell
     # - act
-    # - gtop
     # - hurl
     # - lazydocker
     # - lazygit
