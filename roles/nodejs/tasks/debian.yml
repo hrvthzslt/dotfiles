@@ -8,11 +8,12 @@
 - name: download installer
   ansible.builtin.get_url:
     url: https://deb.nodesource.com/setup_21.x
-    dest: "{{ tmp_dir }}/setup_21.x"
+    dest: "{{ tmp_dir }}/nodejs_setup_21.x"
   become: yes
+  when: nodejs_version.rc != 0
 
 - name: add apt source
-  ansible.builtin.script: "{{ tmp_dir }}/setup_21.x"
+  ansible.builtin.script: "{{ tmp_dir }}/nodejs_setup_21.x"
   become: yes
   when: nodejs_version.rc != 0
 
