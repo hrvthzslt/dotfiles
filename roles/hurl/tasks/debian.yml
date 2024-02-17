@@ -1,0 +1,24 @@
+---
+- name: check if installed
+  ansible.builtin.command: hurl --version
+  register: hurl_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: download installer
+  ansible.builtin.get_url:
+    url: https://github.com/Orange-OpenSource/hurl/releases/download/4.2.0/hurl_4.2.0_amd64.deb
+    dest: "{{ tmp_dir }}/install-hurl.sh"
+  when: hurl_version.rc != 0
+
+- name: apt update
+  ansible.builtin.apt:
+    update_cache: yes
+  become: yes
+  when: hurl_version.rc != 0
+
+- name: install
+  ansible.builtin.apt:
+    deb: "{{ tmp_dir }}/install-hurl.sh"
+    state: present
+  become: yes
