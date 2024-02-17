@@ -1,8 +1,19 @@
 ---
+- name: check if installed
+  ansible.builtin.command: nix-env --version
+  register: nix_env_version
+  ignore_errors: yes
+  changed_when: false
+  tags:
+    - nix
+    - install
+    - linux
+
 - name: download install script
   ansible.builtin.get_url:
     url: https://nixos.org/nix/install
     dest: "{{ tmp_dir }}/install-nix.sh"
+  when: nix_env_version.rc != 0
   tags:
     - nix
     - install
@@ -10,22 +21,7 @@
 
 - name: install
   ansible.builtin.script: "{{ tmp_dir }}/install-nix.sh --no-daemon"
-  tags:
-    - nix
-    - install
-    - global
-
-- name: source nix profile
-  ansible.builtin.script: ~/.nix-profile/etc/profile.d/nix.sh
-  tags:
-    - nix
-    - install
-    - global
-
-- name: remove install script
-  ansible.builtin.file:
-    path: "{{ tmp_dir }}/install-nix.sh"
-    state: absent
+  when: nix_env_version.rc != 0
   tags:
     - nix
     - install
