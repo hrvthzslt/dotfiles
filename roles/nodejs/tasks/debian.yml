@@ -1,17 +1,23 @@
 ---
-- name: nodesource repo | add gpg key
+- name: check if installed
+  ansible.builtin.command: nodejs --version
+  register: nodejs_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: download installer
   ansible.builtin.get_url:
-    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    dest: /usr/share/keyrings/nodesource.gpg
+    url: https://deb.nodesource.com/setup_21.x
+    dest: "{{ tmp_dir }}/setup_21.x"
   become: yes
 
-- name: nodesource repo | add source
-  ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_21.x nodistro main"
-    state: present
+- name: add apt source
+  ansible.builtin.script: "{{ tmp_dir }}/setup_21.x"
   become: yes
+  when: nodejs_version.rc != 0
 
-- name: install
+- name: install nodejs
   ansible.builtin.apt:
     name: nodejs
+    state: present
   become: yes
