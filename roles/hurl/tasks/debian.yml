@@ -22,3 +22,4 @@
     deb: "{{ tmp_dir }}/install-hurl.sh"
     state: present
   become: yes
+  when: hurl_version.rc != 0
