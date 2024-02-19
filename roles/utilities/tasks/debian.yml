@@ -10,8 +10,6 @@
     - entr
     - imagemagick
     - translate-shell
-    # - act
-    # - lazydocker
     # - lazygit
     - tmuxinator
     - ddgr
