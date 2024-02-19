@@ -1,20 +1,25 @@
 ---
-- name: check if installed
-  ansible.builtin.command: go version
-  register: go_version
-  ignore_errors: yes
-  changed_when: false
-
-- name: download
-  ansible.builtin.get_url:
-    url: "https://go.dev/dl/go1.22.0.linux-amd64.tar.gz"
-    dest: "{{ tmp_dir }}/go1.22.0.linux-amd64.tar.gz"
-  when: go_version.rc != 0
-
-- name: unzip
-  ansible.builtin.unarchive:
-    src: "{{ tmp_dir }}/go1.22.0.linux-amd64.tar.gz"
-    dest: /usr/local
-    remote_src: yes
-  when: go_version.rc != 0
+- name: install
+  ansible.builtin.apt:
+    name: golang
   become: yes
+
+# - name: check if installed
+#   ansible.builtin.command: go version
+#   register: go_version
+#   ignore_errors: yes
+#   changed_when: false
+
+# - name: download
+#   ansible.builtin.get_url:
+#     url: "https://go.dev/dl/go1.22.0.linux-amd64.tar.gz"
+#     dest: "{{ tmp_dir }}/go1.22.0.linux-amd64.tar.gz"
+#   when: go_version.rc != 0
+
+# - name: unzip
+#   ansible.builtin.unarchive:
+#     src: "{{ tmp_dir }}/go1.22.0.linux-amd64.tar.gz"
+#     dest: /usr/local
+#     remote_src: yes
+#   when: go_version.rc != 0
+#   become: yes

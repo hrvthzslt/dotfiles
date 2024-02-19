@@ -1,0 +1,31 @@
+---
+- name: check if installed
+  ansible.builtin.command: act --version
+  register: act_version
+  ignore_errors: yes
+  changed_when: false
+  tags:
+    - act
+    - install
+    - cli
+
+- name: clone repo
+  ansible.builtin.git:
+    repo: "https://github.com/nektos/act"
+    dest: "{{ third_party_workspace_dir }}/act"
+    version: v0.2.59
+  tags:
+    - act
+    - install
+    - cli
+
+- name: build
+  ansible.builtin.make:
+    target: install
+    chdir: "{{ third_party_workspace_dir }}/act"
+  become: yes
+  when: act_version.rc != 0
+  tags:
+    - act
+    - install
+    - cli
