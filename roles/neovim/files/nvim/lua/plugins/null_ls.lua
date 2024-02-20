@@ -15,7 +15,6 @@ local function config()
 			null_ls.builtins.formatting.sql_formatter.with({
 				filetypes = { "sql", "mysql" },
 			}),
-			null_ls.builtins.formatting.autopep8,
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.phpcsfixer.with({
 				extra_args = { "--using-cache=no", "--config=.php-cs-fixer.php" },

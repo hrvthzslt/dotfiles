@@ -35,8 +35,17 @@ local function config()
 	})
 
 	-- Python
-	lspconfig.jedi_language_server.setup({
+	lspconfig.pylsp.setup({
 		capabilities = capabilities,
+		settings = {
+			pylsp = {
+				plugins = {
+					pycodestyle = {
+						maxLineLength = 120,
+					},
+				},
+			},
+		},
 	})
 
 	-- Docker
@@ -44,10 +53,10 @@ local function config()
 		capabilities = capabilities,
 	})
 
-    -- Nginx
-    lspconfig.nginx_language_server.setup({
-        capabilities = capabilities,
-    })
+	-- Nginx
+	lspconfig.nginx_language_server.setup({
+		capabilities = capabilities,
+	})
 
 	-- Vue, JavaScript, TypeScript
 	local volar = require("hrvthzslt.lsp.volar")
