@@ -8,12 +8,22 @@
     state: present
   become: true
 
-- name: add official GPG key
+- name: add official GPG key for ubuntu
   ansible.builtin.apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     keyring: /etc/apt/keyrings/docker.gpg
     state: present
   become: true
+  when: ansible_distribution != 'Debian'
+
+- name: add official GPG key for debian
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    keyring: /etc/apt/keyrings/docker.gpg
+    state: present
+  become: true
+  when: ansible_distribution == 'Debian'
+
 
 - name: get system architecture
   ansible.builtin.command: "dpkg --print-architecture"
@@ -22,11 +32,19 @@
   failed_when: false
   check_mode: false
 
-- name: add docker stable repository
+- name: add docker stable ubuntu repository
   ansible.builtin.apt_repository:
     repo: deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
     mode: "0644"
   become: true
+  when: ansible_distribution != 'Debian'
+
+- name: add docker stable debian repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
+    mode: "0644"
+  become: true
+  when: ansible_distribution == 'Debian'
 
 - name: install docker engine
   ansible.builtin.apt:
@@ -46,7 +64,6 @@
     name: docker
     state: started
   become: true
-  when: not ansible_host_environment_is_wsl
 
 - name: add user to docker group
   ansible.builtin.user:
