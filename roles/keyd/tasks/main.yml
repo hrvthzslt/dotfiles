@@ -31,6 +31,12 @@
         state: started
       become: yes
 
+- name: symlink config
+  tags:
+    - keyd
+    - link
+    - linux
+  block:
     - name: symlink config
       become: yes
       ansible.builtin.file:
