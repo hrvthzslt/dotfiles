@@ -1,0 +1,10 @@
+---
+- name: "check if {{ package }} installed"
+  ansible.builtin.command: "{{ nix_env_path }} --query {{ derivation }}"
+  register: package_package_installed
+  ignore_errors: yes
+  changed_when: false
+
+- name: "install {{ package }}"
+  ansible.builtin.shell: "{{ nix_env_path }} -iA nixpkgs.{{ package }}"
+  when: package_package_installed.rc != 0

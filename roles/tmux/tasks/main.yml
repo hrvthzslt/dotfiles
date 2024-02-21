@@ -1,27 +1,30 @@
 ---
 - name: install
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.tmux"
   tags:
     - tmux
     - install
     - cli
-
-- name: create config directory
-  ansible.builtin.file:
-    path: ~/.config/tmux
-    state: directory
-  tags:
-    - tmux
-    - link
-    - cli
+  block:
+    - name: install
+      include_tasks: roles/nix/tasks/install_package.yml
+      vars:
+        package: tmux
+        derivation: tmux
 
 - name: symlink config
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/tmux"
-    dest: ~/.config/tmux
-    state: link
-    force: yes
   tags:
     - tmux
     - link
     - cli
+  block:
+    - name: create config directory
+      ansible.builtin.file:
+        path: ~/.config/tmux
+        state: directory
+
+    - name: symlink config
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/tmux"
+        dest: ~/.config/tmux
+        state: link
+        force: yes

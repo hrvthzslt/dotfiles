@@ -1,10 +1,15 @@
 ---
 - name: install
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.{{ item }}"
-  loop:
-    - nodejs
-    - typescript
   tags:
     - nodejs
     - install
     - cli
+  block:
+    - name: install
+      include_tasks: roles/nix/tasks/install_package.yml
+      vars:
+        package: "{{ item.package }}"
+        derivation: "{{ item.derivation }}"
+      loop:
+        - { package: nodejs, derivation: nodejs }
+        - { package: typescript, derivation: typescript }

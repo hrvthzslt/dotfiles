@@ -1,7 +1,12 @@
 ---
 - name: install
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.go"
   tags:
     - go
     - install
     - cli
+  block:
+    - name: install
+      include_tasks: roles/nix/tasks/install_package.yml
+      vars:
+        package: go
+        derivation: go

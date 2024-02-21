@@ -1,13 +1,18 @@
 ---
 - name: install
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.{{ item }}"
-  loop:
-    - mysql
-    - mycli
   tags:
     - mysql
     - install
     - cli
+  block:
+    - name: install
+      include_tasks: roles/nix/tasks/install_package.yml
+      vars:
+        package: "{{ item.package }}"
+        derivation: "{{ item.derivation }}"
+      loop:
+        - { package: mysql, derivation: mariadb-server }
+        - { package: mycli, derivation: mycli }
 
 - name: symlink config
   ansible.builtin.file:

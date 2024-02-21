@@ -7,11 +7,11 @@
     - utilities
     - shell
     - tmux
+    - nodejs
+    - php
+    - python
     - mysql
     - redis
-    - php
-    - nodejs
-    - python
     - go
     - starship
     - github
@@ -22,4 +22,3 @@
     - terminal
     - fonts
     - intellij
-    - epilogue

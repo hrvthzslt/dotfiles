@@ -1,17 +1,24 @@
 ---
 - name: install
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.starship"
   tags:
     - starship
     - install
     - cli
+  block:
+    - name: install
+      include_tasks: roles/nix/tasks/install_package.yml
+      vars:
+        package: starship
+        derivation: starship
 
 - name: symlink config
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/starship/starship.toml"
-    dest: ~/.config/starship.toml
-    state: link
   tags:
-    - starship
+    - tmux
     - link
     - cli
+  block:
+    - name: symlink config
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/starship/starship.toml"
+        dest: ~/.config/starship.toml
+        state: link

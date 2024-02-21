@@ -1,27 +1,34 @@
 ---
-- name: install
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.{{ item }}"
-  loop:
-    - gccgo
-    - fzf
-    - ripgrep
-    - entr
-    - imagemagick
-    - translate-shell
-    - act
-    - gtop
-    - hurl
-    - lazydocker
-    - lazygit
-    - gnumake
-    - tmuxinator
-    - ddgr
-    - w3m
-    - tldr
-    - jq
-    - ranger
-    - dwt1-shell-color-scripts
+- name: install utilities
   tags:
     - utilities
     - install
     - cli
+  block:
+    - name: install
+      include_tasks: roles/nix/tasks/install_package.yml
+      vars:
+        package: "{{ item.package }}"
+        derivation: "{{ item.derivation }}"
+      loop:
+        - { package: gccgo, derivation: gccgo-wrapper }
+        - { package: fzf, derivation: fzf }
+        - { package: ripgrep, derivation: ripgrep }
+        - { package: entr, derivation: entr }
+        - { package: translate-shell, derivation: translate-shell }
+        - { package: act, derivation: act }
+        - { package: gtop, derivation: gtop }
+        - { package: hurl, derivation: hurl }
+        - { package: lazydocker, derivation: lazydocker }
+        - { package: lazygit, derivation: lazygit }
+        - { package: gnumake, derivation: gnumake }
+        - { package: tmuxinator, derivation: tmuxinator }
+        - { package: ddgr, derivation: ddgr }
+        - { package: w3m, derivation: w3m }
+        - { package: tldr, derivation: tldr }
+        - { package: jq, derivation: jq }
+        - { package: ranger, derivation: ranger }
+      tags:
+        - utilities
+        - install
+        - cli

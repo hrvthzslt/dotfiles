@@ -1,18 +1,32 @@
 ---
-- name: install gh
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.gh"
+- name: install
   tags:
     - github
     - install
     - cli
+  block:
+    - name: install
+      include_tasks: roles/nix/tasks/install_package.yml
+      vars:
+        package: gh
+        derivation: gh
 
-- name: install gh plugins
-  ansible.builtin.shell: ~/.nix-profile/bin/gh extension install "{{ item }}" --force
-  ignore_errors: yes
-  loop:
-    - github/gh-copilot
-    - dlvhdr/gh-dash
-  tags:
-    - github
-    - install
-    - cli
+    - name: check if copilot installed
+      ansible.builtin.shell: "gh extension list | grep copilot"
+      register: copilot_installed
+      ignore_errors: yes
+      changed_when: false
+
+    - name: check if dash installed
+      ansible.builtin.shell: "gh extension list | grep dash"
+      register: dash_installed
+      ignore_errors: yes
+      changed_when: false
+
+    - name: install gh plugins
+      ansible.builtin.shell: gh extension install "{{ item }}" --force
+      ignore_errors: yes
+      loop:
+        - github/gh-copilot
+        - dlvhdr/gh-dash
+      when: copilot_installed.rc != 0 or dash_installed.rc != 0

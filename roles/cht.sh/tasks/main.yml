@@ -1,27 +1,30 @@
 ---
 - name: install
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.cht-sh"
   tags:
     - cht.sh
     - install
     - cli
-
-- name: create config directory
-  ansible.builtin.file:
-    path: ~/.config/cht.sh
-    state: directory
-  tags:
-    - cht.sh
-    - link
-    - cli
+  block:
+    - name: install
+      include_tasks: roles/nix/tasks/install_package.yml
+      vars:
+        package: cht-sh
+        derivation: cht.sh-unstable
 
 - name: symlink config
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/cht.sh/"
-    dest: ~/.config/cht.sh
-    state: link
-    force: yes
   tags:
     - cht.sh
     - link
     - cli
+  block:
+    - name: create config directory
+      ansible.builtin.file:
+        path: ~/.config/cht.sh
+        state: directory
+
+    - name: symlink config
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/cht.sh/"
+        dest: ~/.config/cht.sh
+        state: link
+        force: yes

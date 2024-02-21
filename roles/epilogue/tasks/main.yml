@@ -1,8 +1,0 @@
----
-- name: clean nix garbage
-  ansible.builtin.shell: ~/.nix-profile/bin/nix-store --gc
-  tags:
-    - epilogue
-    - install
-    - cli
-
