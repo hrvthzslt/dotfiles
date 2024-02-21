@@ -1,0 +1,10 @@
+---
+- name: download cht.sh
+  ansible.builtin.get_url:
+    url: https://cht.sh/:cht.sh
+    dest: "{{ local_bin_dir }}/cht.sh"
+
+- name: make cht.sh executable
+  ansible.builtin.file:
+    path: "{{ local_bin_dir }}/cht.sh"
+    mode: u+x

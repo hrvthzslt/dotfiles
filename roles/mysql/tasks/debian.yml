@@ -1,0 +1,9 @@
+---
+- name: install mysql client
+  ansible.builtin.apt:
+    name: mysql-client
+  become: yes
+
+- name: install mycli
+  community.general.pipx:
+    name: mycli

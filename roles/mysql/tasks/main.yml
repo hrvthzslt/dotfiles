@@ -1,9 +1,8 @@
 ---
-- name: install
-  ansible.builtin.shell:  "{{ nix_env_path }} -iA nixpkgs.{{ item }}"
-  loop:
-    - mysql
-    - mycli
+- name: run debian tasks
+  ansible.builtin.import_tasks:
+    file: debian.yml
+  when: ansible_facts['os_family'] == 'Debian'
   tags:
     - mysql
     - install
@@ -15,6 +14,6 @@
     dest: ~/.myclirc
     state: link
   tags:
-    - github
+    - mysql
     - link
     - cli

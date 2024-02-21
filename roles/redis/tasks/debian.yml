@@ -1,0 +1,9 @@
+---
+# - name: install redis
+#   ansible.builtin.apt:
+#     name: redis
+#   become: yes
+
+- name: install iredis
+  community.general.pipx:
+    name: iredis

@@ -1,0 +1,21 @@
+---
+- name: check if installed
+  ansible.builtin.command: starship --version
+  register: starship_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: download installer
+  ansible.builtin.get_url:
+    url: https://starship.rs/install.sh
+    dest: "{{ tmp_dir }}/starship_install.sh"
+  become: yes
+  when: starship_version.rc != 0
+
+- name: install
+  ansible.builtin.expect:
+    command: "sh {{ tmp_dir }}/starship_install.sh"
+    responses:
+      (?i)install: "y"
+  become: yes
+  when: starship_version.rc != 0

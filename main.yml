@@ -4,19 +4,23 @@
   roles:
     - prologue
     - nix
-    - utilities
     - shell
+    - utilities
     - tmux
-    - mysql
-    - redis
-    - php
     - nodejs
     - python
+    - php
     - go
+    - mysql
+    - redis
     - starship
     - github
+    - gtop
+    - hurl
     - neovim
     - cht.sh
+    - act
+    - lazydocker
     - toolbox
     - keyd
     - terminal

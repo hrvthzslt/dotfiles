@@ -34,7 +34,8 @@ export pathprepend
 pathprepend \
   "$HOME/.local/share/nvim/mason/bin" \
   "$HOME/.local/bin/toolbox" \
-  "$HOME/.local/bin"
+  "$HOME/.local/bin" \
+  "/usr/local/go/bin" \
 
 # start ssh-agent
 eval "$(ssh-agent -s)" >/dev/null
@@ -59,6 +60,3 @@ fzf_share=$(fzf-share)
 
 # starhip
 eval "$(starship init bash)"
-
-# splash screen
-color

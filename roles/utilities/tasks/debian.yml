@@ -1,0 +1,20 @@
+---
+- name: install
+  ansible.builtin.apt:
+    name: "{{ item }}"
+  loop:
+    - curl
+    - make
+    - fzf
+    - ripgrep
+    - entr
+    - imagemagick
+    - translate-shell
+    # - lazygit
+    - tmuxinator
+    - ddgr
+    - w3m
+    - tldr
+    - jq
+    - ranger
+  become: yes

@@ -3,6 +3,8 @@
   ansible.builtin.apt:
     name: "{{ item }}"
   loop:
-    - curl
-    - make
+    - php-cli
+    - php-fpm
+    - php-common
+    - composer
   become: yes

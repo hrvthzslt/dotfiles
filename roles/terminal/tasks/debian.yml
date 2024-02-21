@@ -3,6 +3,3 @@
   ansible.builtin.apt:
     name: alacritty
   become: yes
-  tags:
-    - install
-    - desktop

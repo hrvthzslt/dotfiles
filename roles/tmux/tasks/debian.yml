@@ -1,8 +1,5 @@
 ---
 - name: install
   ansible.builtin.apt:
-    name: "{{ item }}"
-  loop:
-    - curl
-    - make
+    name: tmux
   become: yes

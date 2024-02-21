@@ -48,6 +48,3 @@ znap source joshskidmore/zsh-fzf-history-search
 
 # starhip
 eval "$(starship init zsh)"
-
-# splash screen
-color

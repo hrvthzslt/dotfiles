@@ -1,0 +1,22 @@
+---
+- name: check if installed
+  ansible.builtin.command: lazydocker --version
+  register: lazydocker_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: download installer
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh"
+    dest: "{{ tmp_dir }}/install_lazydocker.sh"
+  when: lazydocker_version.rc != 0
+
+- name: make executeable executable
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/install_lazydocker.sh"
+    mode: u+x
+  when: lazydocker_version.rc != 0
+
+- name: install
+  ansible.builtin.script: "{{ tmp_dir }}/install_lazydocker.sh"
+  when: lazydocker_version.rc != 0

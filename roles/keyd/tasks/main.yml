@@ -12,29 +12,18 @@
 - name: clone repo
   ansible.builtin.git:
     repo: "https://github.com/rvaiya/keyd"
-    dest: /tmp/keyd
+    dest: "{{ third_party_workspace_dir }}/keyd"
     version: v2.4.3
-  when: keyd_version.rc != 0
   tags:
     - keyd
     - install
     - linux
 
 - name: build
-  ansible.builtin.shell: make install
-  args:
-    chdir: /tmp/keyd
+  ansible.builtin.make:
+    target: install
+    chdir: "{{ third_party_workspace_dir }}/keyd"
   become: yes
-  when: keyd_version.rc != 0
-  tags:
-    - keyd
-    - install
-    - linux
-
-- name: remove repo
-  ansible.builtin.file:
-    path: /tmp/keyd
-    state: absent
   when: keyd_version.rc != 0
   tags:
     - keyd

@@ -3,6 +3,6 @@
   ansible.builtin.apt:
     name: "{{ item }}"
   loop:
-    - curl
-    - make
+    - python3
+    - pipx
   become: yes
