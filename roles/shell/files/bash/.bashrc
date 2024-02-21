@@ -33,8 +33,12 @@ export pathprepend
 
 pathprepend \
   "$HOME/.local/share/nvim/mason/bin" \
+  "$HOME/.local/bin/npm_packages/bin" \
   "$HOME/.local/bin/toolbox" \
-  "$HOME/.local/bin"
+  "$HOME/.local/bin" \
+  "$HOME/.nix-profile/bin"
+
+export NODE_PATH="$HOME/.local/bin/npm_packages/lib/node_modules"
 
 # start ssh-agent
 eval "$(ssh-agent -s)" >/dev/null

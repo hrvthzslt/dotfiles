@@ -13,3 +13,21 @@
       loop:
         - { package: nodejs, derivation: nodejs }
         - { package: typescript, derivation: typescript }
+
+    - name: create global node bin directory
+      ansible.builtin.file:
+        path: "{{ node_global_bin_dir }}"
+        state: directory
+
+- name: symlink config
+  tags:
+    - nodejs
+    - link
+    - cli
+  block:
+    - name: symlink config
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/nodejs/.npmrc"
+        dest: ~/.npmrc
+        state: link
+        force: yes

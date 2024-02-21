@@ -1,7 +1,7 @@
 ---
 - name: create directory
   ansible.builtin.file:
-    path: ~/.local/bin/toolbox
+    path: "{{ toolbox_bin_dir }}"
     state: directory
   tags:
     - toolbox
@@ -11,7 +11,7 @@
 - name: symlink scripts
   ansible.builtin.file:
     src: "{{ role_path }}/files/toolbox"
-    dest: ~/.local/bin/toolbox
+    dest: "{{ toolbox_bin_dir }}"
     state: link
     force: yes
   tags:

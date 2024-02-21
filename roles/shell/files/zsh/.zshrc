@@ -10,6 +10,22 @@ if [ -z "$TMUX" ]; then
     ta;
 fi
 
+# add to path
+pathprepend() {
+  for arg in "$@"; do
+    export PATH="$1:$PATH"
+  done
+}
+
+pathprepend \
+  "$HOME/.local/share/nvim/mason/bin" \
+  "$HOME/.local/bin/npm_packages/bin" \
+  "$HOME/.local/bin/toolbox" \
+  "$HOME/.local/bin" \
+  "$HOME/.nix-profile/bin"
+
+export pathprepend
+
 # key bindings
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
@@ -48,6 +64,3 @@ znap source joshskidmore/zsh-fzf-history-search
 
 # starhip
 eval "$(starship init zsh)"
-
-# splash screen
-color
