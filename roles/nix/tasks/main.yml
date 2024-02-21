@@ -6,7 +6,7 @@
     - global
   block:
     - name: check if installed
-      ansible.builtin.command: nix-env --version
+      ansible.builtin.command: "{{ nix_env_path }} --version"
       register: nix_env_version
       ignore_errors: yes
       changed_when: false
