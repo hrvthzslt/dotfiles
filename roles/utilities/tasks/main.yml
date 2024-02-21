@@ -21,7 +21,6 @@
         - { package: hurl, derivation: hurl }
         - { package: lazydocker, derivation: lazydocker }
         - { package: lazygit, derivation: lazygit }
-        - { package: gnumake, derivation: gnumake }
         - { package: tmuxinator, derivation: tmuxinator }
         - { package: ddgr, derivation: ddgr }
         - { package: w3m, derivation: w3m }
