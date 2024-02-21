@@ -10,6 +10,7 @@ debian() {
     return
   fi
 
+  sudo apt update
   sudo apt install -y python3 ansible
 
   run_ansible

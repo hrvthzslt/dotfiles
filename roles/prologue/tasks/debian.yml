@@ -1,4 +1,9 @@
 ---
+- name: update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  become: true
+
 - name: install
   ansible.builtin.apt:
     name: "{{ item }}"
@@ -6,6 +11,3 @@
     - curl
     - make
   become: yes
-  tags:
-    - install
-    - desktop
