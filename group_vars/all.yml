@@ -1,2 +1,12 @@
 ansible_python_interpreter: /usr/bin/python3
-nix_env_path: ~/.nix-profile/bin/nix-env
+
+nix_env_path: "{{ ansible_env.HOME }}/.nix-profile/bin/nix-env"
+
+tmp_dir: "/tmp"
+config_dir: "{{ ansible_env.HOME }}/.config"
+local_bin_dir: "{{ ansible_env.HOME }}/.local/bin"
+toolbox_bin_dir: "{{ ansible_env.HOME }}/.local/bin/toolbox"
+personal_workspace_dir: "{{ ansible_env.HOME }}/workspace/personal"
+sandbox_workspace_dir: "{{ ansible_env.HOME }}/workspace/sandbox"
+work_workspace_dir: "{{ ansible_env.HOME }}/workspace/work"
+third_party_workspace_dir: "{{ ansible_env.HOME }}/workspace/third-party"

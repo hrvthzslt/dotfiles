@@ -1,5 +1,10 @@
 #!/bin/sh
 
+run_ansible() {
+  # ansible-galaxy collection install community.general
+  ansible-playbook -i hosts main.yml --ask-become-pass
+}
+
 debian() {
   if apt >/dev/null 2>&1; then
     return
@@ -7,7 +12,7 @@ debian() {
 
   sudo apt install -y python3 ansible
 
-  ansible-playbook -i hosts main.yml --ask-become-pass
+  run_ansible
 
   echo "Installation complete. Please log out and log back again."
 

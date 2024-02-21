@@ -6,7 +6,7 @@
     - install
     - cli
 
-- name: symlink config
+- name: create config directory
   ansible.builtin.file:
     path: ~/.config/cht.sh
     state: directory
