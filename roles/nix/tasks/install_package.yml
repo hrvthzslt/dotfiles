@@ -4,6 +4,7 @@
   register: package_package_installed
   ignore_errors: yes
   changed_when: false
+  no_log: true
 
 - name: "install {{ package }}"
   ansible.builtin.shell: "{{ nix_env_path }} -iA nixpkgs.{{ package }}"
