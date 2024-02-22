@@ -1,0 +1,10 @@
+---
+- name: symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/vim/.vimrc"
+    dest: ~/.vimrc
+    state: link
+  tags:
+    - vim
+    - link
+    - cli
