@@ -16,7 +16,6 @@ alias fgrep='fgrep --color=auto'
 alias cp="cp -i"
 alias df="df -h"
 
-alias clear="clear; color"
 alias c="clear"
 
 # Tmux
