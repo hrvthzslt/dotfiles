@@ -79,6 +79,14 @@ local function php(dap)
 	}
 end
 
+local function python(dap)
+	require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+	local configurations = dap.configurations.python
+	for _, configuration in pairs(configurations) do
+		configuration.justMyCode = false
+	end
+end
+
 local function config()
 	local dap = require("dap")
 	local dapui = require("dapui")
@@ -103,7 +111,7 @@ local function config()
 
 	go(dap)
 	php(dap)
-	require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+	python(dap)
 
 	require("nvim-dap-virtual-text").setup()
 
