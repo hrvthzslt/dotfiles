@@ -35,17 +35,10 @@ local function config()
 	})
 
 	-- Python
+    local pylsp = require("hrvthzslt.lsp.pylsp")
 	lspconfig.pylsp.setup({
 		capabilities = capabilities,
-		settings = {
-			pylsp = {
-				plugins = {
-					pycodestyle = {
-						maxLineLength = 120,
-					},
-				},
-			},
-		},
+		settings = pylsp.settings,
 	})
 
 	-- Docker
