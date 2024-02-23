@@ -103,6 +103,7 @@ local function config()
 
 	go(dap)
 	php(dap)
+	require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
 
 	require("nvim-dap-virtual-text").setup()
 
@@ -121,6 +122,10 @@ local function config()
 end
 
 return {
+	{
+		"mfussenegger/nvim-dap-python",
+		ft = "python",
+	},
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = {
