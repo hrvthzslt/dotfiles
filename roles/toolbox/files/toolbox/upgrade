@@ -1,0 +1,25 @@
+#!/bin/sh
+# Run package manager updates
+
+main() {
+  if command -v apt >/dev/null; then
+    sudo apt update
+    sudo apt upgrade
+  fi
+
+  if command -v snap >/dev/null; then
+    sudo snap refresh
+  fi
+
+  if command -v flatpak >/dev/null; then
+    flatpak update --appstream && flatpak update -y
+  fi
+
+  if command -v nix-env >/dev/null; then
+      nix-channel --update
+      nix-env --upgrade
+      nix-store --gc
+  fi
+}
+
+main
