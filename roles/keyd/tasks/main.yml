@@ -19,6 +19,12 @@
 
     - name: build
       ansible.builtin.make:
+        target: ""
+        chdir: "{{ third_party_workspace_dir }}/keyd"
+      when: keyd_version.rc != 0
+
+    - name: install
+      ansible.builtin.make:
         target: install
         chdir: "{{ third_party_workspace_dir }}/keyd"
       become: yes
