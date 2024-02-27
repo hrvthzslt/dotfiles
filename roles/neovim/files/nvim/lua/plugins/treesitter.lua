@@ -33,7 +33,10 @@ local function config()
 end
 
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
-	config = config,
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = config,
+	},
+    'nvim-treesitter/nvim-treesitter-context'
 }
