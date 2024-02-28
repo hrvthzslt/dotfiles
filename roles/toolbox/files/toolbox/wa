@@ -7,7 +7,7 @@ gnome() {
 
 main() {
   if [ -z "$1" ]; then
-    echo "Usage: wallp <path>"
+    echo "Usage: wa <path>"
     exit 1
   fi
 
