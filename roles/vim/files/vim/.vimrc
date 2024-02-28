@@ -90,17 +90,6 @@ nnoremap <leader>S :so<CR>
 " Open explorer
 nnoremap <leader>f :Explore<CR>
 
-" Write and Quit
-nnoremap <leader>ww :w<CR>
-nnoremap <leader>wa :wa<CR>
-nnoremap <leader>qq :bd<CR>
-nnoremap <leader>qb :%bd<CR>
-nnoremap <leader>qa :qa<CR>
-
-" Buffers
-nnoremap <leader><leader> :bp<CR>
-nnoremap <leader>o :wincmd o<CR>
-
 " Navigation shortcuts
 nnoremap ú }
 nnoremap ő {
