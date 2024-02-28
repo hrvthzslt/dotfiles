@@ -30,3 +30,21 @@
         - github/gh-copilot
         - dlvhdr/gh-dash
       when: copilot_installed.rc != 0 or dash_installed.rc != 0
+
+- name: symlink config
+  tags:
+    - github
+    - link
+    - cli
+  block:
+    - name: create gh dash config directory
+      ansible.builtin.file:
+        path: ~/.config/gh-dash
+        state: directory
+
+    - name: symlink config
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/gh-dash"
+        dest: ~/.config/gh-dash
+        state: link
+        force: yes
