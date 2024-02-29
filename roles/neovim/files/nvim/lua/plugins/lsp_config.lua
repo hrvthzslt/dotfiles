@@ -1,4 +1,5 @@
 local function config()
+    require("neodev").setup()
 	require("mason").setup()
 	require("mason-lspconfig").setup({ automatic_installation = true })
 
@@ -35,7 +36,7 @@ local function config()
 	})
 
 	-- Python
-    local pylsp = require("hrvthzslt.lsp.pylsp")
+	local pylsp = require("hrvthzslt.lsp.pylsp")
 	lspconfig.pylsp.setup({
 		capabilities = capabilities,
 		settings = pylsp.settings,
@@ -114,4 +115,5 @@ return {
 		config = config,
 	},
 	"j-hui/fidget.nvim",
+    "folke/neodev.nvim",
 }

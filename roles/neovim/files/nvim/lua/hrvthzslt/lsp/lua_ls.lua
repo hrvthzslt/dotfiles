@@ -21,6 +21,9 @@ return {
 			telemetry = {
 				enable = false,
 			},
+			completion = {
+				callSnippet = "Replace",
+			},
 		},
 	},
 	on_attach = function(client, _)
