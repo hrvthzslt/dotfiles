@@ -1,27 +1,21 @@
 ---
-- name: create directory
-  ansible.builtin.file:
-    path: ~/.fonts/zip
-    state: directory
+- name: install
   tags:
     - fonts
     - install
     - desktop
+  block:
+  - name: create directory
+    ansible.builtin.file:
+      path: ~/.fonts/zip
+      state: directory
 
-- name: download
-  ansible.builtin.get_url:
-    url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Hack.zip
-    dest: ~/.fonts/zip/Hack.zip
-  tags:
-    - fonts
-    - install
-    - desktop
+  - name: download hack font
+    ansible.builtin.get_url:
+      url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Hack.zip
+      dest: ~/.fonts/zip/Hack.zip
 
-- name: unarchive
-  ansible.builtin.unarchive:
-    src: ~/.fonts/zip/Hack.zip
-    dest: ~/.fonts
-  tags:
-    - fonts
-    - install
-    - desktop
+  - name: unarchive hack font
+    ansible.builtin.unarchive:
+      src: ~/.fonts/zip/Hack.zip
+      dest: ~/.fonts

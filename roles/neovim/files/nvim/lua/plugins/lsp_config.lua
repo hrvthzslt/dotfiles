@@ -1,5 +1,5 @@
 local function config()
-    require("neodev").setup()
+	require("neodev").setup()
 	require("mason").setup()
 	require("mason-lspconfig").setup({ automatic_installation = true })
 
@@ -115,5 +115,5 @@ return {
 		config = config,
 	},
 	"j-hui/fidget.nvim",
-    "folke/neodev.nvim",
+	"folke/neodev.nvim",
 }

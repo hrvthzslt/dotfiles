@@ -38,14 +38,6 @@ vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
 vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
 
--- Write and Quit
-vim.keymap.set(
-	"n",
-	"ZZ",
-	":DBUIClose<CR> :NvimTreeClose<CR> :lua require('dapui').close()<CR> ZZ",
-	{ desc = "write and close all" }
-)
-
 -- Buffers
 vim.keymap.set("n", "<leader><leader>", ":bp<CR>", { desc = "previous buffer" })
 vim.keymap.set("n", "<leader>o", ":wincmd o<CR>", { desc = "focus on window" })
