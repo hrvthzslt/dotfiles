@@ -1,5 +1,5 @@
 #!/bin/sh
-# Search for a command in the cheat.sh database
+# Github copilot suggest
 
 main() {
   if ! command -v gh >/dev/null; then
