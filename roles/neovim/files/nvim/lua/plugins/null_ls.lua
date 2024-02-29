@@ -7,11 +7,12 @@ local function config()
 		debug = true,
 		sources = {
 			null_ls.builtins.formatting.prettierd,
-			null_ls.builtins.diagnostics.eslint_d.with({
-				condition = function(utils)
-					return utils.root_has_file({ ".eslintrc.js" })
-				end,
-			}),
+            -- TODO: use eslint lsp
+			-- null_ls.builtins.diagnostics.eslint_d.with({
+			-- 	condition = function(utils)
+			-- 		return utils.root_has_file({ ".eslintrc.js" })
+			-- 	end,
+			-- }),
 			null_ls.builtins.formatting.sql_formatter.with({
 				filetypes = { "sql", "mysql" },
 			}),
