@@ -60,6 +60,14 @@ local function config()
 		on_attach = volar.on_attach,
 		filetypes = volar.filetypes,
 	})
+	lspconfig.eslint.setup({
+		on_attach = function(_, bufnr)
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				buffer = bufnr,
+				command = "EslintFixAll",
+			})
+		end,
+	})
 
 	-- Go
 	lspconfig.gopls.setup({
