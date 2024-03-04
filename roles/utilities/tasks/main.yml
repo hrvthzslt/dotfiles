@@ -27,6 +27,7 @@
         - { package: tldr, derivation: tldr }
         - { package: jq, derivation: jq }
         - { package: ranger, derivation: ranger }
+        - { package: bluetuith, derivation: bluetuith }
       tags:
         - utilities
         - install
