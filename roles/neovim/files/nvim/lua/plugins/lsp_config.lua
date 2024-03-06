@@ -25,14 +25,13 @@ local function config()
 		capabilities = capabilities,
 		commands = intelephense.commands,
 		settings = intelephense.settings,
+        on_attach = intelephense.on_attach
 	})
 
 	local phpactor = require("hrvthzslt.lsp.phpactor")
 	lspconfig.phpactor.setup({
 		capabilities = capabilities,
-		on_attach = phpactor.on_attach,
 		init_options = phpactor.init_options,
-		handlers = phpactor.handlers,
 	})
 
 	-- Python
