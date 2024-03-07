@@ -14,6 +14,7 @@ window:
   dynamic_padding: true
   opacity: 0.9
   decorations: None
+  dynamic_title: false
 
 key_bindings:
   - { key: Comma, mods: Control, action: ResetFontSize }
