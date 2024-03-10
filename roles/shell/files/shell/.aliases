@@ -22,8 +22,8 @@ alias c="clear"
 alias tkill="tmux kill-server"
 
 # Lazy
-alias lgi="lazygit"
-alias ldo="lazydocker"
+alias gl="lazygit"
+alias dl="lazydocker"
 
 # Editor
 alias v="nvim"
