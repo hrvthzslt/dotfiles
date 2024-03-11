@@ -11,7 +11,7 @@
         package: "{{ item.package }}"
         derivation: "{{ item.derivation }}"
       loop:
-        - { package: mysql, derivation: mariadb-server }
+        - { package: mysql80, derivation: mysql }
         - { package: mycli, derivation: mycli }
 
 - name: symlink config
