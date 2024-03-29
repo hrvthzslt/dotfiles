@@ -1,0 +1,18 @@
+---
+- name: check if installed
+  ansible.builtin.command: slack --version
+  register: slack_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: download installer
+  ansible.builtin.get_url:
+    url: "https://downloads.slack-edge.com/desktop-releases/linux/x64/4.37.94/slack-desktop-4.37.94-amd64.deb"
+    dest: "{{ tmp_dir }}/slack-desktop-4.37.94-amd64.deb"
+  when: slack_version.rc != 0
+
+- name: install
+  ansible.builtin.apt:
+    deb: "{{ tmp_dir }}/slack-desktop-4.37.94-amd64.deb"
+  when: slack_version.rc != 0
+  become: true
