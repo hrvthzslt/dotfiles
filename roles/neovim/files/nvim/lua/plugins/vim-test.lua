@@ -12,7 +12,7 @@ local function config()
 
 	if io.open("docker-compose.yml", "r") ~= nil then
 		vim.cmd([[
-            let test#php#phpunit#executable='docker-compose exec php phpunit --testdox'
+            let test#php#phpunit#executable='docker compose exec php phpunit --testdox'
         ]])
 	end
 end
