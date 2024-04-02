@@ -42,6 +42,10 @@ vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader><leader>", ":bp<CR>", { desc = "previous buffer" })
 vim.keymap.set("n", "<leader>o", ":wincmd o<CR>", { desc = "focus on window" })
 
+-- Quickfix
+vim.keymap.set("n", "<leader>n", ":cnext<CR>", { desc = "Next quick fix item" })
+vim.keymap.set("n", "<leader>p", ":cprevious<CR>", { desc = "Previous quick fix item" })
+
 -- Packer keymaps
 -- vim.keymap.set("n", "<leader>ps", ":PackerSync<CR>", { desc = "Packer Sync" })
 -- vim.keymap.set("n", "<leader>pc", ":PackerCompile<CR>", { desc = "Packer Compile" })
