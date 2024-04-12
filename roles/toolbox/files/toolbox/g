@@ -7,7 +7,7 @@ help() {
   echo "  -ca    checkout branch"
   echo "  -da    delete all local branch"
   echo "  -cf    clear changes and checkout"
-  echo "  -u     update all branch"
+  echo "  -u     fetch prune and pull"
   echo "  -si    submodule init"
   echo "  -s     stash all files"
   echo "  -p     pop stash and reset"
