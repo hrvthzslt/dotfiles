@@ -4,7 +4,7 @@ local function config()
 	vim.b.copilot_enabled = true
 	vim.g.copilot_filetypes = {
 		markdown = true,
-        yaml = true,
+		yaml = true,
 	}
 
 	vim.keymap.set("i", "<C-j>", "copilot#Next()", { expr = true, silent = true })
@@ -19,5 +19,4 @@ end
 
 return {
 	{ "github/copilot.vim", config = config },
-	"ofseed/copilot-status.nvim",
 }

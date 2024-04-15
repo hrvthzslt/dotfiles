@@ -9,7 +9,7 @@ local clients_lsp = function()
 
 	local c = {}
 	for _, client in pairs(clients) do
-		if client.name ~= "copilot" then
+		if client.name ~= "GitHub Copilot" then
 			table.insert(c, string.sub(client.name, 1, 1))
 		end
 	end
@@ -44,6 +44,14 @@ local truncated_branch = function()
 	return string.sub(branch, 1, limit) .. postfix
 end
 
+local conpilot_icon = function()
+	if vim.g.loaded_copilot == 1 and vim.fn["copilot#Enabled"]() == 1 then
+		return " "
+	else
+		return " "
+	end
+end
+
 local function config()
 	require("lualine").setup({
 		options = {
@@ -60,7 +68,7 @@ local function config()
 				-- Signal attached lsp
 				-- '"󰢾 " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
 				clients_lsp,
-				"copilot",
+				conpilot_icon,
 				{ "diagnostics", sources = { "nvim_diagnostic" } },
 			},
 			lualine_c = {
