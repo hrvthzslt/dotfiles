@@ -1,0 +1,16 @@
+#!/bin/sh
+# Change the power mode of the CPU
+
+get_available_power_modes() {
+  cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+}
+
+set_power_mode() {
+  echo "$1" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+}
+
+main() {
+  set_power_mode "$(get_available_power_modes | tr ' ' '\n' | fzf)"
+}
+
+main
