@@ -5,8 +5,8 @@ local function config()
 		defaults = {
 			sorting_strategy = "ascending",
 			layout_config = {
-				width = 0.999, -- Adjust the width of the layout (as a percentage of the screen width)
-				height = 0.999, -- Adjust the height of the layout (as a percentage of the screen height)
+				width = 0.8, -- Adjust the width of the layout (as a percentage of the screen width)
+				height = 0.8, -- Adjust the height of the layout (as a percentage of the screen height)
 				prompt_position = "top", -- Set the prompt position (top, bottom, or both)
 			},
 		},
