@@ -10,7 +10,13 @@ set_power_mode() {
 }
 
 main() {
-  set_power_mode "$(get_available_power_modes | tr ' ' '\n' | fzf)"
+  power_mode="$(get_available_power_modes | tr ' ' '\n' | fzf)"
+
+  if [ $? -eq 130 ]; then
+    exit 130
+  fi
+
+  set_power_mode "$power_mode"
 }
 
 main
