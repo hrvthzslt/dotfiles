@@ -54,14 +54,21 @@ local function config()
 		},
 	})
 
+	require("dir-telescope").setup({
+		hidden = false,
+		no_ignore = false,
+		show_preview = true,
+	})
+
 	telescope.load_extension("fzf")
 	telescope.load_extension("ui-select")
+	telescope.load_extension("dir")
 
 	local builtin = require("telescope.builtin")
 
 	vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "Search Files" })
 	vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Search Grep" })
-	vim.keymap.set("n", "<leader>ss", "<cmd>:Telescope live_grep search_dirs=src<CR>", { desc = "Search grep in Src" })
+	vim.keymap.set("n", "<leader>sd", "<cmd>Telescope dir live_grep<CR>", { desc = "Search grep in Dir" })
 	vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "Search Buffers" })
 	vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Search Help tags" })
 	vim.keymap.set("n", "<leader>sl", builtin.resume, { desc = "Last Search" })
@@ -79,4 +86,5 @@ return {
 		config = config,
 	},
 	{ "nvim-telescope/telescope-ui-select.nvim" },
+	{ "princejoogie/dir-telescope.nvim" },
 }
