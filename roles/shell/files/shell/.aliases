@@ -29,4 +29,5 @@ alias dl="lazydocker"
 alias v="nvim"
 
 # Ranger
-alias r='ranger --choosedir=$HOME/rangerdir;cd "$(cat $HOME/rangerdir)"'
+alias rd='ranger --choosedir=$HOME/rangerdir;cd "$(cat $HOME/rangerdir)"'
+alias r='ranger'
