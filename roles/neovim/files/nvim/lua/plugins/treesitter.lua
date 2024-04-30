@@ -6,6 +6,28 @@ local function config()
 			-- 'vue'
 		},
 
+		ensure_installed = {
+			"bash",
+			"go",
+			"perl",
+			"python",
+			"ruby",
+			"c",
+			"dockerfile",
+			"javascript",
+			"typescript",
+			"json",
+			"lua",
+			"markdown",
+			"php",
+			"query",
+			"sql",
+			"vim",
+			"vimdoc",
+			"vue",
+			"yaml",
+		},
+
 		-- Install parsers synchronously (only applied to `ensure_installed`)
 		sync_install = false,
 
@@ -38,5 +60,5 @@ return {
 		build = ":TSUpdate",
 		config = config,
 	},
-    'nvim-treesitter/nvim-treesitter-context'
+	"nvim-treesitter/nvim-treesitter-context",
 }
