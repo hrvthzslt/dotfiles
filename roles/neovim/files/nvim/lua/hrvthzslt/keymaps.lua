@@ -30,6 +30,9 @@ vim.keymap.set("n", "<Leader>x", ":!xdg-open %<CR><CR>", { desc = "Xdg open" })
 -- Source file
 vim.keymap.set("n", "<Leader>S", ":so<CR>", { desc = "Source" })
 
+-- Copy file path
+vim.keymap.set("n", "<Leader>C", ":! echo % | xsel -ib<CR><CR>", { desc = "Copy file path" })
+
 -- Move lines up and down.
 vim.keymap.set("i", "<A-j>", "<Esc>:move .+1<CR>==gi")
 vim.keymap.set("i", "<A-k>", "<Esc>:move .-2<CR>==gi")
