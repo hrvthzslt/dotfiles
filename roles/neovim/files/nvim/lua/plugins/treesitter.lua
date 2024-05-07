@@ -18,6 +18,8 @@ local function config()
 			"javascript",
 			"typescript",
 			"json",
+			"html",
+			"toml",
 			"lua",
 			"markdown",
 			"php",
