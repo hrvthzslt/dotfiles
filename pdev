@@ -1,0 +1,41 @@
+#!/bin/sh
+
+collect() {
+  user=$(whoami)
+  uid=$(id -u)
+  gid=$(id -g)
+  image_tag="portable-dev"
+}
+
+build() {
+  docker build \
+    --build-arg HOST_USER="$user" \
+    --build-arg HOST_UID="$uid" \
+    --build-arg HOST_GID="$gid" \
+    -t "$image_tag" .
+}
+
+run() {
+  docker run -it --rm --network host \
+    -v .:/home/"$user"/workspace/project \
+    "$image_tag"
+}
+
+main() {
+  collect
+
+  case $1 in
+    --build | -b | b)
+      build
+      ;;
+    --run | -r | r)
+      run
+      ;;
+    *)
+      echo "Usage: pdev {--build|--run}"
+      exit 1
+      ;;
+  esac
+}
+
+main "$1"
