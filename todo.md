@@ -4,4 +4,4 @@
 - [x] Move lines horizontally
 - [x] Move lines vertically
 - [ ] Highlight on yank
-- [ ] Marks as harpoon
+- [x] Marks as harpoon
