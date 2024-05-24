@@ -47,28 +47,33 @@ set number
 
 """ Search ----------------------------------
 set hls
-nmap <Esc> :nohlsearch<CR>
+nnoremap <leader>k :nohlsearch<CR>
 
 """ Mappings --------------------------------
-map <leader>w :w<CR>
-
 map ő {
 map ú }
-map é $
 map Ő [m
 map Ú ]m
 
-map <leader>r <Action>(RenameElement)
-map <leader>c <Action>(Stop)
-map <leader>z <Action>(ToggleDistractionFreeMode)
-map <leader>f <Action>(RecentFiles)
-map <leader>u <Action>(ChooseRunConfiguration)
-map <leader>k <Action>(Commit)
-map gr <Action>(GotoImplementation)
+""" Window
+nnoremap <C-w>o :action HideAllWindows<CR>
 
-map <leader>s <Action>(SelectInProjectView)
-map <leader>a <Action>(Annotate)
-map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-map <S-Space> <Action>(GotoNextError)
+""" Navigation
+nnoremap <leader>sf :action GotoFile<CR>
+nnoremap <leader>sg :action FindInPath<CR>
+nnoremap <leader>sb :action RecentFiles<CR>
 
-map <leader>b <Action>(ToggleLineBreakpoint)
+""" IDE Tools
+nnoremap <leader>T :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>d :action ActivateDatabaseToolWindow<CR>
+nnoremap <leader>gl :action ActivateVersionControlToolWindow<CR>
+nnoremap <leader>gb :action Annotate<CR>
+nnoremap <leader>tn :action RunClass<CR>
+
+""" Language
+nnoremap <leader>r :action RenameElement<CR>
+nnoremap gr :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+
+""" Debug
+nnoremap <leader>b <Action>(ToggleLineBreakpoint)
