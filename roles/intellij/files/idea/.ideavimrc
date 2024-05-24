@@ -1,9 +1,6 @@
 """ Map leader to space ---------------------
 let mapleader=" "
 
-""" Set nerdtree -------------------------
-set NERDTree
-
 """ Set scroll -------------------------
 set scrolloff=8
 set sidescrolloff=8
@@ -38,10 +35,6 @@ vnoremap s "ss
 nnoremap S "sS
 vnoremap S "sS
 
-""" Which key -------------------------------
-set which-key
-set notimeout
-
 """ Line numbers ----------------------------
 set relativenumber
 set number
@@ -70,23 +63,16 @@ vnoremap <A-k> :action MoveLineUp<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-""" Harpoon
-nnoremap <leader>ha :action ShowHarpoon<cr>
-
-nnoremap <leader>hu :action SetHarpoon1<cr>
-nnoremap <leader>hi :action SetHarpoon2<cr>
-nnoremap <leader>ho :action SetHarpoon3<cr>
-nnoremap <leader>hz :action SetHarpoon4<cr>
-
-nnoremap <A-u> :action GotoHarpoon1<cr>
-nnoremap <A-i> :action GotoHarpoon2<cr>
-nnoremap <A-o> :action GotoHarpoon3<cr>
-nnoremap <A-z> :action GotoHarpoon4<cr>
-
 """ Navigation
 nnoremap <leader>sf :action GotoFile<CR>
 nnoremap <leader>sg :action FindInPath<CR>
 nnoremap <leader>sb :action RecentFiles<CR>
+nmap [e :action GotoPreviousError<CR>
+nmap ]e :action GotoNextError<CR>
+nmap [m :action MethodUp<CR>
+nmap ]m :action MethodDown<CR>
+nmap [h :action JumpToLastChange<CR>
+nmap ]h :action JumpToNextChange<CR>
 
 """ IDE Tools
 nnoremap <leader>T :action ActivateTerminalToolWindow<CR>
@@ -100,6 +86,39 @@ nnoremap <leader>r :action RenameElement<CR>
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap <leader>lf :action ReformatCode<CR>
+nnoremap <leader>ls :action ActivateStructureToolWindow<CR>
+nnoremap <leader>ld :action ActivateProblemsToolWindow<CR>
+nnoremap <leader>le :action ShowErrorDescription<CR>
+nnoremap <leader>lc :action ShowIntentionActions<CR>
 
 """ Debug
-nnoremap <leader>b <Action>(ToggleLineBreakpoint)
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+
+""" Plugins ---------------------------------
+""" NERDTree
+set NERDTree
+nnoremap <leader>f :NERDTreeFind<CR>
+
+""" Highlighted yank
+set highlightedyank
+let g:highlightedyank_highlight_duration = "200"
+
+""" Vim surround
+set surround
+
+""" Which key
+set which-key
+set notimeout
+
+""" Harpoon
+nnoremap <leader>ha :action ShowHarpoon<CR>
+
+nnoremap <leader>hu :action SetHarpoon1<CR>
+nnoremap <leader>hi :action SetHarpoon2<CR>
+nnoremap <leader>ho :action SetHarpoon3<CR>
+nnoremap <leader>hz :action SetHarpoon4<CR>
+
+nnoremap <A-u> :action GotoHarpoon1<cr>
+nnoremap <A-i> :action GotoHarpoon2<cr>
+nnoremap <A-o> :action GotoHarpoon3<cr>
+nnoremap <A-z> :action GotoHarpoon4<cr>
