@@ -5,7 +5,8 @@ let mapleader=" "
 set NERDTree
 
 """ Set scroll -------------------------
-set scrolloff=10
+set scrolloff=8
+set sidescrolloff=8
 
 """ Set commenting -------------------------
 set commentary
@@ -57,6 +58,9 @@ map Ú ]m
 
 """ Window
 nnoremap <C-w>o :action HideAllWindows<CR>
+nnoremap <C-.> :action ZoomInIdeAction<CR>
+nnoremap <C--> :action ZoomOutIdeAction<CR>
+nnoremap <C-,> :action ResetIdeScaleAction<CR>
 
 """ Navigation
 nnoremap <leader>sf :action GotoFile<CR>
@@ -74,6 +78,7 @@ nnoremap <leader>tn :action RunClass<CR>
 nnoremap <leader>r :action RenameElement<CR>
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
+nnoremap <leader>lr :action ReformatCode<CR>
 
 """ Debug
 nnoremap <leader>b <Action>(ToggleLineBreakpoint)
