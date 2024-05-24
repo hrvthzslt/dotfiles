@@ -1,7 +1,7 @@
 # TODO
 
-- [ ] Which key
+- [x] Which key - install plugin dude
 - [ ] Move lines horizontally
-- [ ] Move lines vertically
+- [x] Move lines vertically
 - [ ] Highlight on yank
 - [ ] Marks as harpoon
