@@ -70,6 +70,19 @@ vnoremap <A-k> :action MoveLineUp<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+""" Harpoon
+nnoremap <leader>ha :action ShowHarpoon<cr>
+
+nnoremap <leader>hu :action SetHarpoon1<cr>
+nnoremap <leader>hi :action SetHarpoon2<cr>
+nnoremap <leader>ho :action SetHarpoon3<cr>
+nnoremap <leader>hz :action SetHarpoon4<cr>
+
+nnoremap <A-u> :action GotoHarpoon1<cr>
+nnoremap <A-i> :action GotoHarpoon2<cr>
+nnoremap <A-o> :action GotoHarpoon3<cr>
+nnoremap <A-z> :action GotoHarpoon4<cr>
+
 """ Navigation
 nnoremap <leader>sf :action GotoFile<CR>
 nnoremap <leader>sg :action FindInPath<CR>
