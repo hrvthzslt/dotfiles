@@ -12,6 +12,7 @@ local function config()
 			}),
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.isort,
+			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.phpcsfixer.with({
 				extra_args = { "--using-cache=no", "--config=.php-cs-fixer.php" },
 			}),
