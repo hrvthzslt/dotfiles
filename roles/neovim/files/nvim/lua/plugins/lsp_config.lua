@@ -1,7 +1,7 @@
 local function config()
 	require("neodev").setup()
 	require("mason").setup()
-	require("mason-lspconfig").setup({ automatic_installation = true })
+	-- require("mason-lspconfig").setup({ automatic_installation = true })
 
 	local lspconfig = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()

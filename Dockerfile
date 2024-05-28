@@ -5,22 +5,42 @@ FROM opensuse/tumbleweed
 RUN zypper ref && zypper install -y \
     sudo \
     shadow \
+    openssh-clients \
     gcc \
+    make \
     neovim \
     tmux \
+    nodejs \
+    npm \
+    python3 \
+    python3-pipx \
+    lua-language-server \
+    ShellCheck \
+    shfmt \
+    php \
+    php-dom \
+    php-tokenizer \
+    php-xmlwriter \
+    php-composer2 \
+    php-cs-fixer \
+    go \
+    gopls \
+    StyLua \
     starship \
     git \
     find \
     fzf \
     ripgrep \
     lazygit \
-    python3 \
-    nodejs \
-    npm \
-    php \
-    go \
-    ansible \
     && zypper clean -a
+
+RUN npm i -g bash-language-server \
+    intelephense \
+    dockerfile-language-server-nodejs \
+    typescript \
+    typescript-language-server \
+    @fsouza/prettierd \
+    sql-formatter
 
 # Set environment variables for UID and GID (these will be passed at build time)
 ARG HOST_USER
@@ -39,13 +59,22 @@ RUN echo "$HOST_USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 # Set the user for subsequent instructions
 USER $HOST_USER
 
-# Symlink dotfiles
-RUN mkdir -p /home/$HOST_USER/workspace/dotfiles
-COPY . /home/$HOST_USER/workspace/dotfiles
-RUN cd /home/$HOST_USER/workspace/dotfiles \
-    && ansible-playbook main.yml --tags link --skip-tags keyd,desktop,github
+# Pipx
+RUN pipx ensurepath
+RUN pipx install ruff ruff-lsp python-lsp-server black isort
 
-WORKDIR /home/$HOST_USER/workspace/project
+# Tmux
+RUN sudo mkdir /run/tmux
+RUN sudo chown -R $HOST_UID:$HOST_GID /run/tmux
+
+# Neovim
+COPY --chown=$HOST_USER:$HOST_USER roles/neovim/files/nvim/ /home/$HOST_USER/.config/nvim/
+RUN nvim --headless -c 'Lazy restore' +qa
+RUN nvim --headless +'TSUninstall all' +qa
+RUN nvim --headless +'TSInstall bash python dockerfile javascript typescript php go go json html toml lua markdown query sql vim vimdoc vue yaml git_config git_rebase gitattributes gitcommit gitignore' +'sleep 15' +qa
+
+# Set the working directory
+WORKDIR /home/$HOST_USER/workspace
 
 # Entry point
 CMD ["/bin/bash"]

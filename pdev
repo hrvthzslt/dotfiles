@@ -4,7 +4,9 @@ collect() {
   user=$(whoami)
   uid=$(id -u)
   gid=$(id -g)
-  image_tag="portable-dev"
+  script=$(realpath "$0")
+  script_path=$(dirname "$script")
+  image_tag="pdev"
 }
 
 build() {
@@ -12,12 +14,31 @@ build() {
     --build-arg HOST_USER="$user" \
     --build-arg HOST_UID="$uid" \
     --build-arg HOST_GID="$gid" \
-    -t "$image_tag" .
+    -t "$image_tag" "$script_path"
 }
 
 run() {
+  project_volume=$1
+
+  if [ -z "$project_volume" ]; then
+    echo "Usage: pdev --run <project-volume>"
+    exit 1
+  fi
+
+  project_basename=$(basename "$(pwd "$project_volume")")
+
+  project_path_in_container="/home/$user/workspace/$project_basename"
+
   docker run -it --rm --network host \
-    -v .:/home/"$user"/workspace/project \
+    -v "$project_volume":"$project_path_in_container" \
+    -w "$project_path_in_container" \
+    -v "$HOME"/.ssh:/home/"$user"/.ssh \
+    -v "$HOME"/.gitconfig:/home/"$user"/.gitconfig \
+    -v "$HOME"/intelephense/:/home/"$user"/intelephense/ \
+    -v "$script_path"/roles/shell/files/bash/.bashrc:/home/"$user"/.bashrc \
+    -v "$script_path"/roles/tmux/files/tmux/tmux.conf:/home/"$user"/.config/tmux/tmux.conf \
+    -v "$script_path"/roles/starship/tasks/main.yml:/home/"$user"/.config/starship.toml \
+    -v "$script_path"/roles/neovim/files/nvim/:/home/"$user"/.config/nvim \
     "$image_tag"
 }
 
@@ -29,7 +50,7 @@ main() {
       build
       ;;
     --run | -r | r)
-      run
+      run "$2"
       ;;
     *)
       echo "Usage: pdev {--build|--run}"
@@ -38,4 +59,4 @@ main() {
   esac
 }
 
-main "$1"
+main "$1" "$2"
