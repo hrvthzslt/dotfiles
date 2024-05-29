@@ -4,7 +4,7 @@ return {
 		client.server_capabilities.documentRangeFormattingProvider = false
 	end,
 	handlers = {
-		["textDocument/publishDiagnostics"] = function() end,
+		-- ["textDocument/publishDiagnostics"] = function() end,
 	},
 	settings = {
 		pylsp = {

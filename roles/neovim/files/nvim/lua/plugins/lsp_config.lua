@@ -43,9 +43,9 @@ local function config()
 		on_attach = pylsp.on_attach,
 		handlers = pylsp.handlers,
 	})
-	lspconfig.ruff_lsp.setup({
-		capabilities = capabilities,
-	})
+	-- lspconfig.ruff_lsp.setup({
+	-- 	capabilities = capabilities,
+	-- })
 
 	-- Docker
 	lspconfig.dockerls.setup({
