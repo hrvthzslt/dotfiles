@@ -31,3 +31,7 @@ alias v="nvim"
 # Ranger
 alias rd='ranger --choosedir=$HOME/rangerdir;cd "$(cat $HOME/rangerdir)"'
 alias r='ranger'
+
+# Venv
+alias va="source venv/bin/activate"
+alias vd="deactivate"
