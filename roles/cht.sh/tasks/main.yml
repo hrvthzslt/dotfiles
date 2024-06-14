@@ -9,7 +9,7 @@
       include_tasks: roles/nix/tasks/install_package.yml
       vars:
         package: cht-sh
-        derivation: cht.sh-unstable
+        derivation: cht.sh
 
 - name: symlink config
   tags:
