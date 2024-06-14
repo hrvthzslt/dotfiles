@@ -1,3 +1,9 @@
+local function setup(executable, callback)
+	if vim.fn.executable(executable) then
+		callback()
+	end
+end
+
 local function config()
 	require("neodev").setup()
 	require("mason").setup()
@@ -7,88 +13,98 @@ local function config()
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	-- Lua
-	local lua_ls = require("hrvthzslt.lsp.lua_ls")
-	lspconfig.lua_ls.setup({
-		capabilities = capabilities,
-		settings = lua_ls.settings,
-		on_attach = lua_ls.on_attach,
-	})
+	setup("lua-language-server", function()
+		local lua_ls = require("hrvthzslt.lsp.lua_ls")
+		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
+			settings = lua_ls.settings,
+			on_attach = lua_ls.on_attach,
+		})
+	end)
 
 	-- Bash
-	lspconfig.bashls.setup({
-		capabilities = capabilities,
-	})
+	setup("bash-language-server", function()
+		lspconfig.bashls.setup({
+			capabilities = capabilities,
+		})
+	end)
 
 	-- PHP
-	local intelephense = require("hrvthzslt.lsp.intelephense")
-	lspconfig.intelephense.setup({
-		capabilities = capabilities,
-		commands = intelephense.commands,
-		settings = intelephense.settings,
-	})
+	setup("intelephense", function()
+		local intelephense = require("hrvthzslt.lsp.intelephense")
+		lspconfig.intelephense.setup({
+			capabilities = capabilities,
+			commands = intelephense.commands,
+			settings = intelephense.settings,
+		})
+	end)
 
-	local phpactor = require("hrvthzslt.lsp.phpactor")
-	lspconfig.phpactor.setup({
-		capabilities = capabilities,
-		on_attach = phpactor.on_attach,
-		init_options = phpactor.init_options,
-		handlers = phpactor.handlers,
-	})
+	setup("phpactor", function()
+		local phpactor = require("hrvthzslt.lsp.phpactor")
+		lspconfig.phpactor.setup({
+			capabilities = capabilities,
+			on_attach = phpactor.on_attach,
+			init_options = phpactor.init_options,
+			handlers = phpactor.handlers,
+		})
+	end)
 
 	-- Python
-	-- local pylsp = require("hrvthzslt.lsp.pylsp")
-	-- lspconfig.pylsp.setup({
-	-- 	capabilities = capabilities,
-	-- 	settings = pylsp.settings,
-	-- 	on_attach = pylsp.on_attach,
-	-- 	handlers = pylsp.handlers,
-	-- })
-	lspconfig.ruff_lsp.setup({
-		capabilities = capabilities,
-		handlers = {
-			["textDocument/publishDiagnostics"] = function() end,
-		},
-	})
-	lspconfig.pyright.setup({
-		capabilities = capabilities,
-	})
+	setup("ruff-lsp", function()
+		lspconfig.ruff_lsp.setup({
+			capabilities = capabilities,
+			handlers = {
+				["textDocument/publishDiagnostics"] = function() end,
+			},
+		})
+	end)
+	setup("pyright", function()
+		lspconfig.pyright.setup({
+			capabilities = capabilities,
+		})
+	end)
 
 	-- Docker
-	lspconfig.dockerls.setup({
-		capabilities = capabilities,
-	})
-
-	-- Nginx
-	lspconfig.nginx_language_server.setup({
-		capabilities = capabilities,
-	})
+	setup("docker-langserver", function()
+		lspconfig.dockerls.setup({
+			capabilities = capabilities,
+		})
+	end)
 
 	-- Vue, JavaScript, TypeScript
-	local volar = require("hrvthzslt.lsp.volar")
-	lspconfig.volar.setup({
-		capabilities = capabilities,
-		init_options = volar.init_options,
-		on_attach = volar.on_attach,
-		filetypes = volar.filetypes,
-	})
-	lspconfig.eslint.setup({
-		on_attach = function(_, bufnr)
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				buffer = bufnr,
-				command = "EslintFixAll",
-			})
-		end,
-	})
+	setup("vue-language-server", function()
+		local volar = require("hrvthzslt.lsp.volar")
+		lspconfig.volar.setup({
+			capabilities = capabilities,
+			init_options = volar.init_options,
+			on_attach = volar.on_attach,
+			filetypes = volar.filetypes,
+		})
+	end)
+	setup("vscode-eslint-language-server", function()
+		lspconfig.eslint.setup({
+			on_attach = function(_, bufnr)
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					buffer = bufnr,
+					command = "EslintFixAll",
+				})
+			end,
+		})
+	end)
 
 	-- Go
-	lspconfig.gopls.setup({
-		capabilities = capabilities,
-	})
+	setup("gopls", function()
+		lspconfig.gopls.setup({
+			capabilities = capabilities,
+		})
+	end)
 
 	-- Markdown
-	lspconfig.marksman.setup({
-		capabilities = capabilities,
-	})
+	setup("marksman", function()
+		lspconfig.marksman.setup({
+			capabilities = capabilities,
+		})
+	end)
 
 	-- Loader
 	require("fidget").setup({})
