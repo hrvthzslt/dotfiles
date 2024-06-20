@@ -17,7 +17,7 @@
 - name: symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/mycli/.myclirc"
-    dest: ~/.myclirc
+    dest: "{{ ansible_env.HOME }}/.myclirc"
     state: link
   tags:
     - github

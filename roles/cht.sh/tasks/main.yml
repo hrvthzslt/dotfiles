@@ -19,12 +19,12 @@
   block:
     - name: create config directory
       ansible.builtin.file:
-        path: ~/.config/cht.sh
+        path: "{{ ansible_env.HOME }}/.config/cht.sh"
         state: directory
 
     - name: symlink config
       ansible.builtin.file:
         src: "{{ role_path }}/files/cht.sh/"
-        dest: ~/.config/cht.sh
+        dest: "{{ ansible_env.HOME }}/.config/cht.sh"
         state: link
         force: yes

@@ -22,12 +22,12 @@
   block:
     - name: phpactor | create config directory
       ansible.builtin.file:
-        path: ~/.config/phpactor
+        path: "{{ ansible_env.HOME }}/.config/phpactor"
         state: directory
 
     - name: phpactor | symlink config
       ansible.builtin.file:
         src: "{{ role_path }}/files/phpactor"
-        dest: ~/.config/phpactor
+        dest: "{{ ansible_env.HOME }}/.config/phpactor"
         state: link
         force: yes

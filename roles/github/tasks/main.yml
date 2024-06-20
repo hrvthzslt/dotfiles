@@ -39,12 +39,12 @@
   block:
     - name: create gh dash config directory
       ansible.builtin.file:
-        path: ~/.config/gh-dash
+        path: "{{ ansible_env.HOME }}/.config/gh-dash"
         state: directory
 
     - name: symlink config
       ansible.builtin.file:
         src: "{{ role_path }}/files/gh-dash"
-        dest: ~/.config/gh-dash
+        dest: "{{ ansible_env.HOME }}/.config/gh-dash"
         state: link
         force: yes

@@ -2,7 +2,7 @@
 - name: symlink bashrc
   ansible.builtin.file:
     src: "{{ role_path }}/files/bash/.bashrc"
-    dest: ~/.bashrc
+    dest: "{{ ansible_env.HOME }}/.bashrc"
     state: link
     force: yes
   tags:
@@ -13,7 +13,7 @@
 - name: symlink zshrc
   ansible.builtin.file:
     src: "{{ role_path }}/files/zsh/.zshrc"
-    dest: ~/.zshrc
+    dest: "{{ ansible_env.HOME }}/.zshrc"
     state: link
     force: yes
   tags:
@@ -24,7 +24,7 @@
 - name: symlink aliases
   ansible.builtin.file:
     src: "{{ role_path }}/files/shell/.aliases"
-    dest: ~/.aliases
+    dest: "{{ ansible_env.HOME }}/.aliases"
     state: link
     force: yes
   tags:

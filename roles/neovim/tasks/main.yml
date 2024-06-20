@@ -19,12 +19,12 @@
   block:
     - name: create config directory
       ansible.builtin.file:
-        path: ~/.config/nvim
+        path: "{{ ansible_env.HOME }}/.config/nvim"
         state: directory
 
     - name: symlink config
       ansible.builtin.file:
         src: "{{ role_path }}/files/nvim"
-        dest: ~/.config/nvim
+        dest: "{{ ansible_env.HOME }}/.config/nvim"
         state: link
         force: yes

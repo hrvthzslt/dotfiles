@@ -28,6 +28,6 @@
     - name: symlink config
       ansible.builtin.file:
         src: "{{ role_path }}/files/nodejs/.npmrc"
-        dest: ~/.npmrc
+        dest: "{{ ansible_env.HOME }}/.npmrc"
         state: link
         force: yes

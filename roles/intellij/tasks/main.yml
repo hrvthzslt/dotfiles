@@ -2,7 +2,7 @@
 - name: symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/idea/.ideavimrc"
-    dest: ~/.ideavimrc
+    dest: "{{ ansible_env.HOME }}/.ideavimrc"
     state: link
     force: yes
   tags:

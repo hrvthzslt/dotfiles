@@ -8,7 +8,7 @@
 
 - name: alacritty | create config directory
   ansible.builtin.file:
-    path: ~/.config/alacritty
+    path: "{{ ansible_env.HOME }}/.config/alacritty"
     state: directory
   tags:
     - alacritty
@@ -18,7 +18,7 @@
 - name: alacritty | symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/alacritty"
-    dest: ~/.config/alacritty
+    dest: "{{ ansible_env.HOME }}/.config/alacritty"
     state: link
     force: yes
   tags:
@@ -29,7 +29,7 @@
 - name: wezterm | symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/wezterm/.wezterm.lua"
-    dest: ~/.wezterm.lua
+    dest: "{{ ansible_env.HOME }}/.wezterm.lua"
     state: link
     force: yes
   tags:
@@ -40,7 +40,7 @@
 - name: kitty | symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/kitty"
-    dest: ~/.config/kitty
+    dest: "{{ ansible_env.HOME }}/.config/kitty"
     state: link
     force: yes
   tags:

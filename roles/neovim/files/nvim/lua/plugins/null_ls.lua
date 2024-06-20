@@ -35,16 +35,16 @@ local function config()
 			extra_args = { "--using-cache=no", "--config=.php-cs-fixer.php" },
 		})
 	)
-	setup(
-		"phpstan",
-		sources,
-		null_ls.builtins.diagnostics.phpstan.with({
-			condition = function(utils)
-				return utils.root_has_file({ "phpstan.neon" })
-			end,
-			extra_args = { "--memory-limit=1G" },
-		})
-	)
+	-- setup(
+	-- 	"phpstan",
+	-- 	sources,
+	-- 	null_ls.builtins.diagnostics.phpstan.with({
+	-- 		condition = function(utils)
+	-- 			return utils.root_has_file({ "phpstan.neon" })
+	-- 		end,
+	-- 		extra_args = { "--memory-limit=1G" },
+	-- 	})
+	-- )
 
 	null_ls.setup({
 		capabilities = capabilities,

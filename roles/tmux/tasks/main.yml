@@ -19,12 +19,12 @@
   block:
     - name: create config directory
       ansible.builtin.file:
-        path: ~/.config/tmux
+        path: "{{ ansible_env.HOME }}/.config/tmux"
         state: directory
 
     - name: symlink config
       ansible.builtin.file:
         src: "{{ role_path }}/files/tmux"
-        dest: ~/.config/tmux
+        dest: "{{ ansible_env.HOME }}/.config/tmux"
         state: link
         force: yes
