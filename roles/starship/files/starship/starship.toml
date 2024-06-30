@@ -52,4 +52,4 @@ format = "[$virtualenv]($style)"
 style = "grey"
 
 [conda]
-format = '[$symbol$environment](dimmed green) '
+format = '[$environment](dimmed green) '
