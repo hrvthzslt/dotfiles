@@ -6,10 +6,6 @@ export EDITOR="nvim"
 export COMPOSER_AUTH='{"github-oauth": {"github.com": "ghp_xxx"}}'
 export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
 
-if [ -z "$TMUX" ]; then
-    ta;
-fi
-
 # add to path
 pathprepend() {
   for arg in "$@"; do
@@ -38,8 +34,10 @@ bindkey '^N' down-history
 
 # preserve history
 HISTFILE=~/.zsh_history
+HISTCONTROL=ignoreboth
 HISTSIZE=1000000
-SAVEHIST=1000000
+SAVEHIST=$HISTSIZE
+setopt HIST_IGNORE_ALL_DUPS
 setopt appendhistory
 
 # start ssh-agent
