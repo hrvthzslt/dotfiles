@@ -126,7 +126,9 @@ local function config()
 	vim.keymap.set("n", "<leader>bT", function() dap.terminate() end, { desc = "deBug terminate" })
 
 	require("mason").setup()
-	require("mason-nvim-dap").setup({ automatic_installation = true })
+	require("mason-nvim-dap").setup({
+		-- automatic_installation = true,
+	})
 end
 
 return {
