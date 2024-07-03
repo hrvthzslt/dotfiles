@@ -1,0 +1,36 @@
+#!/bin/sh
+
+install() {
+    for arg in "$@"; do
+        echo "Checking $arg..."
+        if ! brew list "$arg" >/dev/null; then
+            echo "Installing $arg..."
+            brew install "$arg"
+        fi
+    done
+}
+
+install ansible\
+    neovim\
+    lazygit\
+    lazydocker\
+    mycli\
+    iredis\
+    nodejs\
+    typescript\
+    starship\
+    tmux\
+    fzf\
+    ripgrep\
+    entr\
+    translate-shell\
+    act\
+    hurl\
+    tmuxinator\
+    ddgr\
+    w3m\
+    tldr\
+    jq\
+    ranger
+
+ansible-playbook main.yml --tags link --skip-tags keyd,install
