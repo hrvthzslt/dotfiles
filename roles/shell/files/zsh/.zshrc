@@ -13,6 +13,7 @@ fi
 # add to path
 pathprepend() {
   for arg in "$@"; do
+    test -d "$arg" || continue
     export PATH="$1:$PATH"
   done
 }
