@@ -15,6 +15,12 @@ local function config()
             let test#php#phpunit#executable='docker compose exec php phpunit --testdox'
         ]])
 	end
+
+    if io.open("compose.yaml", "r") ~= nil then
+        vim.cmd([[
+            let test#python#pytest#executable='docker compose exec web python -m pytest'
+        ]])
+    end
 end
 
 return {
