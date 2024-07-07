@@ -75,7 +75,7 @@ nmap [h :action JumpToLastChange<CR>
 nmap ]h :action JumpToNextChange<CR>
 
 """ IDE Tools
-nnoremap <leader>T :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>d :action ActivateDatabaseToolWindow<CR>
 nnoremap <leader>gl :action ActivateVersionControlToolWindow<CR>
 nnoremap <leader>gb :action Annotate<CR>
@@ -111,7 +111,7 @@ set which-key
 set notimeout
 
 """ Harpoon
-nnoremap <leader>ha :action ShowHarpoon<CR>
+nnoremap <leader>hl :action ShowHarpoon<CR>
 
 nnoremap <leader>hu :action SetHarpoon1<CR>
 nnoremap <leader>hi :action SetHarpoon2<CR>
@@ -122,3 +122,7 @@ nnoremap <A-u> :action GotoHarpoon1<cr>
 nnoremap <A-i> :action GotoHarpoon2<cr>
 nnoremap <A-o> :action GotoHarpoon3<cr>
 nnoremap <A-z> :action GotoHarpoon4<cr>
+nnoremap <leader>u :action GotoHarpoon1<cr>
+nnoremap <leader>i :action GotoHarpoon2<cr>
+nnoremap <leader>o :action GotoHarpoon3<cr>
+nnoremap <leader>z :action GotoHarpoon4<cr>
