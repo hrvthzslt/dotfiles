@@ -19,7 +19,7 @@ local function config()
 			filetypes = { "sql", "mysql" },
 		})
 	)
-	setup("isort", sources, null_ls.builtins.formatting.isort)
+	-- setup("isort", sources, null_ls.builtins.formatting.isort)
 	setup("black", sources, null_ls.builtins.formatting.black)
 	setup(
 		"shfmt",
