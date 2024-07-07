@@ -1,5 +1,5 @@
 local function setup(executable, callback)
-	if vim.fn.executable(executable) then
+	if vim.fn.executable(executable) == 1 then
 		callback()
 	end
 end

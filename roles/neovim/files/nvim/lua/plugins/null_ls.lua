@@ -1,5 +1,5 @@
 local function setup(executable, sources_table, entry)
-	if vim.fn.executable(executable) then
+	if vim.fn.executable(executable) == 1 then
 		table.insert(sources_table, entry)
 	end
 end
