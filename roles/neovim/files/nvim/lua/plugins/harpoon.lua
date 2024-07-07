@@ -17,6 +17,19 @@ local function config()
 	vim.keymap.set("n", "<A-z>", function()
 		ui.nav_file(4)
 	end)
+
+	vim.keymap.set("n", "<leader>u", function()
+		ui.nav_file(1)
+	end)
+	vim.keymap.set("n", "<leader>i", function()
+		ui.nav_file(2)
+	end)
+	vim.keymap.set("n", "<leader>o", function()
+		ui.nav_file(3)
+	end)
+	vim.keymap.set("n", "<leader>z", function()
+		ui.nav_file(4)
+	end)
 end
 
 return {
