@@ -65,6 +65,11 @@ local function config()
 			capabilities = capabilities,
 		})
 	end)
+	setup("jinja-lsp", function()
+		lspconfig.jinja_lsp.setup({
+			capabilities = capabilities,
+		})
+	end)
 
 	-- Docker
 	setup("docker-langserver", function()
