@@ -84,14 +84,19 @@ index() {
   echo "# Notes" >"$read_me_path"
   printf "\n" >>"$read_me_path"
 
-  for indexed_directory in $indexed_directories; do
-    for note in "$path/$indexed_directory"/*; do
-      link_title=$(grep -m 1 -o -e "# .*" "$note"/*.md | cut -d" " -f2-)
+  for directory in $directories; do
+    for note in "$path/$directory"/*; do
+      link_title=$(grep -m 1 -o -e "# .*" "$note"/*.md 2>/dev/null | cut -d" " -f2-)
       new_file_name=$(echo "$link_title" | tr "[:upper:]" "[:lower:]" | tr -dc '[:alnum:]').md
       mv "$note"/*.md "$note"/"$new_file_name" 2>/dev/null
-      id=$(echo "$note" | rev | cut -d"/" -f1 | rev)
-      row="- $id - [$link_title]($indexed_directory/$id/$new_file_name)"
-      echo "$row" >>"$read_me_path"
+
+      case "$directory" in
+        *"$linked_directories"*)
+          id=$(echo "$note" | rev | cut -d"/" -f1 | rev)
+          row="- $id - [$link_title]($directory/$id/$new_file_name)"
+          echo "$row" >>"$read_me_path"
+          ;;
+      esac
     done
   done
 }
