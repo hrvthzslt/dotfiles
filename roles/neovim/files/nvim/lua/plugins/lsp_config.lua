@@ -83,13 +83,18 @@ local function config()
 	end)
 
 	-- Vue, JavaScript, TypeScript
-	setup("vue-language-server", function()
-		local volar = require("hrvthzslt.lsp.volar")
-		lspconfig.volar.setup({
+	-- setup("vue-language-server", function()
+	-- 	local volar = require("hrvthzslt.lsp.volar")
+	-- 	lspconfig.volar.setup({
+	-- 		capabilities = capabilities,
+	-- 		init_options = volar.init_options,
+	-- 		on_attach = volar.on_attach,
+	-- 		filetypes = volar.filetypes,
+	-- 	})
+	-- end)
+	setup("typescript-language-server", function()
+		lspconfig.tsserver.setup({
 			capabilities = capabilities,
-			init_options = volar.init_options,
-			on_attach = volar.on_attach,
-			filetypes = volar.filetypes,
 		})
 	end)
 	setup("vscode-eslint-language-server", function()
