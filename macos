@@ -31,6 +31,9 @@ install ansible\
     w3m\
     tldr\
     jq\
-    ranger
+    ranger\
+    bash\
+    php\
+    composer
 
 ansible-playbook main.yml --tags link --skip-tags keyd,install
