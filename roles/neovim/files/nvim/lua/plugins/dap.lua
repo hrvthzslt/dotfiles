@@ -1,3 +1,40 @@
+local function override_colors()
+	vim.cmd([[
+    hi link DapUINormal Normal
+    hi link DapUIVariable Normal
+    hi DapUIScope guifg=#1D5573
+    hi DapUIType guifg=#7B3B70
+    hi link DapUIValue Normal
+    hi DapUIModifiedValue guifg=#1D5573 gui=bold
+    hi DapUIDecoration guifg=#1D5573
+    hi DapUIThread guifg=#3F5A22
+    hi DapUIStoppedThread guifg=#1D5573
+    hi link DapUIFrameName Normal
+    hi DapUISource guifg=#7B3B70
+    hi DapUILineNumber guifg=#1D5573
+    hi link DapUIFloatNormal NormalFloat
+    hi DapUIFloatBorder guifg=#1D5573
+    hi DapUIWatchesEmpty guifg=#94253E
+    hi DapUIWatchesValue guifg=#3F5A22
+    hi DapUIWatchesError guifg=#94253E
+    hi DapUIBreakpointsPath guifg=#1D5573
+    hi DapUIBreakpointsInfo guifg=#3F5A22
+    hi DapUIBreakpointsCurrentLine guifg=#3F5A22 gui=bold
+    hi link DapUIBreakpointsLine DapUILineNumber
+    hi DapUIBreakpointsDisabledLine guifg=#424242
+    hi link DapUICurrentFrameName DapUIBreakpointsCurrentLine
+    hi DapUIStepOver guifg=#1D5573
+    hi DapUIStepInto guifg=#1D5573
+    hi DapUIStepBack guifg=#1D5573
+    hi DapUIStepOut guifg=#1D5573
+    hi DapUIStop guifg=#94253E
+    hi DapUIPlayPause guifg=#3F5A22
+    hi DapUIRestart guifg=#3F5A22
+    hi DapUIUnavailable guifg=#424242
+    hi DapUIWinSelect ctermfg=Cyan guifg=#1D5573 gui=bold
+    hi link DapUIEndofBuffer EndofBuffer
+    ]])
+end
 local function go(dap)
 	dap.adapters.delve = {
 		type = "server",
@@ -124,11 +161,15 @@ local function config()
 	vim.keymap.set("n", "<F4>", function() dap.step_out() end, { desc = "deBug step Out" })
     vim.keymap.set("n", "<F5>", function() dapui.toggle({ reset = true }) end, { desc = "deBug step Out" })
 	vim.keymap.set("n", "<leader>bT", function() dap.terminate() end, { desc = "deBug terminate" })
+    vim.keymap.set("n", "<leader>bf", function() dapui.float_element() end, { desc = "deBug Float element" })
+    vim.keymap.set("n", "<leader>be", function() dapui.eval() end, { desc = "deBug Evaluate" })
 
 	require("mason").setup()
 	require("mason-nvim-dap").setup({
 		-- automatic_installation = true,
 	})
+
+	override_colors()
 end
 
 return {
