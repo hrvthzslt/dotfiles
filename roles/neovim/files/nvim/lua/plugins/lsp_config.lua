@@ -72,6 +72,7 @@ local function config()
 	setup("jinja-lsp", function()
 		lspconfig.jinja_lsp.setup({
 			capabilities = capabilities,
+			filetypes = { "jinja", "jinja.html", "htmldjango", "html" },
 		})
 	end)
 

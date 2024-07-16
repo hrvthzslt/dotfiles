@@ -21,8 +21,20 @@ local function config()
 	)
 	-- setup("isort", sources, null_ls.builtins.formatting.isort)
 	setup("black", sources, null_ls.builtins.formatting.black)
-	setup("djlint", sources, null_ls.builtins.formatting.djlint)
-	setup("djlint", sources, null_ls.builtins.diagnostics.djlint)
+	setup(
+		"djlint",
+		sources,
+		null_ls.builtins.formatting.djlint.with({
+			filetypes = { "django", "jinja.html", "htmldjango", "html" },
+		})
+	)
+	setup(
+		"djlint",
+		sources,
+		null_ls.builtins.diagnostics.djlint.with({
+			filetypes = { "django", "jinja.html", "htmldjango", "html" },
+		})
+	)
 	setup(
 		"shfmt",
 		sources,
