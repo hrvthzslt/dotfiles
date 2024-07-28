@@ -2,7 +2,6 @@
 - name: "check if {{ package }} installed"
   ansible.builtin.command: "{{ nix_env_path }} --query {{ derivation }}"
   register: package_package_installed
-  ignore_errors: yes
   changed_when: false
   no_log: true
 

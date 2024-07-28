@@ -15,11 +15,11 @@
       ansible.builtin.git:
         repo: "https://github.com/rvaiya/keyd"
         dest: "{{ third_party_workspace_dir }}/keyd"
-        version: v2.4.3
+        version: v2.5.0
 
     - name: build
       ansible.builtin.make:
-        target: ""
+        target: all
         chdir: "{{ third_party_workspace_dir }}/keyd"
       when: keyd_version.rc != 0
 
