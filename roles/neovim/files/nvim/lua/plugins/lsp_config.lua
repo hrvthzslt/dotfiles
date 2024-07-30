@@ -62,11 +62,20 @@ local function config()
 			handlers = {
 				["textDocument/publishDiagnostics"] = function() end,
 			},
+			on_attach = function(client)
+				client.server_capabilities.hoverProvider = false
+				client.server_capabilities.documentFormattingProvider = false
+				client.server_capabilities.documentRangeFormattingProvider = false
+			end,
 		})
 	end)
 	setup("pyright", function()
 		lspconfig.pyright.setup({
 			capabilities = capabilities,
+			on_attach = function(client)
+				client.server_capabilities.documentFormattingProvider = false
+				client.server_capabilities.documentRangeFormattingProvider = false
+			end,
 		})
 	end)
 	setup("jinja-lsp", function()
