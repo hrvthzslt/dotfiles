@@ -162,7 +162,7 @@ local function config()
     vim.keymap.set("n", "<F5>", function() dapui.toggle({ reset = true }) end, { desc = "deBug step Out" })
 	vim.keymap.set("n", "<leader>bT", function() dap.terminate() end, { desc = "deBug terminate" })
     vim.keymap.set("n", "<leader>bf", function() dapui.float_element() end, { desc = "deBug Float element" })
-    vim.keymap.set("n", "<leader>be", function() dapui.eval() end, { desc = "deBug Evaluate" })
+    vim.keymap.set("n", "<leader>e", function() dapui.eval() end, { desc = "debug Evaluate" })
 
 	require("mason").setup()
 	require("mason-nvim-dap").setup({
