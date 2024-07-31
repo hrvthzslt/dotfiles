@@ -144,7 +144,7 @@ local function config()
 	-- Set keybindings on LSP
 	local telescope_builtin = require("telescope.builtin")
 
-	vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename" })
+	vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 	vim.keymap.set("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "Lsp Code action" })
 	vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Lsp Format" })
 	vim.keymap.set("v", "<leader>lf", vim.lsp.buf.format, { desc = "Lsp range Format" })

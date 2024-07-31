@@ -18,7 +18,7 @@ local function config()
 
     if io.open("compose.yaml", "r") ~= nil then
         vim.cmd([[
-            let test#python#pytest#executable='docker compose exec web python -m pytest --log-cli-level=INFO'
+            let test#python#pytest#executable='docker compose exec web python -m pytest'
         ]])
     end
 end
