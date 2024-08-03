@@ -166,7 +166,7 @@ local function config()
 
 	require("mason").setup()
 	require("mason-nvim-dap").setup({
-		-- automatic_installation = true,
+		automatic_installation = true,
 	})
 
 	override_colors()

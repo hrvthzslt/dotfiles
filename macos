@@ -34,6 +34,7 @@ install ansible\
     ranger\
     bash\
     php\
-    composer
+    composer\
+    rust
 
 ansible-playbook main.yml --tags link --skip-tags keyd,install

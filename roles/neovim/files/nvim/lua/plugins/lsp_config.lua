@@ -1,96 +1,80 @@
-local function setup(executable, callback)
-	if vim.fn.executable(executable) == 1 then
-		callback()
-	end
-end
+-- local function setup(executable, callback)
+-- 	if vim.fn.executable(executable) == 1 then
+-- 		callback()
+-- 	end
+-- end
 
 local function config()
 	require("neodev").setup()
 	require("mason").setup()
 	require("mason-lspconfig").setup({
-		-- automatic_installation = true,
+		automatic_installation = true,
 	})
 
 	local lspconfig = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	-- Lua
-	setup("lua-language-server", function()
-		local lua_ls = require("hrvthzslt.lsp.lua_ls")
-		lspconfig.lua_ls.setup({
-			capabilities = capabilities,
-			settings = lua_ls.settings,
-			on_attach = lua_ls.on_attach,
-		})
-	end)
+	local lua_ls = require("hrvthzslt.lsp.lua_ls")
+	lspconfig.lua_ls.setup({
+		capabilities = capabilities,
+		settings = lua_ls.settings,
+		on_attach = lua_ls.on_attach,
+	})
 
 	-- Bash
-	setup("bash-language-server", function()
-		lspconfig.bashls.setup({
-			capabilities = capabilities,
-			on_attach = function(client)
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end,
-		})
-	end)
+	lspconfig.bashls.setup({
+		capabilities = capabilities,
+		on_attach = function(client)
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.documentRangeFormattingProvider = false
+		end,
+	})
 
 	-- PHP
-	setup("intelephense", function()
-		local intelephense = require("hrvthzslt.lsp.intelephense")
-		lspconfig.intelephense.setup({
-			capabilities = capabilities,
-			commands = intelephense.commands,
-			settings = intelephense.settings,
-		})
-	end)
+	local intelephense = require("hrvthzslt.lsp.intelephense")
+	lspconfig.intelephense.setup({
+		capabilities = capabilities,
+		commands = intelephense.commands,
+		settings = intelephense.settings,
+	})
 
-	setup("phpactor", function()
-		local phpactor = require("hrvthzslt.lsp.phpactor")
-		lspconfig.phpactor.setup({
-			capabilities = capabilities,
-			on_attach = phpactor.on_attach,
-			init_options = phpactor.init_options,
-			handlers = phpactor.handlers,
-		})
-	end)
+	local phpactor = require("hrvthzslt.lsp.phpactor")
+	lspconfig.phpactor.setup({
+		capabilities = capabilities,
+		on_attach = phpactor.on_attach,
+		init_options = phpactor.init_options,
+		handlers = phpactor.handlers,
+	})
 
 	-- Python
-	setup("ruff-lsp", function()
-		lspconfig.ruff_lsp.setup({
-			capabilities = capabilities,
-			handlers = {
-				["textDocument/publishDiagnostics"] = function() end,
-			},
-			on_attach = function(client)
-				client.server_capabilities.hoverProvider = false
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end,
-		})
-	end)
-	setup("pyright", function()
-		lspconfig.pyright.setup({
-			capabilities = capabilities,
-			on_attach = function(client)
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-			end,
-		})
-	end)
-	setup("jinja-lsp", function()
-		lspconfig.jinja_lsp.setup({
-			capabilities = capabilities,
-			filetypes = { "jinja", "jinja.html", "htmldjango", "html" },
-		})
-	end)
+	lspconfig.ruff_lsp.setup({
+		capabilities = capabilities,
+		handlers = {
+			["textDocument/publishDiagnostics"] = function() end,
+		},
+		on_attach = function(client)
+			client.server_capabilities.hoverProvider = false
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.documentRangeFormattingProvider = false
+		end,
+	})
+	lspconfig.pyright.setup({
+		capabilities = capabilities,
+		on_attach = function(client)
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.documentRangeFormattingProvider = false
+		end,
+	})
+	lspconfig.jinja_lsp.setup({
+		capabilities = capabilities,
+		filetypes = { "jinja", "jinja.html", "htmldjango", "html" },
+	})
 
 	-- Docker
-	setup("docker-langserver", function()
-		lspconfig.dockerls.setup({
-			capabilities = capabilities,
-		})
-	end)
+	lspconfig.dockerls.setup({
+		capabilities = capabilities,
+	})
 
 	-- Vue, JavaScript, TypeScript
 	-- setup("vue-language-server", function()
@@ -102,35 +86,27 @@ local function config()
 	-- 		filetypes = volar.filetypes,
 	-- 	})
 	-- end)
-	setup("typescript-language-server", function()
-		lspconfig.tsserver.setup({
-			capabilities = capabilities,
-		})
-	end)
-	setup("vscode-eslint-language-server", function()
-		lspconfig.eslint.setup({
-			on_attach = function(_, bufnr)
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					buffer = bufnr,
-					command = "EslintFixAll",
-				})
-			end,
-		})
-	end)
+	lspconfig.tsserver.setup({
+		capabilities = capabilities,
+	})
+	lspconfig.eslint.setup({
+		on_attach = function(_, bufnr)
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				buffer = bufnr,
+				command = "EslintFixAll",
+			})
+		end,
+	})
 
 	-- Go
-	setup("gopls", function()
-		lspconfig.gopls.setup({
-			capabilities = capabilities,
-		})
-	end)
+	lspconfig.gopls.setup({
+		capabilities = capabilities,
+	})
 
 	-- Markdown
-	setup("marksman", function()
-		lspconfig.marksman.setup({
-			capabilities = capabilities,
-		})
-	end)
+	lspconfig.marksman.setup({
+		capabilities = capabilities,
+	})
 
 	-- Loader
 	require("fidget").setup({})

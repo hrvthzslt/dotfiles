@@ -3,7 +3,7 @@
   ansible.builtin.command: "{{ nix_env_path }} --query {{ derivation }}"
   register: package_package_installed
   changed_when: false
-  no_log: true
+  ignore_errors: yes
 
 - name: "install {{ package }}"
   ansible.builtin.shell: "{{ nix_env_path }} -iA nixpkgs.{{ package }}"
