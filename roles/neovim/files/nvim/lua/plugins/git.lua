@@ -4,14 +4,13 @@ local function gitsigns()
 	vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>")
 	vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>")
 	vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Git Preview hunk" })
-	vim.keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "Git Blame line" })
+	vim.keymap.set("n", "<leader>gb", ":Gitsigns blame<CR>", { desc = "Git Blame line" })
 end
 
 local function fugitive()
 	vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit!<CR>", { desc = "Git Diff" })
 	vim.keymap.set("n", "<leader>gg", ":Git<CR>", { desc = "Git" })
 	vim.keymap.set("n", "<leader>gL", ":Git log<CR>", { desc = "Git Log" })
-	vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "Git Blame" })
 
 	vim.keymap.set("n", "<leader>gah", "<cmd>diffget //2<CR>")
 	vim.keymap.set("n", "<leader>gal", "<cmd>diffget //3<CR>")
