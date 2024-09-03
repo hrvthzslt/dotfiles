@@ -1,7 +1,7 @@
 # dotfiles
 
 My $HOME my rules.
-Collection of my dotfiles and toolbox scripts for my development environment.
+Collection of my **dotfiles** and **toolbox scripts** for my development environment. Installation and config management automated with **Ansible**, for **Debian** based distributions.
 
 ## Install
 
