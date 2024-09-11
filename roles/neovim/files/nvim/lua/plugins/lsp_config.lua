@@ -86,7 +86,7 @@ local function config()
 	-- 		filetypes = volar.filetypes,
 	-- 	})
 	-- end)
-	lspconfig.tsserver.setup({
+	lspconfig.ts_ls.setup({
 		capabilities = capabilities,
 	})
 	lspconfig.eslint.setup({
