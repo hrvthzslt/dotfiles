@@ -1,6 +1,7 @@
 local function config()
 	require("avante").setup({
 		provider = "copilot",
+		hints = { enabled = false },
 	})
 end
 
