@@ -41,7 +41,17 @@ local function config()
 				dismiss = "<C-l>",
 			},
 		},
-		filetypes = {},
+		filetypes = {
+			yaml = true,
+			markdown = true,
+			help = false,
+			gitcommit = false,
+			gitrebase = false,
+			hgcommit = false,
+			svn = false,
+			cvs = false,
+			["."] = false,
+		},
 		copilot_node_command = "node", -- Node.js version must be > 18.x
 		server_opts_overrides = {},
 	})
