@@ -24,7 +24,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.list = true -- enable the below listchars
-vim.opt.listchars = { tab = "▸ ", trail = "·" }
+vim.opt.listchars = { tab = "   ", trail = "·" }
 vim.opt.fillchars:append({ eob = " " }) -- remove the ~ from end of buffer
 
 vim.opt.splitbelow = true

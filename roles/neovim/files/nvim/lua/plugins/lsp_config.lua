@@ -51,7 +51,7 @@ local function config()
 	lspconfig.ruff_lsp.setup({
 		capabilities = capabilities,
 		handlers = {
-			["textDocument/publishDiagnostics"] = function() end,
+			-- ["textDocument/publishDiagnostics"] = function() end,
 		},
 		on_attach = function(client)
 			client.server_capabilities.hoverProvider = false
