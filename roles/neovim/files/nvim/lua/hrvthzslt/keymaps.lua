@@ -2,6 +2,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Buffers
+vim.keymap.set("n", "<Leader>q", ":bd<CR>", { desc = "close buffer" })
+vim.keymap.set("n", "<Leader>Q", ":%bd<CR>", { desc = "close all buffers" })
+vim.keymap.set("n", "<Leader>w", ":w<CR>", { desc = "write buffer" })
+vim.keymap.set("n", "<Leader>W", ":wa<CR>", { desc = "write all buffers" })
+
 -- When text is wrapped, move by terminal rows, not lines, unless a count is provided.
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
