@@ -7,4 +7,5 @@
 
 - name: "install {{ package }}"
   ansible.builtin.shell: "{{ nix_env_path }} -iA nixpkgs.{{ package }}"
+  ignore_errors: yes
   when: package_package_installed.rc != 0
