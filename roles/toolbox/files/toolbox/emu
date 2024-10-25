@@ -74,6 +74,8 @@ main() {
 
   if [ -z "$iso" ]; then
     echo "No iso specified"
+    echo "Usage: emu -i <iso> [-m <memory>] [-s <size>] [-c <cpu>]"
+    echo "Examle: emu -i /path/to/iso.iso -m 8G -s 10G -c 4"
     exit 1
   fi
 

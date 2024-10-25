@@ -27,7 +27,6 @@
         - { package: tldr, derivation: tldr }
         - { package: jq, derivation: jq }
         - { package: ranger, derivation: ranger }
-        - { package: bluetuith, derivation: bluetuith }
         - { package: cargo, derivation: cargo }
       tags:
         - utilities
