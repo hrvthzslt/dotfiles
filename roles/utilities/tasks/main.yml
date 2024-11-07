@@ -11,13 +11,11 @@
         package: "{{ item.package }}"
         derivation: "{{ item.derivation }}"
       loop:
-        - { package: gccgo, derivation: gccgo-wrapper }
         - { package: fzf, derivation: fzf }
         - { package: ripgrep, derivation: ripgrep }
         - { package: entr, derivation: entr }
         - { package: translate-shell, derivation: translate-shell }
         - { package: act, derivation: act }
-        - { package: gtop, derivation: gtop }
         - { package: hurl, derivation: hurl }
         - { package: lazydocker, derivation: lazydocker }
         - { package: lazygit, derivation: lazygit }
