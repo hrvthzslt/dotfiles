@@ -33,6 +33,7 @@ set wildignore+=tags
 
 " Set completion options
 set completeopt=menuone,longest,preview
+setglobal complete-=i
 
 " Enable setting the title of window to the value of 'titlestring'
 set title
@@ -74,8 +75,12 @@ set spelllang=en_us,hu
 " Disable folding by default
 set nofoldenable
 
+" Status bar
+set laststatus=2
+
 " Colors
 hi Normal guibg=NONE ctermbg=NONE
+hi Pmenu ctermbg=gray guibg=gray
 
 " Set leader and local leader
 let mapleader = "\<Space>"
@@ -114,13 +119,24 @@ nnoremap <leader>f :find<Space>
 
 " Start search
 nnoremap <leader>s :vimgrep // *<Left><Left><Left>
-nnoremap <leader>S :grep! --exclude=tags -s "\<<cword>\>" . -r<CR>:copen<CR>
+nnoremap <leader>S :grep! --exclude=tags -si "\<<cword>\>" . -r<CR>:copen<CR>
 nnoremap gt <C-]>
 
 " Fixlist
 nnoremap <leader>n :cnext<CR>
 nnoremap <leader>p :cprev<CR>
 nnoremap <leader>o :copen<CR>
+
+" Marks
+nnoremap <leader>U mU<CR>
+nnoremap <leader>I mI<CR>
+nnoremap <leader>O mO<CR>
+nnoremap <leader>Z mZ<CR>
+
+nnoremap <leader>u 'U<CR>
+nnoremap <leader>i 'I<CR>
+nnoremap <leader>o 'O<CR>
+nnoremap <leader>z 'Z<CR>
 
 " Open explorer
 nnoremap - :Explore<CR>
