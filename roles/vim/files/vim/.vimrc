@@ -1,8 +1,17 @@
+set nocompatible
+
+" enable syntax highlighting
+syntax enable
+filetype plugin on
+
 " Set tab settings
 set expandtab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
+
+" Highlight search results
+set hlsearch
 
 " Enable smartindent
 set smartindent
@@ -14,8 +23,13 @@ set nowrap
 set number
 set relativenumber
 
+" Search subfolders
+set path=$PWD/**
+
 " Set wildmode
+set wildmenu
 set wildmode=longest:full,full
+set wildignore+=tags
 
 " Set completion options
 set completeopt=menuone,longest,preview
@@ -60,6 +74,9 @@ set spelllang=en_us,hu
 " Disable folding by default
 set nofoldenable
 
+" Colors
+hi Normal guibg=NONE ctermbg=NONE
+
 " Set leader and local leader
 let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
@@ -81,17 +98,29 @@ vnoremap p "_dP
 " Clear search highlighting
 nnoremap <leader>k :nohlsearch<CR>
 
-" Open current file in default program
-nnoremap <leader>x :!xdg-open %<CR><CR>
+" Close buffers
+nnoremap <leader>q :bd<CR>
+nnoremap <leader>Q :%bd<CR>
 
-" Source file
-nnoremap <leader>S :so<CR>
+" Save buffers
+nnoremap <leader>w :w<CR>
+nnoremap <leader>W :wa<CR>
+
+" Select open buffers
+nnoremap <leader>b :b<Space>
+
+" Start find
+nnoremap <leader>f :find<Space>
+
+" Start search
+nnoremap <leader>s :vimgrep // *<Left><Left><Left>
+nnoremap <leader>S :grep! --exclude=tags -s "\<<cword>\>" . -r<CR>:copen<CR>
+nnoremap gt <C-]>
+
+" Fixlist
+nnoremap <leader>n :cnext<CR>
+nnoremap <leader>p :cprev<CR>
+nnoremap <leader>o :copen<CR>
 
 " Open explorer
-nnoremap <leader>f :Explore<CR>
-
-" Navigation shortcuts
-nnoremap ú }
-nnoremap ő {
-nnoremap Ú ]m
-nnoremap Ő [m
+nnoremap - :Explore<CR>
