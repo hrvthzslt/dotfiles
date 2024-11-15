@@ -48,7 +48,7 @@ local function config()
 	})
 
 	-- Python
-	lspconfig.ruff_lsp.setup({
+	lspconfig.ruff.setup({
 		capabilities = capabilities,
 		handlers = {
 			-- ["textDocument/publishDiagnostics"] = function() end,
