@@ -6,20 +6,9 @@
     - cli
   block:
     - name: install
-      include_tasks: roles/nix/tasks/install_package.yml
-      vars:
-        package: "{{ item.package }}"
-        derivation: "{{ item.derivation }}"
-      loop:
-        - { package: php82, derivation: php-with-extensions }
-        - { package: php82Packages.composer, derivation: composer }
-
-- name: phpactor | symlink config
-  tags:
-    - php
-    - link
-    - cli
-  block:
+      ansible.builtin.import_tasks:
+        file: debian.yml
+      when: ansible_facts['os_family'] == 'Debian'
     - name: phpactor | create config directory
       ansible.builtin.file:
         path: "{{ ansible_env.HOME }}/.config/phpactor"

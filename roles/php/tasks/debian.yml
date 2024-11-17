@@ -1,0 +1,5 @@
+---
+- name: install php and composer
+  ansible.builtin.apt:
+    name: composer
+  become: yes
