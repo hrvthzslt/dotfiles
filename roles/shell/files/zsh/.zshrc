@@ -15,6 +15,7 @@ pathprepend() {
 }
 
 pathprepend \
+  "/usr/local/go/bin" \
   "$HOME/.local/share/nvim/mason/bin" \
   "$HOME/.local/bin/npm_packages/bin" \
   "$HOME/.local/bin/toolbox" \
