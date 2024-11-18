@@ -9,6 +9,13 @@
       ansible.builtin.import_tasks:
         file: debian.yml
       when: ansible_facts['os_family'] == 'Debian'
+
+- name: link config
+  tags:
+    - php
+    - link
+    - cli
+  block:
     - name: phpactor | create config directory
       ansible.builtin.file:
         path: "{{ ansible_env.HOME }}/.config/phpactor"
