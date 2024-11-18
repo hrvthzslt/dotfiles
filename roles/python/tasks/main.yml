@@ -6,7 +6,6 @@
     - cli
   block:
     - name: install
-      include_tasks: roles/nix/tasks/install_package.yml
-      vars:
-        package: pipx
-        derivation: pipx
+      ansible.builtin.import_tasks:
+        file: debian.yml
+      when: ansible_facts['os_family'] == 'Debian'

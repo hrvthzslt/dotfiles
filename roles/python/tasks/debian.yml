@@ -1,0 +1,8 @@
+---
+- name: install pipx and venv
+  ansible.builtin.apt:
+    name: "{{ item }}"
+  loop:
+    - pipx
+    - python3-venv
+  become: yes
