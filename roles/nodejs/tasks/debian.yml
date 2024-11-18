@@ -1,6 +1,6 @@
 ---
 - name: check if installed
-  ansible.builtin.command: nodejs --version
+  ansible.builtin.command: node --version
   register: nodejs_version
   ignore_errors: yes
   changed_when: false
