@@ -1,8 +1,0 @@
----
-- name: install rustc and cargo
-  ansible.builtin.apt:
-    name: "{{ item }}"
-  loop:
-    - rustc
-    - cargo
-  become: yes

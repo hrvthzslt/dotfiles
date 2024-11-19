@@ -60,9 +60,10 @@ if [ -f ~/.local_aliases ]; then
 fi
 
 # source miniconda
-if [ -f /opt/conda/etc/profile.d/conda.sh ]; then
-  source /opt/conda/etc/profile.d/conda.sh
-fi
+[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
+
+# shellcheck disable=1091
+[ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
 
 eval "$(fzf --bash)"
 

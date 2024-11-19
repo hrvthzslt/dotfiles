@@ -45,9 +45,10 @@ setopt appendhistory
 eval "$(ssh-agent -s)" > /dev/null
 
 # source miniconda
-if [ -f /opt/conda/etc/profile.d/conda.sh ]; then
-  source /opt/conda/etc/profile.d/conda.sh
-fi
+[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
+
+# shellcheck disable=1091
+[ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
 
 # read aliases
 if [ -f ~/.aliases ]; then

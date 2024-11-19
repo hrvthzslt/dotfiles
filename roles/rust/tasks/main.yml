@@ -5,7 +5,19 @@
     - install
     - cli
   block:
-    - name: install
-      ansible.builtin.import_tasks:
-        file: debian.yml
-      when: ansible_facts['os_family'] == 'Debian'
+    - name: check if cargo is installed
+      shell: command -v cargo
+      register: cargo_version
+      ignore_errors: yes
+
+    - name: download installer
+      get_url:
+        url: https://sh.rustup.rs
+        dest: "{{ tmp_dir }}/sh.rustup.rs"
+        mode: '0755'
+        force: 'yes'
+      when: cargo_version.rc != 0
+
+    - name: install rust/cargo
+      shell: "{{ tmp_dir }}/sh.rustup.rs -y"
+      when: cargo_version.rc != 0
