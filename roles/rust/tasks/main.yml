@@ -1,0 +1,11 @@
+---
+- name: install
+  tags:
+    - rust
+    - install
+    - cli
+  block:
+    - name: install
+      ansible.builtin.import_tasks:
+        file: debian.yml
+      when: ansible_facts['os_family'] == 'Debian'
