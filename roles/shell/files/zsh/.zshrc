@@ -44,6 +44,11 @@ setopt appendhistory
 # start ssh-agent
 eval "$(ssh-agent -s)" > /dev/null
 
+# source miniconda
+if [ -f /opt/conda/etc/profile.d/conda.sh ]; then
+  source /opt/conda/etc/profile.d/conda.sh
+fi
+
 # read aliases
 if [ -f ~/.aliases ]; then
     . ~/.aliases

@@ -59,6 +59,11 @@ if [ -f ~/.local_aliases ]; then
   . ~/.local_aliases
 fi
 
+# source miniconda
+if [ -f /opt/conda/etc/profile.d/conda.sh ]; then
+  source /opt/conda/etc/profile.d/conda.sh
+fi
+
 eval "$(fzf --bash)"
 
 # starhip

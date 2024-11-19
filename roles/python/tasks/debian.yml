@@ -6,3 +6,38 @@
     - pipx
     - python3-venv
   become: yes
+
+- name: conda | install
+  tags:
+    - install
+    - conda
+    - cli
+  block:
+    - name: conda | download asc key
+      ansible.builtin.get_url:
+        url: https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
+        dest: /tmp/anaconda.asc
+      become: yes
+
+    - name: conda | convert gpg key to .gpg
+      ansible.builtin.command:
+        cmd: "gpg --dearmor -o /tmp/conda.gpg /tmp/anaconda.asc"
+      become: yes
+
+    - name: conda | install gpg key to keyring
+      ansible.builtin.copy:
+        src: /tmp/conda.gpg
+        dest: /usr/share/keyrings/conda-archive-keyring.gpg
+        mode: "0644"
+      become: yes
+
+    - name: conda | add repository
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main
+        mode: "0644"
+      become: yes
+
+    - name: conda | install
+      ansible.builtin.apt:
+        name: conda
+      become: yes
