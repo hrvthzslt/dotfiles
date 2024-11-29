@@ -62,6 +62,11 @@ action = "DecreaseFontSize"
 key = "Minus"
 mods = "Control"
 
+[[keyboard.bindings]]
+action = "Paste"
+key = "P"
+mods = "Control"
+
 [window]
 decorations = "None"
 dynamic_padding = true
