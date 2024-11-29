@@ -23,6 +23,7 @@ key_bindings:
   - { key: Period, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - { key: P, mods: Control, action: Paste }
 
 schemes:
   zenbones_light: &light
