@@ -1,0 +1,15 @@
+---
+- name: install utilities
+  ansible.builtin.apt:
+    name: "{{ item }}"
+  loop:
+    - fzf
+    - ripgrep
+    - entr
+    - tmuxinator
+    - ddgr
+    - w3m
+    - tldr
+    - jq
+    - ranger
+  become: yes

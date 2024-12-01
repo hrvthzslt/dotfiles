@@ -11,22 +11,23 @@
         package: "{{ item.package }}"
         derivation: "{{ item.derivation }}"
       loop:
-        - { package: fzf, derivation: fzf }
-        - { package: ripgrep, derivation: ripgrep }
-        - { package: entr, derivation: entr }
+        # - { package: fzf, derivation: fzf }
+        # - { package: ripgrep, derivation: ripgrep }
+        # - { package: entr, derivation: entr }
         - { package: translate-shell, derivation: translate-shell }
         - { package: act, derivation: act }
         - { package: hurl, derivation: hurl }
         - { package: lazydocker, derivation: lazydocker }
         - { package: lazygit, derivation: lazygit }
-        - { package: tmuxinator, derivation: tmuxinator }
-        - { package: ddgr, derivation: ddgr }
-        - { package: w3m, derivation: w3m }
-        - { package: tldr, derivation: tldr }
-        - { package: jq, derivation: jq }
-        - { package: ranger, derivation: ranger }
-        - { package: cargo, derivation: cargo }
+        # - { package: tmuxinator, derivation: tmuxinator }
+        # - { package: ddgr, derivation: ddgr }
+        # - { package: w3m, derivation: w3m }
+        # - { package: tldr, derivation: tldr }
+        # - { package: jq, derivation: jq }
+        # - { package: ranger, derivation: ranger }
+    - name: run debian tasks
+      ansible.builtin.import_tasks:
+        file: debian.yml
+      when: ansible_facts['os_family'] == 'Debian'
       tags:
-        - utilities
-        - install
-        - cli
+        - alacritty
