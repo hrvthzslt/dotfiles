@@ -25,7 +25,6 @@
         - { package: tldr, derivation: tldr }
         - { package: jq, derivation: jq }
         - { package: ranger, derivation: ranger }
-        - { package: cargo, derivation: cargo }
       tags:
         - utilities
         - install
