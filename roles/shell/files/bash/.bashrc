@@ -35,6 +35,7 @@ pathprepend() {
 export pathprepend
 
 pathprepend \
+  "/usr/local/go/bin" \
   "$HOME/.local/share/nvim/mason/bin" \
   "$HOME/.local/bin/npm_packages/bin" \
   "$HOME/.local/bin/toolbox" \
@@ -57,6 +58,12 @@ if [ -f ~/.local_aliases ]; then
   # shellcheck disable=1090
   . ~/.local_aliases
 fi
+
+# source miniconda
+[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
+
+# shellcheck disable=1091
+[ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
 
 eval "$(fzf --bash)"
 

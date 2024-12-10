@@ -15,6 +15,7 @@ pathprepend() {
 }
 
 pathprepend \
+  "/usr/local/go/bin" \
   "$HOME/.local/share/nvim/mason/bin" \
   "$HOME/.local/bin/npm_packages/bin" \
   "$HOME/.local/bin/toolbox" \
@@ -42,6 +43,12 @@ setopt appendhistory
 
 # start ssh-agent
 eval "$(ssh-agent -s)" > /dev/null
+
+# source miniconda
+[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
+
+# shellcheck disable=1091
+[ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
 
 # read aliases
 if [ -f ~/.aliases ]; then
