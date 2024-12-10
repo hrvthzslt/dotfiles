@@ -4,9 +4,22 @@
     - go
     - install
     - cli
+  vars:
+    go_tarball: "go1.23.3.linux-amd64.tar.gz"
   block:
-    - name: install
-      include_tasks: roles/nix/tasks/install_package.yml
-      vars:
-        package: go
-        derivation: go
+    - name: check go version
+      command: "go version"
+      register: go_version
+      ignore_errors: yes
+    - name: download
+      get_url:
+        url: "https://go.dev/dl/{{ go_tarball }}"
+        dest: "{{ tmp_dir }}/{{ go_tarball }}"
+      when: go_version.rc != 0
+    - name: extract
+      unarchive:
+        src: "{{ tmp_dir }}/{{ go_tarball }}"
+        dest: "/usr/local"
+        remote_src: yes
+      become: yes
+      when: go_version.rc != 0

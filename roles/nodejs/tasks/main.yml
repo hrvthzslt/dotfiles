@@ -1,25 +1,16 @@
 ---
-- name: install
+- name: setup nodejs
   tags:
     - nodejs
     - install
     - cli
   block:
     - name: install
-      include_tasks: roles/nix/tasks/install_package.yml
-      vars:
-        package: "{{ item.package }}"
-        derivation: "{{ item.derivation }}"
-      loop:
-        - { package: nodejs, derivation: nodejs }
-        - { package: typescript, derivation: typescript }
+      ansible.builtin.import_tasks:
+        file: debian.yml
+      when: ansible_facts['os_family'] == 'Debian'
 
-    - name: create global node bin directory
-      ansible.builtin.file:
-        path: "{{ node_global_bin_dir }}"
-        state: directory
-
-- name: symlink config
+- name: link config
   tags:
     - nodejs
     - link
