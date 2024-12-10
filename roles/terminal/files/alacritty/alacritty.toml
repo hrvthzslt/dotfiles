@@ -64,7 +64,7 @@ mods = "Control"
 
 [[keyboard.bindings]]
 action = "Paste"
-key = "P"
+key = "V"
 mods = "Control"
 
 [window]
