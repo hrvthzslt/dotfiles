@@ -8,13 +8,18 @@
     state: present
   become: true
 
+- name: check docker version
+  command: "docker --version"
+  register: docker_version
+  ignore_errors: yes
+
 - name: add official GPG key for ubuntu
   ansible.builtin.apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     keyring: /etc/apt/keyrings/docker.gpg
     state: present
   become: true
-  when: ansible_distribution != 'Debian'
+  when: ansible_distribution != 'Debian' and docker_version.rc != 0
 
 - name: add official GPG key for debian
   ansible.builtin.apt_key:
@@ -22,7 +27,7 @@
     keyring: /etc/apt/keyrings/docker.gpg
     state: present
   become: true
-  when: ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' and docker_version.rc != 0
 
 
 - name: get system architecture
@@ -37,14 +42,14 @@
     repo: deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
     mode: "0644"
   become: true
-  when: ansible_distribution != 'Debian'
+  when: ansible_distribution != 'Debian' and docker_version.rc != 0
 
 - name: add docker stable debian repository
   ansible.builtin.apt_repository:
     repo: deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
     mode: "0644"
   become: true
-  when: ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' and docker_version.rc != 0
 
 - name: install docker engine
   ansible.builtin.apt:
@@ -57,6 +62,7 @@
     state: present
     update_cache: true
   become: true
+  when: docker_version.rc != 0
 
 - name: enable and start docker service
   ansible.builtin.systemd:
@@ -64,6 +70,7 @@
     name: docker
     state: started
   become: true
+  when: docker_version.rc != 0
 
 - name: add user to docker group
   ansible.builtin.user:
@@ -71,3 +78,4 @@
     groups: docker
     name: "{{ ansible_env['USER'] }}"
   become: true
+  when: docker_version.rc != 0

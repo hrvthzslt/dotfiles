@@ -14,20 +14,28 @@
     - desktop
     - wezterm
   block:
+    - name: check wezterm version
+      command: "wezterm --version"
+      register: wezterm_version
+      ignore_errors: yes
+
     - name: wezterm | add gpg key
       ansible.builtin.apt_key:
         url: https://apt.fury.io/wez/gpg.key
         keyring: /usr/share/keyrings/wezterm-fury.gpg
         state: present
       become: true
+      when: wezterm_version.rc != 0
 
     - name: wezterm | add repository
       ansible.builtin.apt_repository:
         repo: deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *
         mode: "0644"
       become: true
+      when: wezterm_version.rc != 0
 
     - name: wezterm | install
       ansible.builtin.apt:
         name: wezterm
       become: true
+      when: wezterm_version.rc != 0
