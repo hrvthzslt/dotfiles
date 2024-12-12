@@ -3,6 +3,8 @@
 My $HOME my rules.
 Collection of my **dotfiles** and **toolbox scripts** for my development environment. Installation and config management automated with **Ansible**, for **Debian** based distributions.
 
+Sets up development environment for **Python/Conda**, **PHP**, **NodeJs**, **Go**, **Docker**. Installs CLI tools with **nix package manager**.
+
 ## Install
 
 ### Requirements
@@ -10,9 +12,19 @@ Collection of my **dotfiles** and **toolbox scripts** for my development environ
 - python3
 - ansible
 
-### Install with script
+### Install with make
 
-Run the script called `install`. It will install the required packages and set up the environment.
+Run the full installation:
+
+```shell
+make install
+```
+
+Run MacOS specific installation, which uses **brew**:
+
+```shell
+make macos
+```
 
 ### Install with ansible
 
