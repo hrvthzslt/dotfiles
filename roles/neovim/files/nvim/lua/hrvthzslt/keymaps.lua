@@ -41,6 +41,10 @@ vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>n", ":cnext<CR>", { desc = "Next quick fix item" })
 vim.keymap.set("n", "<leader>p", ":cprevious<CR>", { desc = "Previous quick fix item" })
 
+-- Execute lua
+vim.keymap.set("n", "<leader>x", ":.lua <CR>", { desc = "eXecute lua" })
+vim.keymap.set("v", "<leader>x", ":lua <CR>", { desc = "eXecute lua" })
+
 -- Registers
 -- Mapping for "c" and "C"
 vim.api.nvim_set_keymap("n", "c", '"cc', { noremap = true, silent = true })
