@@ -1,0 +1,21 @@
+#!/bin/sh
+# mi - Index notes from notes subfolder
+
+get_title() {
+  file="$1"
+  grep -m 1 '^# ' "$file" | sed 's/^# //'
+}
+
+main() {
+  read_me_file="README.md"
+  echo "# Notes" >"$read_me_file"
+  printf "\n" >>"$read_me_file"
+
+  for note in notes/*/*.md; do
+    title=$(get_title "$note")
+    echo "Note: $note, Title: $title"
+    echo "- [$title]($note)" >>"$read_me_file"
+  done
+}
+
+main
