@@ -19,13 +19,3 @@
     - link
     - cli
 
-- name: symlink mnm config
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/mnm"
-    dest: "{{ ansible_env.HOME }}/.config/mnm"
-    state: link
-    force: yes
-  tags:
-    - toolbox
-    - link
-    - cli
