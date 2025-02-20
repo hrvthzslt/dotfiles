@@ -1,3 +1,5 @@
+local project = require("hrvthzslt.project")
+
 local function config()
 	vim.keymap.set("n", "<Leader>tn", ":TestNearest<CR>", { desc = "Test Nearest" })
 	vim.keymap.set("n", "<Leader>tf", ":TestFile<CR>", { desc = "Test File" })
@@ -10,16 +12,10 @@ local function config()
         let g:test#neovim#start_normal = 1
     ]])
 
-	if io.open("docker-compose.yml", "r") ~= nil then
-		vim.cmd([[
-            let test#php#phpunit#executable='docker compose exec php phpunit --testdox'
-        ]])
-	end
+    local conf = project.read_json_conf()
 
-    if io.open("compose.yaml", "r") ~= nil then
-        vim.cmd([[
-            let test#python#pytest#executable='docker compose exec web python -m pytest'
-        ]])
+    if conf and conf.test and conf.test.python then
+        vim.cmd(string.format("let test#python#pytest#executable='%s'", conf.test.python))
     end
 end
 
