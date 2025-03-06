@@ -1,0 +1,120 @@
+{
+  "window.zoomLevel": 1.2,
+
+  "editor.fontFamily": "Hack Nerd Font",
+  "editor.lineNumbers": "relative",
+  "editor.rulers": [120],
+  "editor.minimap.enabled": false,
+
+  "workbench.colorTheme": "Zenbones Light",
+  "workbench.activityBar.location": "top",
+  "workbench.editor.editorActionsLocation": "hidden",
+  "workbench.editor.showTabs": "none",
+  "terminal.integrated.inheritEnv": false,
+
+  "vim.leader": " ",
+  "vim.hlsearch": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "k"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "W"],
+      "commands": ["workbench.action.files.saveAll"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "Q"],
+      "commands": ["workbench.action.closeAllEditors"]
+    },
+    {
+      "before": ["<C-w>", "o"],
+      "commands": [
+        "workbench.action.maximizeEditorHideSidebar",
+        "workbench.action.closePanel"
+      ]
+    },
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "l", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["references-view.findReferences"]
+    },
+    {
+      "before": ["g", "i"],
+      "commands": ["editor.action.goToImplementation"]
+    },
+    {
+      "before": ["<leader>", "s", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "s", "g"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<leader>", "s", "b"],
+      "commands": ["workbench.action.showAllEditors"]
+    },
+    {
+        "before": ["d"],
+        "after": [ "\"", "d", "d" ]
+    },
+    {
+        "before": ["c"],
+        "after": [ "\"", "c", "c" ]
+    },
+    {
+        "before": ["s"],
+        "after": [ "\"", "s", "s" ]
+    },
+    {
+        "before": ["x"],
+        "after": [ "\"", "x", "x" ]
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+        "before": ["d"],
+        "after": [ "\"", "d", "d" ]
+    },
+    {
+        "before": ["c"],
+        "after": [ "\"", "c", "c" ]
+    },
+    {
+        "before": ["s"],
+        "after": [ "\"", "s", "s" ]
+    },
+    {
+        "before": ["x"],
+        "after": [ "\"", "x", "x" ]
+    },
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [],
+  "vim.visualModeKeyBindings": [],
+  "vim.normalModeKeyBindings": [],
+  "vim.insertModeKeyBindings": [],
+}

@@ -1,0 +1,19 @@
+---
+- name: symlink configs
+  tags:
+    - vscode
+    - link
+    - desktop
+  block:
+    - name: symlink settings
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/settings.json"
+        dest: "{{ ansible_env.HOME }}/.config/Code/User/settings.json"
+        state: link
+        force: yes
+    - name: symlink keybindings
+      ansible.builtin.file:
+        src: "{{ role_path }}/files/keybindings.json"
+        dest: "{{ ansible_env.HOME }}/.config/Code/User/keybindings.json"
+        state: link
+        force: yes
