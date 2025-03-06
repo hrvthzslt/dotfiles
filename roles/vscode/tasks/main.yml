@@ -5,6 +5,10 @@
     - link
     - desktop
   block:
+    - name: create code user directory
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/.config/Code/User"
+        state: directory
     - name: symlink settings
       ansible.builtin.file:
         src: "{{ role_path }}/files/settings.json"
