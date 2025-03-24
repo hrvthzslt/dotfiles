@@ -2,15 +2,16 @@
 # Git wrapper
 
 help() {
-  echo "Usage: g [c|ca|da|cf|u|si|s|p]"
-  echo "  -c     checkout local branch"
-  echo "  -ca    checkout branch"
-  echo "  -da    delete all local branch"
-  echo "  -cf    clear changes and checkout"
-  echo "  -u     fetch prune and pull"
-  echo "  -si    submodule init"
-  echo "  -s     stash all files"
-  echo "  -p     pop stash and reset"
+  echo "Usage: g [c|ca|da|cf|u|si|s|p|sync_repos]"
+  echo "  -c            checkout local branch"
+  echo "  -ca           checkout branch"
+  echo "  -da           delete all local branch"
+  echo "  -cf           clear changes and checkout"
+  echo "  -u            fetch prune and pull"
+  echo "  -si           submodule init"
+  echo "  -s            stash all files"
+  echo "  -p            pop stash and reset"
+  echo "  -snyc_repos   sync all repos from github"
   exit 1
 }
 
@@ -50,6 +51,13 @@ p() {
   git reset
 }
 
+sync_repos() {
+  gh repo list --limit 4000 | while read -r repo _; do
+    gh repo clone "$repo" 2>/dev/null || echo "$repo already cloned"
+    (cd "$(basename "$repo")" && git pull)
+  done
+}
+
 main() {
   case $1 in
     -c | c) c ;;
@@ -60,6 +68,7 @@ main() {
     -si | si) si ;;
     -s | s) s ;;
     -p | p) p ;;
+    -sync_repos | sync_repos) sync_repos ;;
     *) help ;;
   esac
 }
