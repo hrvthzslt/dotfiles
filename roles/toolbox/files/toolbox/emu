@@ -2,7 +2,7 @@
 # Emulate an iso with qemu
 
 create_disk() {
-  image_name=$(echo "$iso" | sed 's/.iso/.img/g')
+  image_name="img-"$(echo "$iso" | sed 's/.iso/.img/g')
   if [ -f "$image_name" ]; then
     echo "Image already exists"
   else
