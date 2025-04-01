@@ -49,3 +49,5 @@ vim.opt.spelllang = "en_us,hu"
 vim.opt.spelloptions = "noplainbuffer,camel"
 
 vim.opt.foldenable = false -- disable folding by default
+
+vim.opt.swapfile = false -- disable swap files, I shouldn't but it annoys me
