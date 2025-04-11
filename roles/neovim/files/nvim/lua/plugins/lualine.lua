@@ -2,14 +2,14 @@
 local clients_lsp = function()
 	local bufnr = vim.api.nvim_get_current_buf()
 
-	local clients = vim.lsp.get_clients(bufnr)
-	if next(clients) == nil then
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+	if #clients == 0 then
 		return ""
 	end
 
 	local c = {}
 	for _, client in pairs(clients) do
-		if client.name ~= "copilot" then
+		if client.name ~= "copilot" and client.name ~= "null-ls" then
 			table.insert(c, string.sub(client.name, 1, 1))
 		end
 	end
