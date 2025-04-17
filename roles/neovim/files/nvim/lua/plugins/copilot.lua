@@ -30,6 +30,7 @@ local function config()
 		},
 		copilot_node_command = "node", -- Node.js version must be > 18.x
 		server_opts_overrides = {},
+        copilot_model = "claude-3.7-sonnet"
 	})
 
 	vim.keymap.set("n", "<leader>cs", ":Copilot status<CR>", { desc = "Copilot Status" })
