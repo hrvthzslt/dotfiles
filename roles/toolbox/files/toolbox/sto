@@ -1,0 +1,8 @@
+#!/bin/sh
+# List working directory subdirectory sizes
+
+main() {
+  du -h "$(pwd)" 2>/dev/null | grep '[0-9\.]\+G'
+}
+
+main "$@"
