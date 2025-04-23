@@ -17,6 +17,9 @@ local function config()
 	vim.keymap.set("n", "<leader>z", function()
 		ui.nav_file(4)
 	end)
+    vim.keymap.set("n", "<leader>y", function()
+        ui.nav_file(4)
+    end)
 end
 
 return {
