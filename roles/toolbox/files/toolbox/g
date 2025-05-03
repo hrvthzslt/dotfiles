@@ -11,7 +11,7 @@ help() {
   echo "  -si           submodule init"
   echo "  -s            stash all files"
   echo "  -p            pop stash and reset"
-  echo "  -snyc_repos   sync all repos from github"
+  echo "  -sync_repos   sync all repos from github"
   exit 1
 }
 
