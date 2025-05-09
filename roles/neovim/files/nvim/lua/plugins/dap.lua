@@ -164,11 +164,6 @@ local function config()
     vim.keymap.set("n", "<leader>rf", function() dapui.float_element() end, { desc = "Run debug Float element" })
     vim.keymap.set("n", "<leader>re", function() dapui.eval() end, { desc = "Run debug Evaluate" })
 
-	require("mason").setup()
-	require("mason-nvim-dap").setup({
-		automatic_installation = true,
-	})
-
 	override_colors()
 end
 
@@ -181,7 +176,6 @@ return {
 		"rcarriga/nvim-dap-ui",
 		dependencies = {
 			"mfussenegger/nvim-dap",
-			"jay-babu/mason-nvim-dap.nvim",
 			"nvim-neotest/nvim-nio",
 		},
 		config = config,

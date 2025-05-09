@@ -6,25 +6,18 @@
 
 local function config()
 	require("neodev").setup()
-	require("mason").setup()
-	require("mason-lspconfig").setup({
-		automatic_installation = true,
-	})
-
-	local lspconfig = require("lspconfig")
-	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	-- Lua
 	local lua_ls = require("hrvthzslt.lsp.lua_ls")
-	lspconfig.lua_ls.setup({
-		capabilities = capabilities,
+	vim.lsp.enable("lua_ls")
+	vim.lsp.config("lua_ls", {
 		settings = lua_ls.settings,
 		on_attach = lua_ls.on_attach,
 	})
 
 	-- Bash
-	lspconfig.bashls.setup({
-		capabilities = capabilities,
+	vim.lsp.enable("bashls")
+	vim.lsp.config("bashls", {
 		on_attach = function(client)
 			client.server_capabilities.documentFormattingProvider = false
 			client.server_capabilities.documentRangeFormattingProvider = false
@@ -33,23 +26,23 @@ local function config()
 
 	-- PHP
 	local intelephense = require("hrvthzslt.lsp.intelephense")
-	lspconfig.intelephense.setup({
-		capabilities = capabilities,
+	vim.lsp.enable("intelephense")
+	vim.lsp.config("intelephense", {
 		commands = intelephense.commands,
 		settings = intelephense.settings,
 	})
 
 	local phpactor = require("hrvthzslt.lsp.phpactor")
-	lspconfig.phpactor.setup({
-		capabilities = capabilities,
+	vim.lsp.enable("phpactor")
+	vim.lsp.config("phpactor", {
 		on_attach = phpactor.on_attach,
 		init_options = phpactor.init_options,
 		handlers = phpactor.handlers,
 	})
 
 	-- Python
-	lspconfig.ruff.setup({
-		capabilities = capabilities,
+	vim.lsp.enable("ruff")
+	vim.lsp.config("ruff", {
 		handlers = {
 			-- ["textDocument/publishDiagnostics"] = function() end,
 		},
@@ -59,37 +52,24 @@ local function config()
 			client.server_capabilities.documentRangeFormattingProvider = false
 		end,
 	})
-	lspconfig.pyright.setup({
-		capabilities = capabilities,
+    vim.lsp.enable("pyright")
+	vim.lsp.config("pyright",{
 		on_attach = function(client)
 			client.server_capabilities.documentFormattingProvider = false
 			client.server_capabilities.documentRangeFormattingProvider = false
 		end,
 	})
-	lspconfig.jinja_lsp.setup({
-		capabilities = capabilities,
+    vim.lsp.enable("jinja_lsp")
+	vim.lsp.config("jinja_lsp",{
 		filetypes = { "jinja", "jinja.html", "htmldjango", "html" },
 	})
 
 	-- Docker
-	lspconfig.dockerls.setup({
-		capabilities = capabilities,
-	})
+    vim.lsp.enable("dockerls")
 
-	-- Vue, JavaScript, TypeScript
-	-- setup("vue-language-server", function()
-	-- 	local volar = require("hrvthzslt.lsp.volar")
-	-- 	lspconfig.volar.setup({
-	-- 		capabilities = capabilities,
-	-- 		init_options = volar.init_options,
-	-- 		on_attach = volar.on_attach,
-	-- 		filetypes = volar.filetypes,
-	-- 	})
-	-- end)
-	lspconfig.ts_ls.setup({
-		capabilities = capabilities,
-	})
-	lspconfig.eslint.setup({
+    vim.lsp.enable("ts_ls")
+    vim.lsp.enable("eslint")
+	vim.lsp.config("eslint",{
 		on_attach = function(_, bufnr)
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = bufnr,
@@ -99,14 +79,10 @@ local function config()
 	})
 
 	-- Go
-	lspconfig.gopls.setup({
-		capabilities = capabilities,
-	})
+    vim.lsp.enable("gopls")
 
 	-- Markdown
-	lspconfig.marksman.setup({
-		capabilities = capabilities,
-	})
+    vim.lsp.enable("marksman")
 
 	-- Loader
 	require("fidget").setup({})
@@ -114,7 +90,7 @@ local function config()
 	-- Diagnostics
 	vim.diagnostic.config({
 		virtual_text = true,
-        -- virtual_lines = true,
+		-- virtual_lines = true,
 		signs = {
 			text = {
 				[vim.diagnostic.severity.ERROR] = " ",
@@ -159,10 +135,6 @@ end
 return {
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-		},
 		config = config,
 	},
 	"j-hui/fidget.nvim",
