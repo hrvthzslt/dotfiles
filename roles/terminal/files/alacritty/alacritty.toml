@@ -71,7 +71,7 @@ mods = "Control"
 decorations = "None"
 dynamic_padding = true
 dynamic_title = false
-opacity = 0.95
+# opacity = 0.95
 
 [window.padding]
 x = 14
