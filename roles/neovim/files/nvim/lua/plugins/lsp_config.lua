@@ -1,9 +1,3 @@
--- local function setup(executable, callback)
--- 	if vim.fn.executable(executable) == 1 then
--- 		callback()
--- 	end
--- end
-
 local function config()
 	require("neodev").setup()
 
@@ -52,24 +46,24 @@ local function config()
 			client.server_capabilities.documentRangeFormattingProvider = false
 		end,
 	})
-    vim.lsp.enable("pyright")
-	vim.lsp.config("pyright",{
+	vim.lsp.enable("pyright")
+	vim.lsp.config("pyright", {
 		on_attach = function(client)
 			client.server_capabilities.documentFormattingProvider = false
 			client.server_capabilities.documentRangeFormattingProvider = false
 		end,
 	})
-    vim.lsp.enable("jinja_lsp")
-	vim.lsp.config("jinja_lsp",{
+	vim.lsp.enable("jinja_lsp")
+	vim.lsp.config("jinja_lsp", {
 		filetypes = { "jinja", "jinja.html", "htmldjango", "html" },
 	})
 
 	-- Docker
-    vim.lsp.enable("dockerls")
+	vim.lsp.enable("dockerls")
 
-    vim.lsp.enable("ts_ls")
-    vim.lsp.enable("eslint")
-	vim.lsp.config("eslint",{
+	vim.lsp.enable("ts_ls")
+	vim.lsp.enable("eslint")
+	vim.lsp.config("eslint", {
 		on_attach = function(_, bufnr)
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = bufnr,
@@ -79,10 +73,10 @@ local function config()
 	})
 
 	-- Go
-    vim.lsp.enable("gopls")
+	vim.lsp.enable("gopls")
 
 	-- Markdown
-    vim.lsp.enable("marksman")
+	vim.lsp.enable("marksman")
 
 	-- Loader
 	require("fidget").setup({})
