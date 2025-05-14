@@ -7,12 +7,9 @@ set -o vi
 
 # export env variables
 export EDITOR="nvim"
-export COMPOSER_AUTH='{"github-oauth": {"github.com": "ghp_xxx"}}'
 export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
 export LOCALE_ARCHIVE="/lib/locale/locale-archive"
 export HISTCONTROL=ignoreboth
-# export HISTSIZE=5000
-# export HISTFILESIZE=10000
 export HISTSIZE=
 export HISTFILESIZE=
 export LC_ALL="en_US.UTF-8"
@@ -36,6 +33,7 @@ export pathprepend
 
 pathprepend \
   "/usr/local/go/bin" \
+  "$HOME/go/bin" \
   "$HOME/.local/share/nvim/mason/bin" \
   "$HOME/.local/bin/npm_packages/bin" \
   "$HOME/.local/bin/toolbox" \
