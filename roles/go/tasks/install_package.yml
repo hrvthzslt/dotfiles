@@ -1,0 +1,10 @@
+---
+- name: "check if {{ command }} installed"
+  ansible.builtin.command: "which {{ command }}"
+  register: package_package_installed
+  changed_when: false
+  ignore_errors: yes
+
+- name: "install {{ url }}"
+  ansible.builtin.shell: "{{ go_bin_path }} install {{ url }}"
+  when: package_package_installed.rc != 0
