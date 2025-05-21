@@ -6,4 +6,4 @@
 - [x] lazydocker
 - [x] lazygit
 - [x] act
-- [ ] hurl (cannot install with go install)
+- [x] hurl (cannot install with go install)
