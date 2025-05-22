@@ -4,7 +4,10 @@
   roles:
     - prologue
     - nix
+    - go
+    - rust
     - utilities
+    - hurl
     - shell
     - tmux
     - nodejs
@@ -12,8 +15,6 @@
     - python
     - mysql
     - redis
-    - go
-    - rust
     - starship
     - github
     - vim
