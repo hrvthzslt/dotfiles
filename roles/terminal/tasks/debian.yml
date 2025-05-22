@@ -18,6 +18,7 @@
       command: "wezterm --version"
       register: wezterm_version
       ignore_errors: yes
+      changed_when: false
 
     - name: wezterm | add gpg key
       ansible.builtin.apt_key:

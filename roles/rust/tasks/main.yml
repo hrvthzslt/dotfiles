@@ -9,6 +9,7 @@
       shell: command -v cargo
       register: cargo_version
       ignore_errors: yes
+      changed_when: false
 
     - name: download installer
       get_url:

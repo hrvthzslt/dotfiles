@@ -11,6 +11,7 @@
       command: "go version"
       register: go_version
       ignore_errors: yes
+      changed_when: false
     - name: download
       get_url:
         url: "https://go.dev/dl/{{ go_tarball }}"

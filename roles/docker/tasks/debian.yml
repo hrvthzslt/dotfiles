@@ -12,6 +12,7 @@
   command: "docker --version"
   register: docker_version
   ignore_errors: yes
+  changed_when: false
 
 - name: add official GPG key for ubuntu
   ansible.builtin.apt_key:
