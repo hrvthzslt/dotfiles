@@ -11,10 +11,11 @@
         command: "{{ item.command }}"
         url: "{{ item.url }}"
       loop:
-        - { command: fzf, url: github.com/junegunn/fzf@v0.62.0 }
-        - { command: act, url: github.com/nektos/act@v0.2.77 }
-        - { command: lazygit, url: github.com/jesseduffield/lazygit@v0.50.0 }
-        - { command: lazydocker, url: github.com/jesseduffield/lazydocker@v0.24.1 }
+        - { command: fzf, url: github.com/junegunn/fzf@latest }
+        - { command: act, url: github.com/nektos/act@latest }
+        - { command: lazygit, url: github.com/jesseduffield/lazygit@latest }
+        - { command: lazydocker, url: github.com/jesseduffield/lazydocker@latest }
+        - { command: gup, url: github.com/nao1215/gup@latest}
     - name: install
       include_tasks: roles/nix/tasks/install_package.yml
       vars:

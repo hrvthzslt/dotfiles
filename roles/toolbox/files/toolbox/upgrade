@@ -16,9 +16,13 @@ main() {
   fi
 
   if command -v nix-env >/dev/null; then
-      nix-channel --update
-      nix-env --upgrade
-      nix-store --gc
+    nix-channel --update
+    nix-env --upgrade
+    nix-store --gc
+  fi
+
+  if command -v gup >/dev/null; then
+      gup update
   fi
 }
 
