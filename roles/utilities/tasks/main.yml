@@ -5,23 +5,17 @@
     - install
     - cli
   block:
-    - name: install with go
-      include_tasks: roles/go/tasks/install_package.yml
-      vars:
-        command: "{{ item.command }}"
-        url: "{{ item.url }}"
-      loop:
-        - { command: fzf, url: github.com/junegunn/fzf@latest }
-        - { command: act, url: github.com/nektos/act@latest }
-        - { command: lazygit, url: github.com/jesseduffield/lazygit@latest }
-        - { command: lazydocker, url: github.com/jesseduffield/lazydocker@latest }
-        - { command: gup, url: github.com/nao1215/gup@latest}
     - name: install
       include_tasks: roles/nix/tasks/install_package.yml
       vars:
         package: "{{ item.package }}"
         derivation: "{{ item.derivation }}"
       loop:
+        - { package: fzf, derivation: fzf }
+        - { package: act, derivation: act }
+        - { package: lazygit, derivation: lazygit }
+        - { package: lazydocker, derivation: lazydocker }
+        - { package: hurl, derivation: hurl }
         - { package: ripgrep, derivation: ripgrep }
         - { package: entr, derivation: entr }
         - { package: translate-shell, derivation: translate-shell }
