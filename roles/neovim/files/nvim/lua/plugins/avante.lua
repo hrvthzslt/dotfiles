@@ -1,9 +1,11 @@
 local function config()
 	require("avante").setup({
 		provider = "copilot",
-		copilot = {
-			-- model = "claude-3.7-sonnet",
-            model = "gpt-4.1",
+		providers = {
+			copilot = {
+				-- model = "claude-3.7-sonnet",
+				model = "gpt-4.1",
+			},
 		},
 		hints = { enabled = false },
 	})
