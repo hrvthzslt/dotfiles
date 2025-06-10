@@ -60,6 +60,9 @@ local function config()
 			enable = true,
 		},
 	})
+	require("treesitter-context").setup({
+		enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+	})
 end
 
 return {
