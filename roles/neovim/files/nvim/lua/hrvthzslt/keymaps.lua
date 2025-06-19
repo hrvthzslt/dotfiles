@@ -45,6 +45,10 @@ vim.keymap.set("n", "<leader>p", ":cprevious<CR>", { desc = "Previous quick fix 
 vim.keymap.set("n", "<leader>x", ":.lua <CR>", { desc = "eXecute lua" })
 vim.keymap.set("v", "<leader>x", ":lua <CR>", { desc = "eXecute lua" })
 
+-- Diff
+vim.keymap.set("n", "<leader>ff", ":windo diffthis <CR>", { desc = "diFF visible windows" })
+vim.keymap.set("n", "<leader>fo", ":windo diffoff <CR>", { desc = "turn diFf Off" })
+
 -- Registers
 -- Mapping for "c" and "C"
 vim.api.nvim_set_keymap("n", "c", '"cc', { noremap = true, silent = true })
