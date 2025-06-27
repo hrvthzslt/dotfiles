@@ -1,4 +1,20 @@
+local function check_creds()
+	local copilot_auth = require("copilot.auth")
+	local filename = copilot_auth.find_config_path() .. "/github-copilot/apps.json"
+
+	if vim.fn.filereadable(filename) == 0 then
+		return
+	end
+
+    return 1
+end
+
 local function config()
+	if not check_creds() then
+        vim.keymap.set("n", "<leader>aa", ":echo 'Sign in to Copilot!'<CR>", { desc = "Avante Activate" })
+		return
+	end
+
 	require("avante").setup({
 		mode = "legacy",
 		provider = "copilot",
