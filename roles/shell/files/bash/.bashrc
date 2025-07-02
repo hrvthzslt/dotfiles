@@ -51,10 +51,10 @@ if [ -f ~/.aliases ]; then
   . ~/.aliases
 fi
 
-# read optional aliases
-if [ -f ~/.local_aliases ]; then
+# read optional rc
+if [ -f ~/.localrc ]; then
   # shellcheck disable=1090
-  . ~/.local_aliases
+  . ~/.localrc
 fi
 
 # source miniconda

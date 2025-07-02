@@ -56,9 +56,9 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
-# read optional aliases
-if [ -f ~/.local_aliases ]; then
-    . ~/.local_aliases
+# read optional rc
+if [ -f ~/.localrc ]; then
+    . ~/.localrc
 fi
 
 # Plugin manager
