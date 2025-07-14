@@ -21,8 +21,7 @@ local function config()
 		providers = {
 			copilot = {
 				-- model = "claude-3.7-sonnet",
-				-- model = "gpt-4.1",
-                model = "o4-mini",
+				model = "gpt-4o-mini",
 			},
 		},
 		hints = { enabled = false },
