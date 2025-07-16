@@ -7,47 +7,19 @@
     - python3-venv
   become: yes
 
-- name: conda | install
+- name: uv | install
   tags:
     - install
-    - conda
+    - uv
     - cli
   block:
-    - name: conda | check if conda.sh exists
-      ansible.builtin.stat:
-        path: /opt/conda/etc/profile.d/conda.sh
-      register: conda_sh_file
-      become: yes
+    - name: check if installed
+      ansible.builtin.command: uv --version
+      register: uv_version
+      ignore_errors: yes
+      changed_when: false
 
-    - name: conda | download asc key
-      ansible.builtin.get_url:
-        url: https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc
-        dest: "{{ tmp_dir }}/anaconda.asc"
+    - name: run the install script
+      ansible.builtin.shell: bash roles/python/files/scripts/install
       become: yes
-      when: not conda_sh_file.stat.exists
-
-    - name: conda | convert gpg key to .gpg
-      ansible.builtin.command:
-        cmd: "gpg --dearmor -o {{ tmp_dir }}/conda.gpg {{ tmp_dir }}/anaconda.asc"
-      become: yes
-      when: not conda_sh_file.stat.exists
-
-    - name: conda | install gpg key to keyring
-      ansible.builtin.copy:
-        src: "{{ tmp_dir }}/conda.gpg"
-        dest: /usr/share/keyrings/conda-archive-keyring.gpg
-        mode: "0644"
-      become: yes
-      when: not conda_sh_file.stat.exists
-
-    - name: conda | add repository
-      ansible.builtin.apt_repository:
-        repo: deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main
-        mode: "0644"
-      become: yes
-      when: not conda_sh_file.stat.exists
-
-    - name: conda | install
-      ansible.builtin.apt:
-        name: conda
-      become: yes
+      when: uv_version.rc != 0

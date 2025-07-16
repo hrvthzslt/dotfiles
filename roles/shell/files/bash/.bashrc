@@ -57,9 +57,6 @@ if [ -f ~/.localrc ]; then
   . ~/.localrc
 fi
 
-# source miniconda
-[ -f /opt/conda/etc/profile.d/conda.sh ] && source /opt/conda/etc/profile.d/conda.sh
-
 # shellcheck disable=1091
 [ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
 

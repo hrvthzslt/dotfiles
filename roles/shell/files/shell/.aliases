@@ -28,12 +28,8 @@ alias dl="lazydocker"
 # Editor
 alias v="nvim"
 
-# Ranger
-alias rd='ranger --choosedir=$HOME/rangerdir;cd "$(cat $HOME/rangerdir)"'
-alias r='ranger'
-
 # Venv
-alias va="source venv/bin/activate"
+alias va="source venv/bin/activate 2>/dev/null || source .venv/bin/activate 2>/dev/null || echo 'No venv or .venv found'"
 alias vd="deactivate"
 
 # Github
