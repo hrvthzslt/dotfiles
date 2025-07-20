@@ -9,3 +9,20 @@
       ansible.builtin.import_tasks:
         file: debian.yml
       when: ansible_facts['os_family'] == 'Debian'
+
+    - name: uv | install
+      tags:
+        - install
+        - uv
+        - cli
+      block:
+        - name: check if installed
+          ansible.builtin.command: uv --version
+          register: uv_version
+          ignore_errors: yes
+          changed_when: false
+
+        - name: run the install script
+          ansible.builtin.shell: "{{ role_path }}/files/scripts/install"
+          become: yes
+          when: uv_version.rc != 0

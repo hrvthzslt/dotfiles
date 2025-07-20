@@ -5,20 +5,13 @@
     - install
     - cli
   block:
-    - name: install
-      ansible.builtin.import_tasks:
-        file: debian.yml
-      when: ansible_facts['os_family'] == 'Debian'
+    - name: check if installed
+      ansible.builtin.command: node --version
+      register: nodejs_version
+      ignore_errors: yes
+      changed_when: false
 
-- name: link config
-  tags:
-    - nodejs
-    - link
-    - cli
-  block:
-    - name: symlink config
-      ansible.builtin.file:
-        src: "{{ role_path }}/files/nodejs/.npmrc"
-        dest: "{{ ansible_env.HOME }}/.npmrc"
-        state: link
-        force: yes
+    - name: run the install script
+      ansible.builtin.shell: "{{ role_path }}/files/scripts/install"
+      become: yes
+      when: nodejs_version.rc != 0
