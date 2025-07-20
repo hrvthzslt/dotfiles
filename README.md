@@ -26,7 +26,7 @@ Run MacOS specific installation, which uses **brew**:
 make macos
 ```
 
-### Install with ansible
+### Install with Ansible
 
 Run all playbooks manually:
 
