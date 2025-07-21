@@ -32,6 +32,7 @@ pathprepend() {
 export pathprepend
 
 pathprepend \
+  "$HOME"/.opencode/bin \
   "/usr/local/go/bin" \
   "$HOME/go/bin" \
   "$HOME/.local/share/nvim/mason/bin" \
