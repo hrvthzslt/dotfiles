@@ -17,7 +17,16 @@ local function config()
 		},
 	})
 	require("mason-null-ls").setup({
-		ensure_installed = { "stylua", "prettierd", "sql-fomatter", "black", "djlint", "shfmt", "php-cs-fixer" },
+		ensure_installed = {
+			"stylua",
+			"prettierd",
+			"sql-fomatter",
+			"black",
+			"djlint",
+			"shfmt",
+			"php-cs-fixer",
+			"shellcheck",
+		},
 	})
 	require("mason-nvim-dap").setup({
 		ensure_installed = { "delve", "php", "python" },
