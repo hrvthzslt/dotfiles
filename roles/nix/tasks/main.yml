@@ -5,19 +5,19 @@
     - install
     - global
   block:
-    - name: Ensure curl is installed
+    - name: ensure curl is installed
       ansible.builtin.package:
         name: curl
         state: present
       become: true
 
-    - name: Download and install Nix with daemon
+    - name: download and install nix with daemon
       ansible.builtin.shell: "curl -L https://nixos.org/nix/install | sh -s -- --daemon"
       args:
         creates: /nix
       become: true
 
-    - name: Ensure /nix is owned by the user
+    - name: ensure /nix is owned by the user
       ansible.builtin.file:
         path: /nix
         owner: "{{ ansible_env['USER'] }}"

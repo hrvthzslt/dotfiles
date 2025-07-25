@@ -1,5 +1,5 @@
 ---
-- name: Ensure required packages are installed
+- name: ensure required packages are installed
   ansible.builtin.apt:
     name:
       - ca-certificates
@@ -8,14 +8,14 @@
     update_cache: true
   become: true
 
-- name: Create /etc/apt/keyrings directory
+- name: create /etc/apt/keyrings directory
   ansible.builtin.file:
     path: /etc/apt/keyrings
     state: directory
     mode: "0755"
   become: true
 
-- name: Download Docker's official GPG key
+- name: download docker's official gpg key
   ansible.builtin.get_url:
     url: https://download.docker.com/linux/debian/gpg
     dest: /etc/apt/keyrings/docker.asc
@@ -23,23 +23,23 @@
     force: true
   become: true
 
-- name: Ensure Docker's GPG key is readable
+- name: ensure docker's gpg key is readable
   ansible.builtin.file:
     path: /etc/apt/keyrings/docker.asc
     mode: "0644"
   become: true
 
-- name: Get system architecture
+- name: get system architecture
   ansible.builtin.command: dpkg --print-architecture
   register: dpkg_architecture
   changed_when: false
 
-- name: Get system codename
+- name: get system codename
   ansible.builtin.command: bash -c '. /etc/os-release && echo "$VERSION_CODENAME"'
   register: system_codename
   changed_when: false
 
-- name: Set Docker repository variables
+- name: set docker repository variables
   ansible.builtin.set_fact:
     docker_repo_url: >-
       {% if ansible_distribution == "Ubuntu" %}
@@ -49,19 +49,19 @@
       {% endif %}
     docker_repo_codename: "{{ system_codename.stdout }}"
 
-- name: Add Docker repository to apt sources
+- name: add docker repository to apt sources
   ansible.builtin.copy:
     dest: /etc/apt/sources.list.d/docker.list
     content: "deb [arch={{ dpkg_architecture.stdout | trim }} signed-by=/etc/apt/keyrings/docker.asc] {{ docker_repo_url | trim }} {{ docker_repo_codename | trim }} stable"
     mode: "0644"
   become: true
 
-- name: Update apt cache
+- name: update apt cache
   ansible.builtin.apt:
     update_cache: true
   become: true
 
-- name: Install Docker packages
+- name: install docker packages
   ansible.builtin.apt:
     name:
       - docker-ce
@@ -72,7 +72,7 @@
     state: present
   become: true
 
-- name: Add current user to docker group
+- name: add current user to docker group
   ansible.builtin.user:
     name: "{{ ansible_env['USER'] }}"
     groups: docker
