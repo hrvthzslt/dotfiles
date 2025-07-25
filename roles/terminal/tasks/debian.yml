@@ -8,35 +8,45 @@
     - install
     - desktop
 
-- name: wezterm | isntall
+- name: wezterm | install
   tags:
     - install
     - desktop
     - wezterm
   block:
-    - name: check wezterm version
+    - name: wezterm | check wezterm version
       command: "wezterm --version"
       register: wezterm_version
       ignore_errors: yes
       changed_when: false
 
-    - name: wezterm | add gpg key
-      ansible.builtin.apt_key:
-        url: https://apt.fury.io/wez/gpg.key
-        keyring: /usr/share/keyrings/wezterm-fury.gpg
-        state: present
+    - name: wezterm | download wezterm gpg key and dearmor
+      ansible.builtin.shell: |
+        curl -fsSL https://apt.fury.io/wez/gpg.key | gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+      args:
+        creates: /usr/share/keyrings/wezterm-fury.gpg
       become: true
-      when: wezterm_version.rc != 0
 
-    - name: wezterm | add repository
-      ansible.builtin.apt_repository:
-        repo: deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *
+    - name: wezterm | set permissions for wezterm gpg key
+      ansible.builtin.file:
+        path: /usr/share/keyrings/wezterm-fury.gpg
         mode: "0644"
       become: true
-      when: wezterm_version.rc != 0
 
-    - name: wezterm | install
+    - name: wezterm | add wezterm repository to apt sources
+      ansible.builtin.copy:
+        dest: /etc/apt/sources.list.d/wezterm.list
+        content: "deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *"
+        mode: "0644"
+      become: true
+
+    - name: wezterm | update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+      become: true
+
+    - name: wezterm | install wezterm
       ansible.builtin.apt:
         name: wezterm
+        state: present
       become: true
-      when: wezterm_version.rc != 0
