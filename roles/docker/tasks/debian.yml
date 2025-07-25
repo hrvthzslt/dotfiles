@@ -1,4 +1,10 @@
 ---
+- name: check docker version
+  command: "docker --version"
+  register: docker_version
+  ignore_errors: yes
+  changed_when: false
+
 - name: ensure required packages are installed
   ansible.builtin.apt:
     name:
@@ -7,6 +13,7 @@
     state: present
     update_cache: true
   become: true
+  when: docker_version.rc != 0
 
 - name: create /etc/apt/keyrings directory
   ansible.builtin.file:
@@ -14,6 +21,7 @@
     state: directory
     mode: "0755"
   become: true
+  when: docker_version.rc != 0
 
 - name: download docker's official gpg key
   ansible.builtin.get_url:
@@ -22,22 +30,26 @@
     mode: "0644"
     force: true
   become: true
+  when: docker_version.rc != 0
 
 - name: ensure docker's gpg key is readable
   ansible.builtin.file:
     path: /etc/apt/keyrings/docker.asc
     mode: "0644"
   become: true
+  when: docker_version.rc != 0
 
 - name: get system architecture
   ansible.builtin.command: dpkg --print-architecture
   register: dpkg_architecture
   changed_when: false
+  when: docker_version.rc != 0
 
 - name: get system codename
   ansible.builtin.command: bash -c '. /etc/os-release && echo "$VERSION_CODENAME"'
   register: system_codename
   changed_when: false
+  when: docker_version.rc != 0
 
 - name: set docker repository variables
   ansible.builtin.set_fact:
@@ -48,6 +60,7 @@
         https://download.docker.com/linux/debian
       {% endif %}
     docker_repo_codename: "{{ system_codename.stdout }}"
+  when: docker_version.rc != 0
 
 - name: add docker repository to apt sources
   ansible.builtin.copy:
@@ -55,11 +68,13 @@
     content: "deb [arch={{ dpkg_architecture.stdout | trim }} signed-by=/etc/apt/keyrings/docker.asc] {{ docker_repo_url | trim }} {{ docker_repo_codename | trim }} stable"
     mode: "0644"
   become: true
+  when: docker_version.rc != 0
 
 - name: update apt cache
   ansible.builtin.apt:
     update_cache: true
   become: true
+  when: docker_version.rc != 0
 
 - name: install docker packages
   ansible.builtin.apt:
@@ -71,6 +86,7 @@
       - docker-compose-plugin
     state: present
   become: true
+  when: docker_version.rc != 0
 
 - name: add current user to docker group
   ansible.builtin.user:
@@ -78,3 +94,4 @@
     groups: docker
     append: true
   become: true
+  when: docker_version.rc != 0

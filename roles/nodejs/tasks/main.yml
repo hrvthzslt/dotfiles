@@ -5,22 +5,28 @@
     - install
     - cli
   block:
+    - name: check node version
+      command: "node --version"
+      register: node_version
+      ignore_errors: yes
+      changed_when: false
+
     - name: download nvm install script to /tmp
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh
         dest: /tmp/install.sh
         mode: "0755"
-      # when: nodejs_version.rc != 0
+      when: node_version.rc != 0
 
     - name: run nvm install script
       ansible.builtin.shell: bash /tmp/install.sh
       args:
         creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-      # when: nodejs_version.rc != 0
+      when: node_version.rc != 0
 
     - name: load nvm
       ansible.builtin.shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install 22"
       args:
         executable: /bin/bash
         creates: "{{ ansible_env.HOME }}/.nvm/versions/node/v22*"
-      # when: nodejs_version.rc != 0
+      when: node_version.rc != 0
