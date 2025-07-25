@@ -11,12 +11,16 @@
       ignore_errors: yes
       changed_when: false
 
-    - name: download install script
-      ansible.builtin.get_url:
-        url: https://nixos.org/nix/install
-        dest: "{{ tmp_dir }}/install-nix.sh"
+    - name: ensure /nix directory exists
+      ansible.builtin.file:
+        path: /nix
+        state: directory
+        owner: "{{ ansible_env['USER'] }}"
+        group: "{{ ansible_env['USER'] }}"
+        mode: "0755"
+      become: yes
       when: nix_env_version.rc != 0
 
-    - name: install
-      ansible.builtin.script: "{{ tmp_dir }}/install-nix.sh --no-daemon"
+    - name: install nix via shell/curl
+      ansible.builtin.shell: "curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --no-daemon"
       when: nix_env_version.rc != 0
