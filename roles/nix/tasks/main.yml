@@ -14,5 +14,14 @@
     - name: download and install nix with daemon
       ansible.builtin.shell: "curl -L https://nixos.org/nix/install | sh -s"
       args:
-        creates: "{{ nix_env_path }}"
+        creates: /nix
+      become: true
+
+    - name: ensure /nix is owned by the user
+      ansible.builtin.file:
+        path: /nix
+        owner: "{{ ansible_env['USER'] }}"
+        group: "{{ ansible_env['USER'] }}"
+        state: directory
+        recurse: true
       become: true
