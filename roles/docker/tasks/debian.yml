@@ -1,58 +1,58 @@
 ---
-- name: install dependencies
+- name: Ensure required packages are installed
   ansible.builtin.apt:
     name:
       - ca-certificates
       - curl
-      - gnupg
     state: present
+    update_cache: true
   become: true
 
-- name: check docker version
-  command: "docker --version"
-  register: docker_version
-  ignore_errors: yes
-  changed_when: false
-
-- name: add official GPG key for ubuntu
-  ansible.builtin.apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    keyring: /etc/apt/keyrings/docker.gpg
-    state: present
+- name: Create /etc/apt/keyrings directory
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: "0755"
   become: true
-  when: ansible_distribution != 'Debian' and docker_version.rc != 0
 
-- name: add official GPG key for debian
-  ansible.builtin.apt_key:
+- name: Download Docker's official GPG key
+  ansible.builtin.get_url:
     url: https://download.docker.com/linux/debian/gpg
-    keyring: /etc/apt/keyrings/docker.gpg
-    state: present
+    dest: /etc/apt/keyrings/docker.asc
+    mode: "0644"
+    force: true
   become: true
-  when: ansible_distribution == 'Debian' and docker_version.rc != 0
 
+- name: Ensure Docker's GPG key is readable
+  ansible.builtin.file:
+    path: /etc/apt/keyrings/docker.asc
+    mode: "0644"
+  become: true
 
-- name: get system architecture
-  ansible.builtin.command: "dpkg --print-architecture"
+- name: Get system architecture
+  ansible.builtin.command: dpkg --print-architecture
   register: dpkg_architecture
   changed_when: false
-  failed_when: false
-  check_mode: false
 
-- name: add docker stable ubuntu repository
-  ansible.builtin.apt_repository:
-    repo: deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+- name: Get Debian codename
+  ansible.builtin.command: bash -c '. /etc/os-release && echo "$VERSION_CODENAME"'
+  register: debian_codename
+  changed_when: false
+
+- name: Add Docker repository to apt sources
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/docker.list
+    content: |
+      deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ debian_codename.stdout }} stable
     mode: "0644"
   become: true
-  when: ansible_distribution != 'Debian' and docker_version.rc != 0
 
-- name: add docker stable debian repository
-  ansible.builtin.apt_repository:
-    repo: deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
-    mode: "0644"
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
   become: true
-  when: ansible_distribution == 'Debian' and docker_version.rc != 0
 
-- name: install docker engine
+- name: Install Docker packages
   ansible.builtin.apt:
     name:
       - docker-ce
@@ -61,22 +61,11 @@
       - docker-buildx-plugin
       - docker-compose-plugin
     state: present
-    update_cache: true
   become: true
-  when: docker_version.rc != 0
 
-- name: enable and start docker service
-  ansible.builtin.systemd:
-    enabled: true
-    name: docker
-    state: started
-  become: true
-  when: docker_version.rc != 0
-
-- name: add user to docker group
+- name: Add current user to docker group
   ansible.builtin.user:
-    append: true
-    groups: docker
     name: "{{ ansible_env['USER'] }}"
+    groups: docker
+    append: true
   become: true
-  when: docker_version.rc != 0
