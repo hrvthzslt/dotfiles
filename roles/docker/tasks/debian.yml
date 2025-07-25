@@ -34,16 +34,25 @@
   register: dpkg_architecture
   changed_when: false
 
-- name: Get Debian codename
+- name: Get system codename
   ansible.builtin.command: bash -c '. /etc/os-release && echo "$VERSION_CODENAME"'
-  register: debian_codename
+  register: system_codename
   changed_when: false
+
+- name: Set Docker repository variables
+  ansible.builtin.set_fact:
+    docker_repo_url: >-
+      {% if ansible_distribution == "Ubuntu" %}
+        https://download.docker.com/linux/ubuntu
+      {% else %}
+        https://download.docker.com/linux/debian
+      {% endif %}
+    docker_repo_codename: "{{ system_codename.stdout }}"
 
 - name: Add Docker repository to apt sources
   ansible.builtin.copy:
     dest: /etc/apt/sources.list.d/docker.list
-    content: |
-      deb [arch={{ dpkg_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ debian_codename.stdout }} stable
+    content: "deb [arch={{ dpkg_architecture.stdout | trim }} signed-by=/etc/apt/keyrings/docker.asc] {{ docker_repo_url | trim }} {{ docker_repo_codename | trim }} stable"
     mode: "0644"
   become: true
 
