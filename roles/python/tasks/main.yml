@@ -16,13 +16,13 @@
         - uv
         - cli
       block:
-        - name: check if installed
+        - name: uv | check if installed
           ansible.builtin.command: uv --version
           register: uv_version
           ignore_errors: yes
           changed_when: false
 
-        - name: run the install script
-          ansible.builtin.shell: "{{ role_path }}/files/scripts/install"
+        - name: uv | install uv via official script
+          ansible.builtin.shell: curl -LsSf https://astral.sh/uv/install.sh | sh
           become: yes
           when: uv_version.rc != 0
