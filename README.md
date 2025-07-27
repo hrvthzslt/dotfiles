@@ -43,10 +43,3 @@ ansible-playbook --ask-become -i hosts main.yml --tags utilities,toolbox
 ## Details (Deprecated)
 
 [Replicate My Developer Environment Like an Almost Modern Caveman](https://zsolthorvath.xyz/posts/replicate-my-developer-environment-like-an-almost-modern-caveman/)
-
-## TODO
-
-Upgrade installation method of:
-
-- [ ] nodejs
-- [ ] docker
