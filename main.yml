@@ -16,7 +16,6 @@
     - redis
     - starship
     - github
-    - vim
     - neovim
     - cht.sh
     - docker

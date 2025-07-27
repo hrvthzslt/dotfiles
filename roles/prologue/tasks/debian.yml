@@ -4,6 +4,7 @@
     name: "{{ item }}"
   loop:
     - curl
+    - gpg
     - gcc
     - make
   become: yes

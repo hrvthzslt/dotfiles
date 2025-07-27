@@ -9,3 +9,20 @@
       ansible.builtin.import_tasks:
         file: debian.yml
       when: ansible_facts['os_family'] == 'Debian'
+
+    - name: uv | install
+      tags:
+        - install
+        - uv
+        - cli
+      block:
+        - name: uv | check if installed
+          ansible.builtin.command: uv --version
+          register: uv_version
+          ignore_errors: yes
+          changed_when: false
+
+        - name: uv | install uv via official script
+          ansible.builtin.shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+          become: yes
+          when: uv_version.rc != 0
