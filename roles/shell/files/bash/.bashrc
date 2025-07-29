@@ -41,8 +41,6 @@ pathprepend \
   "$HOME/.local/bin" \
   "$HOME/.nix-profile/bin"
 
-export NODE_PATH="$HOME/.local/bin/npm_packages/lib/node_modules"
-
 # start ssh-agent
 eval "$(ssh-agent -s)" >/dev/null
 
@@ -60,6 +58,11 @@ fi
 
 # shellcheck disable=1091
 [ -f ~/.cargo/env ] && source "$HOME/.cargo/env"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(fzf --bash)"
 
