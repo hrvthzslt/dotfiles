@@ -9,15 +9,15 @@ open_or_create_session() {
     directory="$(pwd)"
   fi
 
-  if [ -z "$TMUX" ] && tmux has-session -t "$session_name" 2>/dev/null; then
-    tmux attach -t "$session_name"
+  if [ -z "$TMUX" ] && tmux has-session -t "=${session_name}" 2>/dev/null; then
+    tmux attach -t "=${session_name}"
   elif [ -z "$TMUX" ]; then
     tmuxinator "$session_name" || tmux new-session -s "$session_name" -c "$directory"
-  elif tmux has-session -t "$session_name" 2>/dev/null; then
-    tmux switch-client -t "$session_name"
+  elif tmux has-session -t "=${session_name}" 2>/dev/null; then
+    tmux switch-client -t "=${session_name}"
   else
     tmuxinator "$session_name" || tmux new-session -s "$session_name" -c "$directory" -d
-    tmux switch-client -t "$session_name"
+    tmux switch-client -t "=${session_name}"
   fi
 }
 
