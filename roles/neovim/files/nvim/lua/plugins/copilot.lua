@@ -1,7 +1,7 @@
 local function config()
 	require("copilot").setup({
 		panel = {
-			enabled = false,
+			enabled = true,
 		},
 		suggestion = {
 			enabled = true,
