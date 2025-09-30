@@ -26,6 +26,9 @@ vim.keymap.set("v", "p", '"_dP')
 -- Quickly clear search highlighting.
 vim.keymap.set("n", "<Leader>k", ":nohlsearch<CR>", { desc = "nohlsearch" })
 
+-- Exit terminal mode.
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
 -- Copy file path
 vim.keymap.set("n", "<Leader>C", ":! echo % | xsel -ib<CR><CR>", { desc = "Copy file path" })
 
