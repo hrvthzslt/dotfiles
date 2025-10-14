@@ -61,11 +61,15 @@ local function config()
 	-- Docker
 	vim.lsp.enable("dockerls")
 
+	-- Javascript
 	vim.lsp.enable("ts_ls")
 	vim.lsp.enable("eslint")
 
 	-- Go
 	vim.lsp.enable("gopls")
+
+	-- C
+	vim.lsp.enable("clangd")
 
 	-- Markdown
 	vim.lsp.enable("marksman")

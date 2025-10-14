@@ -13,6 +13,7 @@ local function config()
 			"ts_ls",
 			"eslint",
 			"gopls",
+            "clangd",
 			"marksman",
 		},
 	})
@@ -26,6 +27,7 @@ local function config()
 			"shfmt",
 			"php-cs-fixer",
 			"shellcheck",
+            "clang-format"
 		},
 	})
 	require("mason-nvim-dap").setup({
