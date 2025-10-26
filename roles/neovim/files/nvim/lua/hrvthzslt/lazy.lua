@@ -12,6 +12,10 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+	rocks = {
+		enabled = false,
+	},
+})
 
 vim.keymap.set("n", "<leader>L", ":Lazy<CR>", { desc = "Lazy" })
