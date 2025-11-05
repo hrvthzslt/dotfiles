@@ -3,7 +3,7 @@
 My $HOME my rules.
 Collection of my **dotfiles** and **toolbox scripts** for my development environment. Installation and config management automated with **Ansible**, for **Debian** based distributions.
 
-Sets up development environment for **Python/Conda**, **PHP**, **NodeJs**, **Go**, **Docker**. Installs CLI tools with **nix package manager**.
+Sets up development environment for **Python**, **PHP**, **NodeJs**, **Go**, **Docker**. Installs CLI tools with **nix package manager**.
 
 ## Install
 
