@@ -44,11 +44,6 @@ config.keys = {
 		mods = "CTRL",
 		action = wezterm.action.ResetFontSize,
 	},
-	{
-		key = "v",
-		mods = "CTRL",
-		action = wezterm.action.PasteFrom("Clipboard"),
-	},
 }
 
 -- Psssst!

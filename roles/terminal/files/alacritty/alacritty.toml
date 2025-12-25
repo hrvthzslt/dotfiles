@@ -62,11 +62,6 @@ action = "DecreaseFontSize"
 key = "Minus"
 mods = "Control"
 
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Control"
-
 [window]
 decorations = "None"
 dynamic_padding = true
