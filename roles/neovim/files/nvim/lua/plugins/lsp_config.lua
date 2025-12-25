@@ -69,6 +69,9 @@ local function config()
 	vim.lsp.enable("gopls")
 
 	-- C
+	vim.lsp.config("clangd", {
+		cmd = { "clangd", "--compile-commands-dir=." },
+	})
 	vim.lsp.enable("clangd")
 
 	-- Markdown
