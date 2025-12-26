@@ -1,6 +1,4 @@
 # export env variables
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/bin/toolbox:$PATH"
 export LOCALE_ARCHIVE="/lib/locale/locale-archive"
 export EDITOR="nvim"
 export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
@@ -58,13 +56,8 @@ if [ -f ~/.localrc ]; then
     . ~/.localrc
 fi
 
-# Plugin manager
-[[ -r ~/workspace/third-party/znap/znap.zsh ]] ||
-    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/workspace/third-party/znap
-source ~/workspace/third-party/znap/znap.zsh
-
-znap source marlonrichert/zsh-autocomplete
-znap source joshskidmore/zsh-fzf-history-search
+# fzf shell integration
+source <(fzf --zsh)
 
 # starhip
 eval "$(starship init zsh)"
