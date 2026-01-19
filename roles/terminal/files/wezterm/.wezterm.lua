@@ -21,7 +21,8 @@ config.hide_tab_bar_if_only_one_tab = true
 -- config.color_scheme = "Gruvbox light, hard (base16)"
 config.color_scheme = "zenbones_light"
 config.window_background_opacity = 0.95
-config.window_decorations = "NONE"
+config.macos_window_background_blur = 20
+config.window_decorations = "RESIZE"
 
 -- Font
 config.font = wezterm.font("Hack Nerd Font")
