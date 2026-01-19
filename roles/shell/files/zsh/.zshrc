@@ -3,9 +3,10 @@ export LOCALE_ARCHIVE="/lib/locale/locale-archive"
 export EDITOR="nvim"
 export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
 
+typeset -U path
+
 # add to path
 pathprepend() {
-  typeset -U path
   for arg in "$@"; do
     test -d "$arg" || continue
     path+="$arg"
