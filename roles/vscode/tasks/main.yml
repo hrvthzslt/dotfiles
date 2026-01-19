@@ -5,19 +5,22 @@
     - link
     - desktop
   block:
+    - name: Set VSCode user config path per OS
+      set_fact:
+        vscode_user_dir: "{{ ansible_env.HOME }}/{{ 'Library/Application Support/Code/User' if ansible_facts['os_family'] == 'Darwin' else '.config/Code/User' }}"
     - name: create code user directory
       ansible.builtin.file:
-        path: "{{ ansible_env.HOME }}/.config/Code/User"
+        path: "{{ vscode_user_dir }}"
         state: directory
     - name: symlink settings
       ansible.builtin.file:
         src: "{{ role_path }}/files/settings.json"
-        dest: "{{ ansible_env.HOME }}/.config/Code/User/settings.json"
+        dest: "{{ vscode_user_dir }}/settings.json"
         state: link
         force: yes
     - name: symlink keybindings
       ansible.builtin.file:
         src: "{{ role_path }}/files/keybindings.json"
-        dest: "{{ ansible_env.HOME }}/.config/Code/User/keybindings.json"
+        dest: "{{ vscode_user_dir }}/keybindings.json"
         state: link
         force: yes
