@@ -5,9 +5,10 @@ export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
 
 # add to path
 pathprepend() {
+  typeset -U path
   for arg in "$@"; do
     test -d "$arg" || continue
-    export PATH="$1:$PATH"
+    path+="$arg"
   done
 }
 
@@ -22,6 +23,7 @@ pathprepend \
   "$HOME/.nix-profile/bin"
 
 export pathprepend
+export PATH
 
 # key bindings
 bindkey '^[[1;5D' backward-word
@@ -34,7 +36,6 @@ bindkey '^N' down-history
 
 # preserve history
 HISTFILE=~/.zsh_history
-HISTCONTROL=ignoreboth
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_ALL_DUPS
@@ -55,6 +56,11 @@ fi
 if [ -f ~/.localrc ]; then
     . ~/.localrc
 fi
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # fzf shell integration
 source <(fzf --zsh)
