@@ -5,8 +5,8 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-alias ls='ls -a --color=always --group-directories-first'
-alias la='ls -lah --color=always --group-directories-first'
+alias ls='ls -a --color=always'
+alias la='ls -lah --color=always'
 alias l.='ls -a | egrep "^\."'
 
 alias grep='grep --color=auto'
