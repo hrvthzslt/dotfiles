@@ -34,6 +34,8 @@ bindkey '^R' history-incremental-search-backward
 # Added ctrl+p for good measure, since that was also broken
 bindkey '^P' up-history
 bindkey '^N' down-history
+# vi mode
+bindkey -v
 
 # preserve history
 HISTFILE=~/.zsh_history
