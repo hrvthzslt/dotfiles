@@ -8,6 +8,7 @@ $git_status\
 $cmd_duration\
 $python\
 $conda\
+$nodejs\
 $line_break\
 $character"""
 
@@ -53,3 +54,6 @@ style = "grey"
 
 [conda]
 format = '[$environment](dimmed green) '
+
+[nodejs]
+format = '[$version](dimmed blue) '
