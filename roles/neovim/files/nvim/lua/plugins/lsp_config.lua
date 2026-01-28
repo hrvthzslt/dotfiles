@@ -62,7 +62,19 @@ local function config()
 	vim.lsp.enable("dockerls")
 
 	-- Javascript
+    vim.lsp.config("ts_ls", {
+        on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+        end,
+    })
 	vim.lsp.enable("ts_ls")
+    vim.lsp.config("eslint", {
+        on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+        end,
+    })
 	vim.lsp.enable("eslint")
 
 	-- Go
