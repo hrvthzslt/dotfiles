@@ -33,12 +33,12 @@ vim.keymap.set("t", "<C-x>", "<C-\\><C-n>")
 vim.keymap.set("n", "<Leader>C", ":! echo % | xsel -ib<CR><CR>", { desc = "Copy file path" })
 
 -- Move lines up and down.
-vim.keymap.set("i", "<A-j>", "<Esc>:move .+1<CR>==gi")
-vim.keymap.set("i", "<A-k>", "<Esc>:move .-2<CR>==gi")
-vim.keymap.set("n", "<A-j>", ":move .+1<CR>==")
-vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
-vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-k>", ":move '<-2<CR>gv=gv")
+vim.keymap.set("i", "<A-n>", "<Esc>:move .+1<CR>==gi")
+vim.keymap.set("i", "<A-p>", "<Esc>:move .-2<CR>==gi")
+vim.keymap.set("n", "<A-n>", ":move .+1<CR>==")
+vim.keymap.set("n", "<A-p>", ":move .-2<CR>==")
+vim.keymap.set("v", "<A-n>", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-p>", ":move '<-2<CR>gv=gv")
 
 -- Quickfix
 vim.keymap.set("n", "<leader>n", ":cnext<CR>", { desc = "Next quick fix item" })

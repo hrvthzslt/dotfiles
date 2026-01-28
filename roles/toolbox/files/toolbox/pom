@@ -27,7 +27,10 @@ get_timer() {
   fi
   time_is_up
   time="$((end - $(date +%s)))"
-  echo " $(date -u -d "@$time" +%M:%S)"
+  if [ "$time" -lt 0 ]; then time=0; fi
+  min=$((time / 60))
+  sec=$((time % 60))
+  echo " $(printf "%02d" "$min"):$(printf "%02d" "$sec")"
 }
 
 set_timer() {

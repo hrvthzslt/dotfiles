@@ -41,7 +41,7 @@ bindkey -v
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
-setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
 setopt appendhistory
 
 # start ssh-agent
