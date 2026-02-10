@@ -2,7 +2,7 @@
 # Docker compose wrapper
 
 help() {
-  echo "Usage: dc [u|h] (or any docker compose command)"
+  echo "Usage: co [u|h] (or any docker compose command)"
   echo "  -u     up -d"
   echo "  -h     help"
   exit 1
