@@ -68,6 +68,8 @@ end
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+        -- old plugin compatibility
+        branch = "master",
 		build = ":TSUpdate",
 		config = config,
 	},
