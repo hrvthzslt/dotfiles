@@ -30,7 +30,11 @@ vim.keymap.set("n", "<Leader>k", ":nohlsearch<CR>", { desc = "nohlsearch" })
 vim.keymap.set("t", "<C-x>", "<C-\\><C-n>")
 
 -- Copy file path
-vim.keymap.set("n", "<Leader>C", ":! echo % | xsel -ib<CR><CR>", { desc = "Copy file path" })
+function insertFullPath()
+	local filepath = vim.fn.expand("%")
+	vim.fn.setreg("+", filepath)
+end
+vim.keymap.set("n", "<leader>C", insertFullPath, { noremap = true, silent = true })
 
 -- Move lines up and down.
 vim.keymap.set("i", "<A-n>", "<Esc>:move .+1<CR>==gi")
