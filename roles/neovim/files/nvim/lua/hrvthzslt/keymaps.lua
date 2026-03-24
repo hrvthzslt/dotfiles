@@ -30,7 +30,7 @@ vim.keymap.set("n", "<Leader>k", ":nohlsearch<CR>", { desc = "nohlsearch" })
 vim.keymap.set("t", "<C-x>", "<C-\\><C-n>")
 
 -- Copy file path
-function insertFullPath()
+local function insertFullPath()
 	local filepath = vim.fn.expand("%")
 	vim.fn.setreg("+", filepath)
 end
