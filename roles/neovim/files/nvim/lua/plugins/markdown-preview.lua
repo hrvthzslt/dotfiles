@@ -10,7 +10,7 @@ local function config()
 end
 
 return {
-	"iamcco/markdown-preview.nvim",
+	"hrvthzslt/markdown-preview.nvim",
 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 	build = "cd app && npm install",
 	ft = { "markdown" },
