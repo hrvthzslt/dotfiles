@@ -36,6 +36,9 @@ bindkey '^P' up-history
 bindkey '^N' down-history
 # vi mode
 bindkey -v
+# Rebind backspace in vi-insert mode to delete past the start of insertion
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
 
 # preserve history
 HISTFILE=~/.zsh_history
