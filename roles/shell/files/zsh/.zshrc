@@ -47,6 +47,10 @@ SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_DUPS
 setopt appendhistory
 
+# Bash like autocomplete
+setopt noautomenu
+# setopt nomenucomplete
+
 # start ssh-agent
 eval "$(ssh-agent -s)" > /dev/null
 
