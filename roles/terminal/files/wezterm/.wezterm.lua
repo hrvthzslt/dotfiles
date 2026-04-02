@@ -10,6 +10,10 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+local is_darwin = function()
+	return wezterm.target_triple:find("darwin") ~= nil
+end
+
 -- This is where you actually apply your config choices
 config.window_close_confirmation = "NeverPrompt"
 
@@ -20,13 +24,19 @@ config.hide_tab_bar_if_only_one_tab = true
 -- For example, changing the color scheme:
 -- config.color_scheme = "Gruvbox light, hard (base16)"
 config.color_scheme = "zenbones_light"
+-- config.color_scheme = "zenbones_dark"
 config.window_background_opacity = 0.95
-config.macos_window_background_blur = 20
 config.window_decorations = "RESIZE"
 
 -- Font
 config.font = wezterm.font("Hack Nerd Font")
 config.font_size = 13
+
+-- MacOS
+if is_darwin() then
+	config.font_size = 17
+    config.macos_window_background_blur = 20
+end
 
 config.adjust_window_size_when_changing_font_size = false
 config.keys = {
