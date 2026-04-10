@@ -13,6 +13,7 @@
       loop:
         - { package: fzf, derivation: fzf }
         - { package: act, derivation: act }
+        - { package: tree-sitter, derivation: tree-sitter }
         - { package: lazygit, derivation: lazygit }
         - { package: lazydocker, derivation: lazydocker }
         - { package: hurl, derivation: hurl }

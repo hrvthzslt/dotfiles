@@ -7,6 +7,9 @@ local function config()
 	require("illuminate").configure({
 		-- delay: delay in milliseconds
 		delay = 0,
+		-- treesitter provider is broken with recent nvim-treesitter
+		-- (locals module removed), use lsp and regex instead
+		providers = { "lsp", "regex" },
 	})
 
 	set_hl()
