@@ -11,15 +11,6 @@
         package: neovim
         derivation: neovim
 
-    - name: install tree-sitter-cli via cargo
-      ansible.builtin.shell: |
-        cargo install --locked tree-sitter-cli
-      args:
-        creates: "{{ ansible_env.HOME }}/.cargo/bin/tree-sitter"
-      tags:
-        - tree-sitter
-        - cargo
-
 - name: symlink config
   tags:
     - neovim
