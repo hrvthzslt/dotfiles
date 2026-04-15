@@ -12,6 +12,7 @@ install() {
 
 install ansible\
     neovim\
+    tree-sitter-cli\
     lazygit\
     lazydocker\
     mycli\
