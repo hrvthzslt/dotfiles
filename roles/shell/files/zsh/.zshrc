@@ -1,19 +1,20 @@
+# keep PATH/path deduped for everything this file does
+typeset -U path PATH
+
 # export env variables
 export LOCALE_ARCHIVE="/lib/locale/locale-archive"
 export EDITOR="nvim"
 export CHTSH_CONF="$HOME/.config/cht.sh/cht.sh.conf"
 
-typeset -U path
-
-# add to path
-pathprepend() {
+# append to path (name matches behavior: path+=arg appends)
+pathappend() {
   for arg in "$@"; do
     test -d "$arg" || continue
     path+="$arg"
   done
 }
 
-pathprepend \
+pathappend \
   "$HOME"/.opencode/bin \
   "/usr/local/go/bin" \
   "$HOME/go/bin" \
@@ -23,7 +24,6 @@ pathprepend \
   "$HOME/.local/bin" \
   "$HOME/.nix-profile/bin"
 
-export pathprepend
 export PATH
 
 # key bindings
@@ -39,6 +39,7 @@ bindkey -v
 # Rebind backspace in vi-insert mode to delete past the start of insertion
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^W' backward-kill-word
 
 # preserve history
 HISTFILE=~/.zsh_history
