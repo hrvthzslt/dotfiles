@@ -12,7 +12,8 @@ end
 return {
 	"hrvthzslt/markdown-preview.nvim",
 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-	build = "cd app && npm install",
+	-- build = "cd app && npm install && git -C .. checkout -- app/yarn.lock",
+    build = "cd app && npm install --no-package-lock",
 	ft = { "markdown" },
 	config = config,
 }
