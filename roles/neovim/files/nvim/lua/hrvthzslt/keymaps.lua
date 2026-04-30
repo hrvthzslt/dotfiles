@@ -23,6 +23,10 @@ vim.keymap.set("v", "y", "myy`y")
 -- Paste replace visual selection without copying it.
 vim.keymap.set("v", "p", '"_dP')
 
+-- Center the cursor when moving half a page up or down.
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 -- Quickly clear search highlighting.
 vim.keymap.set("n", "<Leader>k", ":nohlsearch<CR>", { desc = "nohlsearch" })
 
