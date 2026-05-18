@@ -62,19 +62,19 @@ local function config()
 	vim.lsp.enable("dockerls")
 
 	-- Javascript
-    vim.lsp.config("ts_ls", {
-        on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-        end,
-    })
+	vim.lsp.config("ts_ls", {
+		on_attach = function(client)
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.documentRangeFormattingProvider = false
+		end,
+	})
 	vim.lsp.enable("ts_ls")
-    vim.lsp.config("eslint", {
-        on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-        end,
-    })
+	vim.lsp.config("eslint", {
+		on_attach = function(client)
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.documentRangeFormattingProvider = false
+		end,
+	})
 	vim.lsp.enable("eslint")
 
 	-- Go
@@ -132,8 +132,6 @@ local function config()
 	vim.keymap.set("n", "gr", telescope_builtin.lsp_references, { desc = "Go to Implementation" })
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 
-	vim.keymap.set("n", "<leader>lI", "<cmd>:LspInfo<CR>", { desc = "Lsp Info" })
-	vim.keymap.set("n", "<leader>lR", "<cmd>:LspRestart<CR>", { desc = "Lsp Restart" })
 	vim.keymap.set("n", "<leader>lM", "<cmd>:Mason<CR>", { desc = "Lsp Mason" })
 end
 
