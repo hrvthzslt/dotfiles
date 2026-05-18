@@ -51,3 +51,6 @@ vim.opt.spelloptions = "noplainbuffer,camel"
 vim.opt.foldenable = false -- disable folding by default
 
 vim.opt.swapfile = false -- disable swap files, I shouldn't but it annoys me
+
+vim.opt.exrc = true -- allow local .exrc files, for project-specific settings
+vim.opt.secure = true
