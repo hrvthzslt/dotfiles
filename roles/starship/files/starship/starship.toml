@@ -1,3 +1,5 @@
+scan_timeout=200
+
 format = """
 $username\
 $hostname\
