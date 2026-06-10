@@ -5,8 +5,12 @@ vim.g.maplocalleader = " "
 -- Buffers
 vim.keymap.set("n", "<Leader>q", ":bd<CR>", { desc = "close buffer" })
 vim.keymap.set("n", "<Leader>Q", ":%bd<CR>", { desc = "close all buffers" })
-vim.keymap.set("n", "<Leader>w", ":w<CR>", { desc = "write buffer" })
-vim.keymap.set("n", "<Leader>W", ":wa<CR>", { desc = "write all buffers" })
+vim.keymap.set("n", "<Leader>w", ":w<CR>", { desc = "Write buffer" })
+vim.keymap.set("n", "<Leader>W", ":wa<CR>", { desc = "Write all buffers" })
+
+-- Command mode
+vim.keymap.set("n", "<Leader><Leader>", ":", { desc = "open command mode" })
+vim.keymap.set("n", "<C-f>", ":<C-f>", { desc = "open command editor" })
 
 -- When text is wrapped, move by terminal rows, not lines, unless a count is provided.
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })

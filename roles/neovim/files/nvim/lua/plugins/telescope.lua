@@ -11,21 +11,6 @@ local function config()
 			},
 		},
 		pickers = {
-			find_files = {
-				hidden = true,
-				no_ignore = true,
-				file_ignore_patterns = { ".git/" },
-			},
-			live_grep = {
-				file_ignore_patterns = { ".git/" },
-				additional_args = function(_)
-					return {
-						"--hidden",
-						"--no-ignore",
-						"--smart-case",
-					}
-				end,
-			},
 			current_buffer_tags = { show_line = false },
 			jumplist = { show_line = false },
 			loclist = { show_line = false },
@@ -67,7 +52,17 @@ local function config()
 	local builtin = require("telescope.builtin")
 
 	vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "Search Files" })
+	vim.keymap.set("n", "<leader>sF", function()
+		builtin.find_files({ find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!**/.git/*" } })
+	end, { desc = "Search Files (including ignored)" })
+
 	vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Search Grep" })
+	vim.keymap.set("n", "<leader>sG", function()
+		builtin.live_grep({
+			additional_args = { "--hidden", "--no-ignore", "--smart-case", "--glob", "!**/.git/*" },
+		})
+	end, { desc = "Search Grep (including ignored)" })
+
 	vim.keymap.set("n", "<leader>sd", "<cmd>Telescope dir live_grep<CR>", { desc = "Search grep in Dir" })
 	vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "Search Buffers" })
 	vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Search Help tags" })
