@@ -24,7 +24,7 @@ config.hide_tab_bar_if_only_one_tab = true
 -- For example, changing the color scheme:
 -- config.color_scheme = "Gruvbox light, hard (base16)"
 config.color_scheme = "zenbones_light"
--- config.color_scheme = "zenbones_dark"
+-- config.color_scheme = "kanagawabones"
 config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 
