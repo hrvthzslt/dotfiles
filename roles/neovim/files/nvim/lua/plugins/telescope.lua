@@ -51,13 +51,13 @@ local function config()
 
 	local builtin = require("telescope.builtin")
 
-	vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "Search Files" })
-	vim.keymap.set("n", "<leader>sF", function()
+	-- vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "Search Files" })
+	vim.keymap.set("n", "<leader>sf", function()
 		builtin.find_files({ find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!**/.git/*" } })
 	end, { desc = "Search Files (including ignored)" })
 
-	vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Search Grep" })
-	vim.keymap.set("n", "<leader>sG", function()
+	-- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Search Grep" })
+	vim.keymap.set("n", "<leader>sg", function()
 		builtin.live_grep({
 			additional_args = { "--hidden", "--no-ignore", "--smart-case", "--glob", "!**/.git/*" },
 		})
