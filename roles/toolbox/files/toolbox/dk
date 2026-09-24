@@ -4,7 +4,7 @@
 help() {
   echo "Usage: dk [s|p] (or any docker command)"
   echo "  -s     stop all containers"
-  echo "  -v     prune everything with volumes"
+  echo "  -p     prune everything with volumes"
   exit 0
 }
 
