@@ -11,6 +11,8 @@ local function config()
 		debounce_ms = 300,
 		browser = browser,
 	})
+
+	vim.keymap.set("n", "mm", ":MarkdownPreview<CR>", { desc = "Markdown preview" })
 end
 
 return {
