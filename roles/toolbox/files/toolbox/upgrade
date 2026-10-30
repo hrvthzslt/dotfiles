@@ -22,7 +22,11 @@ main() {
   fi
 
   if command -v gup >/dev/null; then
-      gup update
+    gup update
+  fi
+
+  if command -v dnf >/dev/null; then
+    sudo dnf update
   fi
 }
 
