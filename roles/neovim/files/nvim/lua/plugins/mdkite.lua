@@ -2,7 +2,7 @@ local function config()
 	-- Get the $BROWSER environment variable
 	local browser = os.getenv("BROWSER")
 
-	require("markdown_preview").setup({
+	require("mdkite").setup({
 		-- all optional; sane defaults shown
 		instance_mode = "takeover", -- "takeover" (one tab) or "multi" (tab per instance)
 		port = 0, -- 0 = auto (8421 for takeover, OS-assigned for multi)
@@ -12,12 +12,12 @@ local function config()
 		browser = browser,
 	})
 
-	vim.keymap.set("n", "mm", ":MarkdownPreview<CR>", { desc = "Markdown preview" })
-    vim.keymap.set("n", "ms", ":MarkdownPreviewStop<CR>", { desc = "Markdown preview Stop" })
+	vim.keymap.set("n", "mm", ":MdKite<CR>", { desc = "Markdown preview" })
+    vim.keymap.set("n", "ms", ":MdKite stop<CR>", { desc = "Markdown preview Stop" })
 end
 
 return {
-	"selimacerbas/markdown-preview.nvim",
+	"selimacerbas/mdkite.nvim",
 	-- a live-server.nvim checkout under another dir name needs its spec to
 	-- say name = "live-server.nvim", or lazy.nvim clones upstream beside it
 	dependencies = { "selimacerbas/live-server.nvim" },
