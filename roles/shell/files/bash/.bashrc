@@ -33,12 +33,14 @@ export pathprepend
 
 pathprepend \
   "$HOME"/.opencode/bin \
+  "$HOME"/.cargo/bin \
   "/usr/local/go/bin" \
   "$HOME/go/bin" \
   "$HOME/.local/share/nvim/mason/bin" \
   "$HOME/.local/bin/npm_packages/bin" \
   "$HOME/.local/bin/toolbox" \
   "$HOME/.local/bin" \
+  "$HOME/bin" \
   "$HOME/.nix-profile/bin"
 
 # start ssh-agent
@@ -61,8 +63,8 @@ fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 eval "$(fzf --bash)"
 
