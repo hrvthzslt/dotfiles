@@ -7,7 +7,7 @@ help:
 .PHONY: install
 install: # Install tools and set up configuration
 	scripts/setup-ansible
-	ansible-playbook main.yml --ask-become
+	ansible-playbook main.yml --ask-become --skip-tags wayland
 
 .PHONY: macos
 macos: # Setup with brew for macOS

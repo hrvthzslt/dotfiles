@@ -1,0 +1,164 @@
+/*******************************************************************************
+ * ROFI Color theme
+ * User: Rasi (Zenbones HEX Modified)
+ * Copyright: Rasmus Steinke
+ *******************************************************************************/
+
+* {
+    /* Zenbones Color Palette in HEX */
+    bg-main:                     #1C1917;
+    fg-main:                     #CFC1BA;
+    bg-select:                   #2C363C;
+    fg-select:                   #F0EDEC;
+    bg-urgent:                   #A8334C;
+    bg-alt:                      #24201E; /* Slightly lighter background for alternating rows */
+    bg-border:                   #2C2724; /* Subtle border and line color */
+
+    /* Theme Layout Mappings */
+    foreground:                  @fg-main;
+    normal-foreground:           @foreground;
+    background:                  @bg-main;
+    normal-background:           @background;
+
+    alternate-normal-background: @bg-alt;
+    alternate-normal-foreground: @foreground;
+
+    selected-normal-background:  @bg-select;
+    selected-normal-foreground:  @fg-select;
+
+    blue:                        @bg-select;
+    red:                         @bg-urgent;
+
+    urgent-background:           @background;
+    urgent-foreground:           @bg-urgent;
+    alternate-urgent-background: @bg-alt;
+    alternate-urgent-foreground: @urgent-foreground;
+    selected-urgent-background:  @bg-urgent;
+    selected-urgent-foreground:  @fg-select;
+
+    active-background:           @background;
+    active-foreground:           @fg-select;
+    alternate-active-background: @bg-alt;
+    alternate-active-foreground: @fg-select;
+    selected-active-background:  @bg-select;
+    selected-active-foreground:  @fg-select;
+
+    bordercolor:                 @bg-border;
+    border-color:                @bg-border;
+    separatorcolor:              @bg-border;
+
+    lightbg:                     @bg-alt;
+    lightfg:                     @fg-main;
+
+    spacing:                     2;
+    background-color:            transparent; /* Standard Rofi keyword replacing 0% alpha rgba */
+}
+window {
+    background-color: @background;
+    border:           1;
+    padding:          5;
+}
+mainbox {
+    border:  0;
+    padding: 0;
+}
+message {
+    border:       2px dash 0px 0px ;
+    border-color: @separatorcolor;
+    padding:      1px ;
+}
+textbox {
+    text-color: @foreground;
+}
+listview {
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
+    border-color: @separatorcolor;
+    spacing:      2px ;
+    scrollbar:    true;
+    padding:      2px 0px 0px ;
+}
+element {
+    border:  0;
+    padding: 1px ;
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+element.normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+element.normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}
+element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+}
+element.selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
+}
+element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color:       @alternate-urgent-foreground;
+}
+element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color:       @alternate-active-foreground;
+}
+scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-width: 8px ;
+    padding:      0;
+}
+mode-switcher {
+    border:       2px dash 0px 0px ;
+    border-color: @separatorcolor;
+}
+button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+inputbar {
+    spacing:    0;
+    text-color: @normal-foreground;
+    padding:    1px ;
+}
+case-indicator {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+entry {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+prompt {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @normal-foreground;
+}
