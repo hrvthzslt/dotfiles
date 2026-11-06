@@ -1,0 +1,69 @@
+---
+- name: create config directory
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+  tags:
+    - wayland
+    - link
+    - desktop
+
+- name: sway | symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/sway"
+    dest: "{{ ansible_env.HOME }}/.config/sway"
+    state: link
+    force: yes
+  tags:
+    - wayland
+    - sway
+    - link
+    - desktop
+
+- name: waybar | symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/waybar"
+    dest: "{{ ansible_env.HOME }}/.config/waybar"
+    state: link
+    force: yes
+  tags:
+    - wayland
+    - waybar
+    - link
+    - desktop
+
+- name: rofi | symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/rofi"
+    dest: "{{ ansible_env.HOME }}/.config/rofi"
+    state: link
+    force: yes
+  tags:
+    - wayland
+    - rofi
+    - link
+    - desktop
+
+- name: foot | symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/foot"
+    dest: "{{ ansible_env.HOME }}/.config/foot"
+    state: link
+    force: yes
+  tags:
+    - wayland
+    - foot
+    - link
+    - desktop
+
+- name: kanshi | symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/kanshi"
+    dest: "{{ ansible_env.HOME }}/.config/kanshi"
+    state: link
+    force: yes
+  tags:
+    - wayland
+    - kanshi
+    - link
+    - desktop

@@ -1,0 +1,106 @@
+/* --- DWM COLOR PALETTE VARIABLES --- */
+@define-color norm-bg     #1C1917; /* Default bar background */
+@define-color norm-fg     #CFC1BA; /* Default text color */
+@define-color sel-bg      #2C363C; /* Highlight / Active background (dwm Cyan) */
+@define-color sel-fg      #F0EDEC; /* Highlight / Active text */
+@define-color visible-bg  #1C1917; /* Background for visible but unfocused tags */
+@define-color visible-fg  #F0EDEC; /* Text for visible but unfocused tags */
+@define-color urgent-bg   #A8334C; /* Urgent notification background */
+@define-color urgent-fg   #F0EDEC; /* Urgent notification text */
+
+/* --- GLOBAL SETTINGS --- */
+* {
+  border: none;
+  border-radius: 0; /* Strictly blocky corners */
+  font-family:
+    "Hack Nerd Font", monospace; /* Monospace font is required for the look */
+  font-size: 14px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Base bar container */
+window#waybar {
+  background-color: @sel-bg;
+  color: @norm-fg;
+}
+
+window#waybar.empty {
+  background-color: @norm-bg;
+}
+
+/* --- WORKSPACES / TAGS --- */
+#workspaces button {
+  padding: 0 8px;
+  color: @norm-fg;
+  background-color: @norm-bg;
+}
+
+/* Visible but unfocused workspaces */
+#workspaces button.visible {
+  background-color: @visible-bg;
+  color: @visible-fg;
+}
+
+/* Active / Focused workspace */
+#workspaces button.focused,
+#workspaces button.active {
+  background-color: @sel-bg;
+  color: @sel-fg;
+}
+
+/* Urgent / Alerting workspace */
+#workspaces button.urgent {
+  background-color: @urgent-bg;
+  color: @urgent-fg;
+}
+
+/* Disable highlight on hover */
+#workspaces button:hover {
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+/* --- CENTER WINDOW TITLE (FIXED DWM STYLE) --- */
+#window {
+  padding: 0 10px;
+  color: @sel-fg;
+  background-color: @sel-bg;
+  /* Box shadow forces the background color to span full height/width perfectly */
+  box-shadow: inset 0 0 0 100px @sel-bg;
+}
+
+/* Hide or clear color when no window is active / empty workspace */
+window#waybar.empty #window {
+  background-color: transparent;
+  color: transparent;
+  box-shadow: none;
+}
+
+.modules-right {
+  background-color: @norm-bg;
+}
+
+/* --- RIGHT STATUS MODULES --- */
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#power-profiles-daemon,
+#battery,
+#mode {
+  padding: 0 9px;
+  background-color: @norm-bg;
+  color: @norm-fg;
+}
+
+tooltip {
+  font-family:
+    "Hack Nerd Font", monospace; /* Monospace font is required for the look */
+  font-size: 14px;
+  background-color: @sel-bg;
+  color: @sel-fg;
+}
