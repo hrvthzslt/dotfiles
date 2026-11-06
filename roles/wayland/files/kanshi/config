@@ -1,0 +1,14 @@
+profile {
+    output "Lenovo Group Limited 0x403D Unknown" enable mode 1920x1200@60Hz scale 1.28
+}
+
+profile {
+    output "Lenovo Group Limited 0x403D Unknown" disable
+    output "Lenovo Group Limited T27hv-20 V30AH6V1" enable position 0,0 scale 1
+}
+
+profile {
+    output "Lenovo Group Limited 0x403D Unknown" disable
+    output "LG Electronics LG FHD 306NTAB5L272" enable mode 1920x1080@60Hz position 1920,0 scale 1
+    output "LG Electronics BK550Y 301NTUWDF846" disable mode 1920x1080@60Hz position 0,0 scale 1
+}

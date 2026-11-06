@@ -55,3 +55,15 @@
     - foot
     - link
     - desktop
+
+- name: kanshi | symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/kanshi"
+    dest: "{{ ansible_env.HOME }}/.config/kanshi"
+    state: link
+    force: yes
+  tags:
+    - wayland
+    - kanshi
+    - link
+    - desktop
