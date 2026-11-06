@@ -92,7 +92,7 @@ output * bg /usr/share/backgrounds/default.jxl fill
     input "type:keyboard" {
         xkb_layout "us,hu"
     }
-    bindsym $mod+x input type:keyboard xkb_switch_layout next
+    bindsym $mod+Tab input type:keyboard xkb_switch_layout next
 
     bindsym $mod+Escape exec swaylock
     bindsym $mod+Shift+s exec "slock & systemctl suspend"
