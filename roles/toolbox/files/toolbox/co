@@ -2,9 +2,11 @@
 # Docker compose wrapper
 
 help() {
-  echo "Usage: co [u|h] (or any docker compose command)"
-  echo "  -u     up -d"
-  echo "  -h     help"
+  echo "Usage: co [u|r|l|h] (or any docker compose command)"
+  echo "  u     up -d"
+  echo "  r     restart [services]"
+  echo "  l     logs -f [services]"
+  echo "  h     help"
   exit 1
 }
 
@@ -26,14 +28,30 @@ up() {
   $(get_command) up -d --remove-orphans
 }
 
+restart() {
+  $(get_command) restart "$@"
+}
+
+logs() {
+  $(get_command) logs -f "$@"
+}
+
 pass_through() {
   $(get_command) "$@"
 }
 
 main() {
   case $1 in
-    --up | -u | u)
+    u)
       up
+      ;;
+    r)
+      shift
+      restart "$@"
+      ;;
+    l)
+      shift
+      logs "$@"
       ;;
     --help | -h | h)
       help
