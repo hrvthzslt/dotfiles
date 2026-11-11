@@ -46,6 +46,8 @@ set $rofi_cmd rofi \
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
+set $browser helium --ozone-platform-hint=auto --ozone-platform=wayland
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -102,7 +104,7 @@ output * bg /usr/share/backgrounds/default.jxl fill
     bindsym $mod+o exec thunar
     bindsym $mod+s exec wdisplays
     bindsym $mod+n exec alacritty --command nmtui
-    bindsym $mod+Shift+p exec clipman pick --tool=rofi
+    bindsym $mod+Shift+p exec clipman pick --tool=rofi --tool-args="-i"
     bindsym $mod+Shift+c exec clipman clear --all
 
     bindsym {
@@ -114,8 +116,8 @@ output * bg /usr/share/backgrounds/default.jxl fill
     bindsym $mod+Return exec $term
 
     # Start browser
-    bindsym $mod+w exec helium --profile-directory="Profile 1"
-    bindsym $mod+Shift+w exec helium --profile-directory="Default"
+    bindsym $mod+w exec $browser --profile-directory="Profile 1"
+    bindsym $mod+Shift+w exec $browser --profile-directory="Default"
 
     # Kill focused window
     bindsym $mod+q kill
