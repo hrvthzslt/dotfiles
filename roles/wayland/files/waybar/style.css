@@ -87,12 +87,13 @@ window#waybar.empty #window {
 #clock,
 #cpu,
 #memory,
+#disk,
 #network,
 #pulseaudio,
 #power-profiles-daemon,
 #battery,
 #mode {
-  padding: 0 9px;
+  padding: 0 6px;
   background-color: @norm-bg;
   color: @norm-fg;
 }
