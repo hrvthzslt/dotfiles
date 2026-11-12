@@ -13,6 +13,7 @@ default_border pixel 2
 
 for_window [title="wdisplays|Bluetooth Devices|Network Connections"] floating enable
 for_window [app_id="com.github.hluk.copyq"] floating enable
+for_window [app_id="floating_foot"] floating enable, resize set 30 ppt 40 ppt, move position center
 
 gaps inner 2
 gaps outer 2
@@ -97,13 +98,14 @@ output * bg /usr/share/backgrounds/default.jxl fill
     bindsym $mod+Tab input type:keyboard xkb_switch_layout next
 
     bindsym $mod+Escape exec swaylock
-    bindsym $mod+Shift+s exec "slock & systemctl suspend"
+    bindsym $mod+Shift+s exec "swaylock & systemctl suspend"
     bindsym $mod+a exec dunstctl close-all
-    bindsym $mod+u exec blueman-manager
+    # bindsym $mod+u exec blueman-manager
+    bindsym $mod+u exec $term -a floating_foot bluetuith
     bindsym $mod+v exec pavucontrol
     bindsym $mod+o exec thunar
     bindsym $mod+s exec wdisplays
-    bindsym $mod+n exec alacritty --command nmtui
+    bindsym $mod+n exec $term -a floating_foot nmtui
     bindsym $mod+Shift+p exec clipman pick --tool=rofi --tool-args="-i"
     bindsym $mod+Shift+c exec clipman clear --all
 
