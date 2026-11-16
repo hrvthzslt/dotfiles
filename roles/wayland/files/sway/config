@@ -13,7 +13,7 @@ default_border pixel 2
 
 for_window [title="wdisplays|Bluetooth Devices|Network Connections"] floating enable
 for_window [app_id="com.github.hluk.copyq"] floating enable
-for_window [app_id="floating_foot"] floating enable, resize set 30 ppt 40 ppt, move position center
+for_window [app_id="floating_foot"] floating enable, resize set 50 ppt 60 ppt, move position center
 
 gaps inner 2
 gaps outer 2

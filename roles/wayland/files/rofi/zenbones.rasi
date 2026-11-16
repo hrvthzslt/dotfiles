@@ -53,6 +53,9 @@
     spacing:                     2;
     background-color:            transparent; /* Standard Rofi keyword replacing 0% alpha rgba */
 }
+configuration {
+    font: "Hack Nerd Font 12";
+}
 window {
     background-color: @background;
     border:           1;
