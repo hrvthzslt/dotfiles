@@ -4,7 +4,7 @@ profile {
 
 profile {
     output "Lenovo Group Limited 0x403D Unknown" disable
-    output "Lenovo Group Limited T27hv-20 V30AH6V1" enable position 0,0 scale 1
+    output "Lenovo Group Limited T27hv-20 V30AH6V1" enable position 0,0 scale 1.21
 }
 
 profile {
