@@ -12,7 +12,7 @@
 
   - name: download hack font
     ansible.builtin.get_url:
-      url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Hack.zip
+      url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/Hack.zip
       dest: "{{ ansible_env.HOME }}/.fonts/zip/Hack.zip"
 
   - name: unarchive hack font
